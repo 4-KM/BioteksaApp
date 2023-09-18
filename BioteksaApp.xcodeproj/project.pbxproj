@@ -1,0 +1,695 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2B8A83CA2AB9111D00F6A2C5 /* BioteksaAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A83C92AB9111D00F6A2C5 /* BioteksaAppApp.swift */; };
+		2B8A83CC2AB9111D00F6A2C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A83CB2AB9111D00F6A2C5 /* ContentView.swift */; };
+		2B8A83CE2AB9111F00F6A2C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B8A83CD2AB9111F00F6A2C5 /* Assets.xcassets */; };
+		2B8A83D12AB9111F00F6A2C5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B8A83D02AB9111F00F6A2C5 /* Preview Assets.xcassets */; };
+		2B8A83DB2AB9111F00F6A2C5 /* BioteksaAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A83DA2AB9111F00F6A2C5 /* BioteksaAppTests.swift */; };
+		2B8A83E52AB9111F00F6A2C5 /* BioteksaAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A83E42AB9111F00F6A2C5 /* BioteksaAppUITests.swift */; };
+		2B8A83E72AB9111F00F6A2C5 /* BioteksaAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A83E62AB9111F00F6A2C5 /* BioteksaAppUITestsLaunchTests.swift */; };
+		2B8A83F42AB911EC00F6A2C5 /* TabBarBioteksa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A83F32AB911EC00F6A2C5 /* TabBarBioteksa.swift */; };
+		2B8A83F62AB9123A00F6A2C5 /* LoginBioteksaView .swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A83F52AB9123A00F6A2C5 /* LoginBioteksaView .swift */; };
+		2B8A83F82AB9127600F6A2C5 /* AcidosTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A83F72AB9127600F6A2C5 /* AcidosTabBar.swift */; };
+		2B8A83FA2AB9129400F6A2C5 /* NutrientesTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A83F92AB9129400F6A2C5 /* NutrientesTabBar.swift */; };
+		2B8A83FC2AB912B000F6A2C5 /* ConverciónTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A83FB2AB912B000F6A2C5 /* ConverciónTabBar.swift */; };
+		2B8A83FE2AB912BC00F6A2C5 /* Calculadora.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A83FD2AB912BC00F6A2C5 /* Calculadora.swift */; };
+		2BED05822AB9545900C3A75D /* LoginBioteksaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BED05812AB9545900C3A75D /* LoginBioteksaViewModel.swift */; };
+		2BED05872AB956AF00C3A75D /* LoginBioteksaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BED05862AB956AF00C3A75D /* LoginBioteksaModel.swift */; };
+		2BED058A2AB9581100C3A75D /* LoginBioteksaAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BED05892AB9581100C3A75D /* LoginBioteksaAction.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2B8A83D72AB9111F00F6A2C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2B8A83BE2AB9111D00F6A2C5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2B8A83C52AB9111D00F6A2C5;
+			remoteInfo = BioteksaApp;
+		};
+		2B8A83E12AB9111F00F6A2C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2B8A83BE2AB9111D00F6A2C5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2B8A83C52AB9111D00F6A2C5;
+			remoteInfo = BioteksaApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2B8A83C62AB9111D00F6A2C5 /* BioteksaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BioteksaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B8A83C92AB9111D00F6A2C5 /* BioteksaAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioteksaAppApp.swift; sourceTree = "<group>"; };
+		2B8A83CB2AB9111D00F6A2C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2B8A83CD2AB9111F00F6A2C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2B8A83D02AB9111F00F6A2C5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2B8A83D62AB9111F00F6A2C5 /* BioteksaAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BioteksaAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B8A83DA2AB9111F00F6A2C5 /* BioteksaAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioteksaAppTests.swift; sourceTree = "<group>"; };
+		2B8A83E02AB9111F00F6A2C5 /* BioteksaAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BioteksaAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B8A83E42AB9111F00F6A2C5 /* BioteksaAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioteksaAppUITests.swift; sourceTree = "<group>"; };
+		2B8A83E62AB9111F00F6A2C5 /* BioteksaAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioteksaAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2B8A83F32AB911EC00F6A2C5 /* TabBarBioteksa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarBioteksa.swift; sourceTree = "<group>"; };
+		2B8A83F52AB9123A00F6A2C5 /* LoginBioteksaView .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginBioteksaView .swift"; sourceTree = "<group>"; };
+		2B8A83F72AB9127600F6A2C5 /* AcidosTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcidosTabBar.swift; sourceTree = "<group>"; };
+		2B8A83F92AB9129400F6A2C5 /* NutrientesTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientesTabBar.swift; sourceTree = "<group>"; };
+		2B8A83FB2AB912B000F6A2C5 /* ConverciónTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConverciónTabBar.swift"; sourceTree = "<group>"; };
+		2B8A83FD2AB912BC00F6A2C5 /* Calculadora.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculadora.swift; sourceTree = "<group>"; };
+		2BED05812AB9545900C3A75D /* LoginBioteksaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBioteksaViewModel.swift; sourceTree = "<group>"; };
+		2BED05862AB956AF00C3A75D /* LoginBioteksaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBioteksaModel.swift; sourceTree = "<group>"; };
+		2BED05892AB9581100C3A75D /* LoginBioteksaAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBioteksaAction.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2B8A83C32AB9111D00F6A2C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2B8A83D32AB9111F00F6A2C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2B8A83DD2AB9111F00F6A2C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2B8A83BD2AB9111D00F6A2C5 = {
+			isa = PBXGroup;
+			children = (
+				2B8A83C82AB9111D00F6A2C5 /* BioteksaApp */,
+				2B8A83D92AB9111F00F6A2C5 /* BioteksaAppTests */,
+				2B8A83E32AB9111F00F6A2C5 /* BioteksaAppUITests */,
+				2B8A83C72AB9111D00F6A2C5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2B8A83C72AB9111D00F6A2C5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2B8A83C62AB9111D00F6A2C5 /* BioteksaApp.app */,
+				2B8A83D62AB9111F00F6A2C5 /* BioteksaAppTests.xctest */,
+				2B8A83E02AB9111F00F6A2C5 /* BioteksaAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2B8A83C82AB9111D00F6A2C5 /* BioteksaApp */ = {
+			isa = PBXGroup;
+			children = (
+				2B8A83C92AB9111D00F6A2C5 /* BioteksaAppApp.swift */,
+				2B8A83CB2AB9111D00F6A2C5 /* ContentView.swift */,
+				2BED05832AB9563700C3A75D /* Login  */,
+				2BED05842AB9565600C3A75D /* tabBar */,
+				2BED05852AB9566E00C3A75D /* ViewTabBar  */,
+				2B8A83CD2AB9111F00F6A2C5 /* Assets.xcassets */,
+				2B8A83CF2AB9111F00F6A2C5 /* Preview Content */,
+			);
+			path = BioteksaApp;
+			sourceTree = "<group>";
+		};
+		2B8A83CF2AB9111F00F6A2C5 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				2B8A83D02AB9111F00F6A2C5 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2B8A83D92AB9111F00F6A2C5 /* BioteksaAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				2B8A83DA2AB9111F00F6A2C5 /* BioteksaAppTests.swift */,
+			);
+			path = BioteksaAppTests;
+			sourceTree = "<group>";
+		};
+		2B8A83E32AB9111F00F6A2C5 /* BioteksaAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2B8A83E42AB9111F00F6A2C5 /* BioteksaAppUITests.swift */,
+				2B8A83E62AB9111F00F6A2C5 /* BioteksaAppUITestsLaunchTests.swift */,
+			);
+			path = BioteksaAppUITests;
+			sourceTree = "<group>";
+		};
+		2BED05832AB9563700C3A75D /* Login  */ = {
+			isa = PBXGroup;
+			children = (
+				2B8A83F52AB9123A00F6A2C5 /* LoginBioteksaView .swift */,
+				2BED05862AB956AF00C3A75D /* LoginBioteksaModel.swift */,
+				2BED05812AB9545900C3A75D /* LoginBioteksaViewModel.swift */,
+				2BED05882AB957E800C3A75D /* Action */,
+			);
+			path = "Login ";
+			sourceTree = "<group>";
+		};
+		2BED05842AB9565600C3A75D /* tabBar */ = {
+			isa = PBXGroup;
+			children = (
+				2B8A83F32AB911EC00F6A2C5 /* TabBarBioteksa.swift */,
+			);
+			path = tabBar;
+			sourceTree = "<group>";
+		};
+		2BED05852AB9566E00C3A75D /* ViewTabBar  */ = {
+			isa = PBXGroup;
+			children = (
+				2BED058B2AB95F9300C3A75D /* Acidos */,
+				2BED058C2AB9604000C3A75D /* Nutrientes */,
+				2BED058D2AB9606A00C3A75D /* Converción */,
+				2BED058E2AB9608100C3A75D /* Calculadora */,
+			);
+			path = "ViewTabBar ";
+			sourceTree = "<group>";
+		};
+		2BED05882AB957E800C3A75D /* Action */ = {
+			isa = PBXGroup;
+			children = (
+				2BED05892AB9581100C3A75D /* LoginBioteksaAction.swift */,
+			);
+			path = Action;
+			sourceTree = "<group>";
+		};
+		2BED058B2AB95F9300C3A75D /* Acidos */ = {
+			isa = PBXGroup;
+			children = (
+				2B8A83F72AB9127600F6A2C5 /* AcidosTabBar.swift */,
+			);
+			path = Acidos;
+			sourceTree = "<group>";
+		};
+		2BED058C2AB9604000C3A75D /* Nutrientes */ = {
+			isa = PBXGroup;
+			children = (
+				2B8A83F92AB9129400F6A2C5 /* NutrientesTabBar.swift */,
+			);
+			path = Nutrientes;
+			sourceTree = "<group>";
+		};
+		2BED058D2AB9606A00C3A75D /* Converción */ = {
+			isa = PBXGroup;
+			children = (
+				2B8A83FB2AB912B000F6A2C5 /* ConverciónTabBar.swift */,
+			);
+			name = "Converción";
+			path = "Converción";
+			sourceTree = "<group>";
+		};
+		2BED058E2AB9608100C3A75D /* Calculadora */ = {
+			isa = PBXGroup;
+			children = (
+				2B8A83FD2AB912BC00F6A2C5 /* Calculadora.swift */,
+			);
+			path = Calculadora;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2B8A83C52AB9111D00F6A2C5 /* BioteksaApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2B8A83EA2AB9111F00F6A2C5 /* Build configuration list for PBXNativeTarget "BioteksaApp" */;
+			buildPhases = (
+				2B8A83C22AB9111D00F6A2C5 /* Sources */,
+				2B8A83C32AB9111D00F6A2C5 /* Frameworks */,
+				2B8A83C42AB9111D00F6A2C5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BioteksaApp;
+			productName = BioteksaApp;
+			productReference = 2B8A83C62AB9111D00F6A2C5 /* BioteksaApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2B8A83D52AB9111F00F6A2C5 /* BioteksaAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2B8A83ED2AB9111F00F6A2C5 /* Build configuration list for PBXNativeTarget "BioteksaAppTests" */;
+			buildPhases = (
+				2B8A83D22AB9111F00F6A2C5 /* Sources */,
+				2B8A83D32AB9111F00F6A2C5 /* Frameworks */,
+				2B8A83D42AB9111F00F6A2C5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2B8A83D82AB9111F00F6A2C5 /* PBXTargetDependency */,
+			);
+			name = BioteksaAppTests;
+			productName = BioteksaAppTests;
+			productReference = 2B8A83D62AB9111F00F6A2C5 /* BioteksaAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2B8A83DF2AB9111F00F6A2C5 /* BioteksaAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2B8A83F02AB9111F00F6A2C5 /* Build configuration list for PBXNativeTarget "BioteksaAppUITests" */;
+			buildPhases = (
+				2B8A83DC2AB9111F00F6A2C5 /* Sources */,
+				2B8A83DD2AB9111F00F6A2C5 /* Frameworks */,
+				2B8A83DE2AB9111F00F6A2C5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2B8A83E22AB9111F00F6A2C5 /* PBXTargetDependency */,
+			);
+			name = BioteksaAppUITests;
+			productName = BioteksaAppUITests;
+			productReference = 2B8A83E02AB9111F00F6A2C5 /* BioteksaAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2B8A83BE2AB9111D00F6A2C5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					2B8A83C52AB9111D00F6A2C5 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					2B8A83D52AB9111F00F6A2C5 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 2B8A83C52AB9111D00F6A2C5;
+					};
+					2B8A83DF2AB9111F00F6A2C5 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 2B8A83C52AB9111D00F6A2C5;
+					};
+				};
+			};
+			buildConfigurationList = 2B8A83C12AB9111D00F6A2C5 /* Build configuration list for PBXProject "BioteksaApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2B8A83BD2AB9111D00F6A2C5;
+			productRefGroup = 2B8A83C72AB9111D00F6A2C5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2B8A83C52AB9111D00F6A2C5 /* BioteksaApp */,
+				2B8A83D52AB9111F00F6A2C5 /* BioteksaAppTests */,
+				2B8A83DF2AB9111F00F6A2C5 /* BioteksaAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2B8A83C42AB9111D00F6A2C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B8A83D12AB9111F00F6A2C5 /* Preview Assets.xcassets in Resources */,
+				2B8A83CE2AB9111F00F6A2C5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2B8A83D42AB9111F00F6A2C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2B8A83DE2AB9111F00F6A2C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2B8A83C22AB9111D00F6A2C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BED05822AB9545900C3A75D /* LoginBioteksaViewModel.swift in Sources */,
+				2B8A83CC2AB9111D00F6A2C5 /* ContentView.swift in Sources */,
+				2B8A83F42AB911EC00F6A2C5 /* TabBarBioteksa.swift in Sources */,
+				2B8A83F62AB9123A00F6A2C5 /* LoginBioteksaView .swift in Sources */,
+				2BED058A2AB9581100C3A75D /* LoginBioteksaAction.swift in Sources */,
+				2B8A83CA2AB9111D00F6A2C5 /* BioteksaAppApp.swift in Sources */,
+				2BED05872AB956AF00C3A75D /* LoginBioteksaModel.swift in Sources */,
+				2B8A83FA2AB9129400F6A2C5 /* NutrientesTabBar.swift in Sources */,
+				2B8A83FC2AB912B000F6A2C5 /* ConverciónTabBar.swift in Sources */,
+				2B8A83F82AB9127600F6A2C5 /* AcidosTabBar.swift in Sources */,
+				2B8A83FE2AB912BC00F6A2C5 /* Calculadora.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2B8A83D22AB9111F00F6A2C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B8A83DB2AB9111F00F6A2C5 /* BioteksaAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2B8A83DC2AB9111F00F6A2C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B8A83E72AB9111F00F6A2C5 /* BioteksaAppUITestsLaunchTests.swift in Sources */,
+				2B8A83E52AB9111F00F6A2C5 /* BioteksaAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2B8A83D82AB9111F00F6A2C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2B8A83C52AB9111D00F6A2C5 /* BioteksaApp */;
+			targetProxy = 2B8A83D72AB9111F00F6A2C5 /* PBXContainerItemProxy */;
+		};
+		2B8A83E22AB9111F00F6A2C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2B8A83C52AB9111D00F6A2C5 /* BioteksaApp */;
+			targetProxy = 2B8A83E12AB9111F00F6A2C5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2B8A83E82AB9111F00F6A2C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2B8A83E92AB9111F00F6A2C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2B8A83EB2AB9111F00F6A2C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BioteksaApp/Preview Content\"";
+				DEVELOPMENT_TEAM = Z6WL44H44M;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Gersai.BioteksaApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		2B8A83EC2AB9111F00F6A2C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BioteksaApp/Preview Content\"";
+				DEVELOPMENT_TEAM = Z6WL44H44M;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Gersai.BioteksaApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		2B8A83EE2AB9111F00F6A2C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z6WL44H44M;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Gersai.BioteksaAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BioteksaApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BioteksaApp";
+			};
+			name = Debug;
+		};
+		2B8A83EF2AB9111F00F6A2C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z6WL44H44M;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Gersai.BioteksaAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BioteksaApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BioteksaApp";
+			};
+			name = Release;
+		};
+		2B8A83F12AB9111F00F6A2C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z6WL44H44M;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Gersai.BioteksaAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BioteksaApp;
+			};
+			name = Debug;
+		};
+		2B8A83F22AB9111F00F6A2C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z6WL44H44M;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Gersai.BioteksaAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BioteksaApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2B8A83C12AB9111D00F6A2C5 /* Build configuration list for PBXProject "BioteksaApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B8A83E82AB9111F00F6A2C5 /* Debug */,
+				2B8A83E92AB9111F00F6A2C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2B8A83EA2AB9111F00F6A2C5 /* Build configuration list for PBXNativeTarget "BioteksaApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B8A83EB2AB9111F00F6A2C5 /* Debug */,
+				2B8A83EC2AB9111F00F6A2C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2B8A83ED2AB9111F00F6A2C5 /* Build configuration list for PBXNativeTarget "BioteksaAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B8A83EE2AB9111F00F6A2C5 /* Debug */,
+				2B8A83EF2AB9111F00F6A2C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2B8A83F02AB9111F00F6A2C5 /* Build configuration list for PBXNativeTarget "BioteksaAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B8A83F12AB9111F00F6A2C5 /* Debug */,
+				2B8A83F22AB9111F00F6A2C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2B8A83BE2AB9111D00F6A2C5 /* Project object */;
+}
