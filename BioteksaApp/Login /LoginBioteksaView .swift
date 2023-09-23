@@ -70,17 +70,16 @@ struct LoginBioteksa: View {
                     .padding(.horizontal)
 
                 Spacer()
-
-                Button("Entrar"){
+                NavigationLink(destination: TabBarBioteksa()) {
+                    Text("Entrar")
+                        .foregroundColor(Color(red: 0.068, green: 0.277, blue: 0.473))
+                        .frame(width: 359, height: 60, alignment: .center)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                    Rectangle()
+                        .frame(height: 0)
+                    Spacer()
                 }
-                .foregroundColor(Color(red: 0.068, green: 0.277, blue: 0.473))
-                //.padding(),             .padding(.horizontal)
-                .frame(maxWidth: 359, maxHeight: 60)
-                .background(Color.white)
-                .cornerRadius(20)
-                Rectangle()
-                    .frame(height: 0)
-                Spacer()
             }
             .background(LinearGradient(gradient: Gradient(colors: [Color(red: 0.287, green: 0.561, blue: 0.816), Color(red: 0.068, green: 0.277, blue: 0.473)]), startPoint: .top, endPoint: .bottom))
     }
@@ -91,3 +90,6 @@ struct LoginBioteksa_Previews: PreviewProvider {
         LoginBioteksa()
     }
 }
+
+
+
