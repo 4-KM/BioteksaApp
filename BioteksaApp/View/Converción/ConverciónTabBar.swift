@@ -9,10 +9,25 @@ import SwiftUI
 
 struct ConverciónTabBar: View {
     var body: some View {
-        ZStack {
-            Color(red: 0.681, green: 0.695, blue: 1.000)
-            //.edgesIgnoringSafeArea(.all)
-        }   
+        ScrollView {
+            VStack {
+                Color(red: 0.681, green: 0.695, blue: 1.000)
+                
+                Text("Tabla De Conversión")
+                    .frame(width: 350, height: 100, alignment: .center)
+                    .foregroundColor(.white)
+                    .background(Color(red: 0.021, green: 0.286, blue: 0.557))
+                    .cornerRadius(10)
+                List {
+                        ForEach( elementos ,  id: \.nombre ) { option in Text(option.nombre)
+                    }
+                        .padding(15)
+                }
+                .frame(width: 350, height: 500, alignment: .center)
+                .cornerRadius(10)
+            }
+        }
+        .background(Color(red: 0.681, green: 0.695, blue: 1.000))
     }
 }
 
@@ -21,3 +36,10 @@ struct ConverciónTabBar_Previews: PreviewProvider {
         ConverciónTabBar()
     }
 }
+
+
+/*Text("""
+Tabla De Conversión
+Elemento     Formula       Formula
+Soluble       Bioteksa
+""")*/

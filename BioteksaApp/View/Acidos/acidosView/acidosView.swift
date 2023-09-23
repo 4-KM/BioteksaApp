@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct acidosView: View {
+    @State var texto : String = "hoa"
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TextField("acidos", text: $texto)
+            .background(Color(red: 0.988, green: 0.965, blue: 0.859))
     }
 }
 

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginBioteksa: View {
-    @ObservedObject var viewModel: LoginViewModel = LoginViewModel()
+    @ObservedObject var loginViewModel: LoginViewModel = LoginViewModel()
     @State var name: String = ""
     @State var password: String = ""
     @State var showPassword: Bool = false
@@ -43,20 +43,20 @@ struct LoginBioteksa: View {
                 HStack {
                     Group {
                         if showPassword {
-                            TextField("Password", // how to create a secure text field
+                            TextField("Password",
                                       text: $password,
-                                      prompt: Text("Password").foregroundColor(.white)) // How to change the color of the TextField Placeholder
+                                      prompt: Text("Password").foregroundColor(.white))
                         } else {
-                            SecureField("Password", // how to create a secure text field
+                            SecureField("Password",
                                         text: $password,
-                                        prompt: Text("Password").foregroundColor(.white)) // How to change the color of the TextField Placeholder
+                                        prompt: Text("Password").foregroundColor(.white))
                         }
 
                         Button {
                             showPassword.toggle()
                         } label: {
                             Image(systemName: showPassword ? "eye.slash" : "eye")
-                                .foregroundColor(.white) // how to change image based in a State variable
+                                .foregroundColor(.white)
                         }
                         
                     }.padding(.horizontal)
@@ -65,14 +65,12 @@ struct LoginBioteksa: View {
                     .padding(15)
                     .overlay {
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(.white, lineWidth: 2) // How to add rounded corner to a TextField and change it colour
-                    }.padding(.horizontal)
+                            .stroke(.white, lineWidth: 2)
+                    }
+                    .padding(.horizontal)
 
-                   
-                
                 Spacer()
 
-                Divider()
                 Button("Entrar"){
                 }
                 .foregroundColor(Color(red: 0.068, green: 0.277, blue: 0.473))
@@ -83,9 +81,7 @@ struct LoginBioteksa: View {
                 Rectangle()
                     .frame(height: 0)
                 Spacer()
-
             }
-
             .background(LinearGradient(gradient: Gradient(colors: [Color(red: 0.287, green: 0.561, blue: 0.816), Color(red: 0.068, green: 0.277, blue: 0.473)]), startPoint: .top, endPoint: .bottom))
     }
 }

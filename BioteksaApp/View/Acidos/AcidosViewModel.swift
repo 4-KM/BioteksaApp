@@ -7,23 +7,23 @@
 
 import Foundation
 import SwiftUI
- 
-class AcidosViewModel: ObservableObject {
+
+
+
+class AcidosViewModel {
     
-    @Published var Bioteksa: String = ""
-    @Published var Otros: String = ""
-    
+  //  var acidos: Acido
+    //@Published var Bioteksa: String = ""
+    //@Published var Otros: String = ""
+    //@State var tipoDeAcido: String = ""
     func tablasComparativas() {
-        Section(header: Text("house")) {
-            ForEach(house + work, id: \.title) { option in
-                Label(option.title, systemImage: option.otros)
-            }
+            
+        ForEach(acidos,  id: \.descripcion) { option in Text(option.descripcion)
         }
-        Section(header: Text("Work")) {
-            ForEach(work, id: \.title) { option in
-                Label(option.title, systemImage: option.otros)
-            }
-            .listStyle(SidebarListStyle())
+            
+        
+            
+        ForEach(acidos,  id: \.descripcion) { option in Text(option.descripcion)
         }
     }
 }
