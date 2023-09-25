@@ -39,6 +39,12 @@ struct PreViewColores_: View {
                 .foregroundColor(.black)
                 .background(Color(red: 0.997, green: 0.970, blue: 0.848))
                 .cornerRadius(10)
+            
+            Text("gris tex fiel de subrayar #F2F2F7 ")
+                .frame(width: 350, height: 150, alignment: .center)
+                .foregroundColor(.black)
+                .background(Color(red: 0.949, green: 0.949, blue: 0.967))
+                .cornerRadius(10)
         }
     }
 }

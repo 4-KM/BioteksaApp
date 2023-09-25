@@ -16,10 +16,12 @@
 		2B8A83E72AB9111F00F6A2C5 /* BioteksaAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A83E62AB9111F00F6A2C5 /* BioteksaAppUITestsLaunchTests.swift */; };
 		2B8A83F42AB911EC00F6A2C5 /* TabBarBioteksa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A83F32AB911EC00F6A2C5 /* TabBarBioteksa.swift */; };
 		2B8A83F62AB9123A00F6A2C5 /* LoginBioteksaView .swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A83F52AB9123A00F6A2C5 /* LoginBioteksaView .swift */; };
-		2B8A83F82AB9127600F6A2C5 /* TablaDeAcidosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A83F72AB9127600F6A2C5 /* TablaDeAcidosView.swift */; };
-		2B8A83FA2AB9129400F6A2C5 /* NutrientesTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A83F92AB9129400F6A2C5 /* NutrientesTabBar.swift */; };
-		2B8A83FC2AB912B000F6A2C5 /* ConverciónTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A83FB2AB912B000F6A2C5 /* ConverciónTabBar.swift */; };
-		2B8A83FE2AB912BC00F6A2C5 /* Calculadora.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A83FD2AB912BC00F6A2C5 /* Calculadora.swift */; };
+		2B8A83F82AB9127600F6A2C5 /* tablaAcidosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A83F72AB9127600F6A2C5 /* tablaAcidosView.swift */; };
+		2B8A83FA2AB9129400F6A2C5 /* NutrientesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A83F92AB9129400F6A2C5 /* NutrientesView.swift */; };
+		2B8A83FC2AB912B000F6A2C5 /* ConvercionTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A83FB2AB912B000F6A2C5 /* ConvercionTabBar.swift */; };
+		2B8A83FE2AB912BC00F6A2C5 /* CalculadoraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A83FD2AB912BC00F6A2C5 /* CalculadoraView.swift */; };
+		2B9E562A2AC19CAB0042C90F /* NutrientesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9E56292AC19CAB0042C90F /* NutrientesModel.swift */; };
+		2B9E562C2AC19CBA0042C90F /* NewModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9E562B2AC19CBA0042C90F /* NewModelView.swift */; };
 		2BED05822AB9545900C3A75D /* LoginBioteksaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BED05812AB9545900C3A75D /* LoginBioteksaViewModel.swift */; };
 		2BED05872AB956AF00C3A75D /* LoginBioteksaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BED05862AB956AF00C3A75D /* LoginBioteksaModel.swift */; };
 		2BED058A2AB9581100C3A75D /* LoginBioteksaAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BED05892AB9581100C3A75D /* LoginBioteksaAction.swift */; };
@@ -32,8 +34,8 @@
 		2BF31D772ABE7260004FC52C /* VolumenDeriegoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF31D762ABE7260004FC52C /* VolumenDeriegoModel.swift */; };
 		2BF31D792ABE7270004FC52C /* VolumenDeriegoViewmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF31D782ABE7270004FC52C /* VolumenDeriegoViewmodel.swift */; };
 		2BF31D7B2ABEC0DD004FC52C /* PreViewColores .swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF31D7A2ABEC0DD004FC52C /* PreViewColores .swift */; };
-		2BF31D7D2ABEE1F3004FC52C /* ComversiónModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF31D7C2ABEE1F3004FC52C /* ComversiónModel.swift */; };
-		2BF31D7F2ABEE20B004FC52C /* ComversiónViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF31D7E2ABEE20B004FC52C /* ComversiónViewModel.swift */; };
+		2BF31D7D2ABEE1F3004FC52C /* ComversionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF31D7C2ABEE1F3004FC52C /* ComversionModel.swift */; };
+		2BF31D7F2ABEE20B004FC52C /* ComversionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF31D7E2ABEE20B004FC52C /* ComversionViewModel.swift */; };
 		2BF31D812ABEE5AA004FC52C /* CalculadoraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF31D802ABEE5AA004FC52C /* CalculadoraModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,10 +69,12 @@
 		2B8A83E62AB9111F00F6A2C5 /* BioteksaAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioteksaAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2B8A83F32AB911EC00F6A2C5 /* TabBarBioteksa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarBioteksa.swift; sourceTree = "<group>"; };
 		2B8A83F52AB9123A00F6A2C5 /* LoginBioteksaView .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginBioteksaView .swift"; sourceTree = "<group>"; };
-		2B8A83F72AB9127600F6A2C5 /* TablaDeAcidosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablaDeAcidosView.swift; sourceTree = "<group>"; };
-		2B8A83F92AB9129400F6A2C5 /* NutrientesTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientesTabBar.swift; sourceTree = "<group>"; };
-		2B8A83FB2AB912B000F6A2C5 /* ConverciónTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConverciónTabBar.swift"; sourceTree = "<group>"; };
-		2B8A83FD2AB912BC00F6A2C5 /* Calculadora.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculadora.swift; sourceTree = "<group>"; };
+		2B8A83F72AB9127600F6A2C5 /* tablaAcidosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tablaAcidosView.swift; sourceTree = "<group>"; };
+		2B8A83F92AB9129400F6A2C5 /* NutrientesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientesView.swift; sourceTree = "<group>"; };
+		2B8A83FB2AB912B000F6A2C5 /* ConvercionTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvercionTabBar.swift; sourceTree = "<group>"; };
+		2B8A83FD2AB912BC00F6A2C5 /* CalculadoraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculadoraView.swift; sourceTree = "<group>"; };
+		2B9E56292AC19CAB0042C90F /* NutrientesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientesModel.swift; sourceTree = "<group>"; };
+		2B9E562B2AC19CBA0042C90F /* NewModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewModelView.swift; sourceTree = "<group>"; };
 		2BED05812AB9545900C3A75D /* LoginBioteksaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBioteksaViewModel.swift; sourceTree = "<group>"; };
 		2BED05862AB956AF00C3A75D /* LoginBioteksaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBioteksaModel.swift; sourceTree = "<group>"; };
 		2BED05892AB9581100C3A75D /* LoginBioteksaAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBioteksaAction.swift; sourceTree = "<group>"; };
@@ -83,8 +87,8 @@
 		2BF31D762ABE7260004FC52C /* VolumenDeriegoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumenDeriegoModel.swift; sourceTree = "<group>"; };
 		2BF31D782ABE7270004FC52C /* VolumenDeriegoViewmodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumenDeriegoViewmodel.swift; sourceTree = "<group>"; };
 		2BF31D7A2ABEC0DD004FC52C /* PreViewColores .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreViewColores .swift"; sourceTree = "<group>"; };
-		2BF31D7C2ABEE1F3004FC52C /* ComversiónModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ComversiónModel.swift"; sourceTree = "<group>"; };
-		2BF31D7E2ABEE20B004FC52C /* ComversiónViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ComversiónViewModel.swift"; sourceTree = "<group>"; };
+		2BF31D7C2ABEE1F3004FC52C /* ComversionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComversionModel.swift; sourceTree = "<group>"; };
+		2BF31D7E2ABEE20B004FC52C /* ComversionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComversionViewModel.swift; sourceTree = "<group>"; };
 		2BF31D802ABEE5AA004FC52C /* CalculadoraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculadoraModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -224,7 +228,7 @@
 		2BED058B2AB95F9300C3A75D /* Acidos */ = {
 			isa = PBXGroup;
 			children = (
-				2B8A83F72AB9127600F6A2C5 /* TablaDeAcidosView.swift */,
+				2B8A83F72AB9127600F6A2C5 /* tablaAcidosView.swift */,
 				2BED058F2AB9C6CD00C3A75D /* AcidosModel.swift */,
 				2BED05912AB9C6E600C3A75D /* AcidosViewModel.swift */,
 				2BF31D712ABE3508004FC52C /* acidosView */,
@@ -235,7 +239,9 @@
 		2BED058C2AB9604000C3A75D /* Nutrientes */ = {
 			isa = PBXGroup;
 			children = (
-				2B8A83F92AB9129400F6A2C5 /* NutrientesTabBar.swift */,
+				2B8A83F92AB9129400F6A2C5 /* NutrientesView.swift */,
+				2B9E56292AC19CAB0042C90F /* NutrientesModel.swift */,
+				2B9E562B2AC19CBA0042C90F /* NewModelView.swift */,
 			);
 			path = Nutrientes;
 			sourceTree = "<group>";
@@ -243,9 +249,9 @@
 		2BED058D2AB9606A00C3A75D /* Converción */ = {
 			isa = PBXGroup;
 			children = (
-				2B8A83FB2AB912B000F6A2C5 /* ConverciónTabBar.swift */,
-				2BF31D7C2ABEE1F3004FC52C /* ComversiónModel.swift */,
-				2BF31D7E2ABEE20B004FC52C /* ComversiónViewModel.swift */,
+				2B8A83FB2AB912B000F6A2C5 /* ConvercionTabBar.swift */,
+				2BF31D7C2ABEE1F3004FC52C /* ComversionModel.swift */,
+				2BF31D7E2ABEE20B004FC52C /* ComversionViewModel.swift */,
 			);
 			name = "Converción";
 			path = "Converción";
@@ -254,7 +260,7 @@
 		2BED058E2AB9608100C3A75D /* Calculadora */ = {
 			isa = PBXGroup;
 			children = (
-				2B8A83FD2AB912BC00F6A2C5 /* Calculadora.swift */,
+				2B8A83FD2AB912BC00F6A2C5 /* CalculadoraView.swift */,
 				2BF31D802ABEE5AA004FC52C /* CalculadoraModel.swift */,
 				2BF31D742ABE6590004FC52C /* VolumenDeRiegoView.swift */,
 				2BF31D762ABE7260004FC52C /* VolumenDeriegoModel.swift */,
@@ -419,8 +425,8 @@
 			files = (
 				2BF31D772ABE7260004FC52C /* VolumenDeriegoModel.swift in Sources */,
 				2BED05822AB9545900C3A75D /* LoginBioteksaViewModel.swift in Sources */,
-				2BF31D7D2ABEE1F3004FC52C /* ComversiónModel.swift in Sources */,
-				2BF31D7F2ABEE20B004FC52C /* ComversiónViewModel.swift in Sources */,
+				2BF31D7D2ABEE1F3004FC52C /* ComversionModel.swift in Sources */,
+				2BF31D7F2ABEE20B004FC52C /* ComversionViewModel.swift in Sources */,
 				2B8A83CC2AB9111D00F6A2C5 /* ContentView.swift in Sources */,
 				2B8A83F42AB911EC00F6A2C5 /* TabBarBioteksa.swift in Sources */,
 				2B8A83F62AB9123A00F6A2C5 /* LoginBioteksaView .swift in Sources */,
@@ -429,17 +435,19 @@
 				2BED05922AB9C6E600C3A75D /* AcidosViewModel.swift in Sources */,
 				2B8A83CA2AB9111D00F6A2C5 /* BioteksaAppApp.swift in Sources */,
 				2BED05872AB956AF00C3A75D /* LoginBioteksaModel.swift in Sources */,
-				2B8A83FA2AB9129400F6A2C5 /* NutrientesTabBar.swift in Sources */,
+				2B8A83FA2AB9129400F6A2C5 /* NutrientesView.swift in Sources */,
 				2BF31D732ABE352E004FC52C /* acidosView.swift in Sources */,
+				2B9E562C2AC19CBA0042C90F /* NewModelView.swift in Sources */,
 				2BF31D792ABE7270004FC52C /* VolumenDeriegoViewmodel.swift in Sources */,
 				2BF31D6D2ABD0C37004FC52C /* textFieldScreams.swift in Sources */,
 				2BF31D752ABE6590004FC52C /* VolumenDeRiegoView.swift in Sources */,
 				2BF31D812ABEE5AA004FC52C /* CalculadoraModel.swift in Sources */,
+				2B9E562A2AC19CAB0042C90F /* NutrientesModel.swift in Sources */,
 				2BF31D7B2ABEC0DD004FC52C /* PreViewColores .swift in Sources */,
-				2B8A83FC2AB912B000F6A2C5 /* ConverciónTabBar.swift in Sources */,
-				2B8A83F82AB9127600F6A2C5 /* TablaDeAcidosView.swift in Sources */,
+				2B8A83FC2AB912B000F6A2C5 /* ConvercionTabBar.swift in Sources */,
+				2B8A83F82AB9127600F6A2C5 /* tablaAcidosView.swift in Sources */,
 				2BF31D702ABE2958004FC52C /* Bioteksa&Otros.swift in Sources */,
-				2B8A83FE2AB912BC00F6A2C5 /* Calculadora.swift in Sources */,
+				2B8A83FE2AB912BC00F6A2C5 /* CalculadoraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

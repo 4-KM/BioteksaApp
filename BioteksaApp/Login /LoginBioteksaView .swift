@@ -18,9 +18,9 @@ struct LoginBioteksa: View {
     }
     
     var body: some View {
-       // Rectangle().fill(.blue.gradient)
-          //  .ignoresSafeArea()
-            
+        // Rectangle().fill(.blue.gradient)
+        //  .ignoresSafeArea()
+        NavigationView {
             VStack {
                 Spacer()
                 Image("bioteksaLogo")
@@ -36,7 +36,7 @@ struct LoginBioteksa: View {
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(.white, lineWidth: 2)
                 }                .padding(.horizontal)
-
+                
                 
                 Divider()
                 
@@ -51,7 +51,7 @@ struct LoginBioteksa: View {
                                         text: $password,
                                         prompt: Text("Password").foregroundColor(.white))
                         }
-
+                        
                         Button {
                             showPassword.toggle()
                         } label: {
@@ -61,30 +61,37 @@ struct LoginBioteksa: View {
                         
                     }.padding(.horizontal)
                         .padding(.top, 0)
-                    }
-                    .padding(15)
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(.white, lineWidth: 2)
-                    }
-                    .padding(.horizontal)
-
+                }
+                .padding(15)
+                .overlay {
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(.white, lineWidth: 2)
+                }
+                .padding(.horizontal)
+                
                 Spacer()
-                NavigationLink(destination: TabBarBioteksa()) {
+                NavigationLink ( destination: TabBarBioteksa()) {
                     Text("Entrar")
                         .foregroundColor(Color(red: 0.068, green: 0.277, blue: 0.473))
                         .frame(width: 359, height: 60, alignment: .center)
                         .background(Color.white)
                         .cornerRadius(10)
-                    Rectangle()
-                        .frame(height: 0)
-                    Spacer()
                 }
+                .navigationTitle("")
+                .background(Color(red: 0.681, green: 0.695, blue: 1.000))
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarHidden(true)
+                
+                
+                Rectangle()
+                    .frame(height: 0)
+                Spacer()
+                
             }
             .background(LinearGradient(gradient: Gradient(colors: [Color(red: 0.287, green: 0.561, blue: 0.816), Color(red: 0.068, green: 0.277, blue: 0.473)]), startPoint: .top, endPoint: .bottom))
+        }
     }
 }
-
 struct LoginBioteksa_Previews: PreviewProvider {
     static var previews: some View {
         LoginBioteksa()

@@ -24,35 +24,67 @@ struct textFieldScreams: View {
     @State var CA: String = ""
     @State var MG: String = ""
     @State var S: String = ""
-
+    
     
     
     var body: some View {
-        ZStack() {
-            HStack {
-                Spacer()
-                // Rectangle()
-                TextField("", text: $valorComparativoBioteksa)
-                    .foregroundColor(.white)
-                    .keyboardType(.decimalPad)
-                    .background(Color.black)
-                    .frame(width: 100, height: 100, alignment: .trailing)
-                
-                
-                TextField("", text: $valorComparativoOtros)
-                    .keyboardType(.decimalPad)
-                    .background(Color.black)
-                    .foregroundColor(.white)
-                    .frame(width: 100, height: 100, alignment: .trailing)
-                
-                Spacer()
-                
-                HStack {
+        NavigationView() {
+            Form {
+                Section {
+                    HStack {
+                        // Rectangle()
+                        TextField("", text: $valorComparativoBioteksa)
+                            .keyboardType(.decimalPad)
+                            .background(Color(red: 0.949, green: 0.949, blue: 0.967))
+                            .frame(width: 120, height: 50, alignment: .center)
+                        
+                        
+                        TextField("", text: $valorComparativoBioteksa)
+                            .keyboardType(.decimalPad)
+                            .background(Color(red: 0.949, green: 0.949, blue: 0.967))
+                            .frame(width: 120, height: 50, alignment: .center)
+                        
+                    }
+                }
+                .background(Color(red: 0.997, green: 0.970, blue: 0.848))
+                Section {
                     
+                    HStack {
+                        // Rectangle()
+                        TextField("", text: $valorComparativoBioteksa)
+                            .keyboardType(.decimalPad)
+                            .background(Color(red: 0.949, green: 0.949, blue: 0.967))
+                            .frame(width: 120, height: 50, alignment: .center)
+                            //.padding(1)
+                    }
+                }
+                
+                .background(Color(red: 0.997, green: 0.970, blue: 0.848))
+                
+                Section {
+                    HStack {
+                        TextField("", text: $valorComparativoOtros)
+                            .keyboardType(.decimalPad)
+                            .background(Color(red: 0.949, green: 0.949, blue: 0.967))
+                            .frame(width: 100, height: 50, alignment: .trailing)
+                        
+                        TextField("", text: $valorComparativoOtros)
+                            .keyboardType(.decimalPad)
+                            .background(Color(red: 0.949, green: 0.949, blue: 0.967))
+                            .frame(width: 100, height: 50, alignment: .trailing)
+                        
+                    }
+                }
+                Section {
+                    HStack {
+                        TextField("", text: $valorComparativoOtros)
+                            .keyboardType(.decimalPad)
+                            .background(Color(red: 0.949, green: 0.949, blue: 0.967))
+                            .frame(width: 100, height: 50, alignment: .trailing)
+                    }
                 }
             }
-            .background(Color(red: 0.997, green: 0.970, blue: 0.848))
-
+            .navigationTitle("SwiftUI")
         }
     }
 }
@@ -60,3 +92,5 @@ struct textFieldScreams: View {
 #Preview {
     textFieldScreams()
 }
+
+

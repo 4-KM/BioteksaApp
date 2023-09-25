@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TabBarBioteksa: View {
     init() {
-        UITabBar.appearance().backgroundColor = UIColor.black
+        UITabBar.appearance().backgroundColor = UIColor.white
     }
     var body: some View {
         TabView {
@@ -24,7 +24,7 @@ struct TabBarBioteksa: View {
                     .tabItem {
                         Label("Nutrientes", systemImage: "circle.hexagongrid")
                     }
-                ConverciónTabBar()
+                ConvercionTabBar()
                     .tabItem {
                         Label("Comverción", systemImage: "rectangle.2.swap")
                     }
@@ -33,8 +33,9 @@ struct TabBarBioteksa: View {
                         Label("Calculadora", systemImage: "minus.forwardslash.plus")
                     }
             }
-             .toolbar(.visible, for: .tabBar)
-            .toolbarBackground(Color.black, for: .tabBar)
+            .navigationTitle("hola")
+            .toolbar(.visible, for: .tabBar)
+            .toolbarBackground(Color(red: 0.757, green: 0.916, blue: 0.025), for: .tabBar)
         }
     }
 }

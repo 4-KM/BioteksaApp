@@ -11,7 +11,7 @@ struct VolumenDeRiegoView: View {
     var body: some View {
         ScrollView {
             VStack {
-                
+                Color(red: 0.681, green: 0.695, blue: 1.000)
                 List {
                     Text("superficie en m3")
                         .frame(width: 250, height: 40, alignment: .leading)
@@ -21,12 +21,12 @@ struct VolumenDeRiegoView: View {
                         .frame(width: 350, height: 30, alignment: .center)
                         .foregroundColor(.black)
                         .background(Color(red: 0.838, green: 0.849, blue: 0.845))
-                        .cornerRadius(10)
-                    Text("superficie en m3")
+                        .cornerRadius(100)
+                    Text("Productos                     LTProducto")
                         .frame(width: 350, height: 50, alignment: .center)
                         .foregroundColor(.white)
                         .background(Color(red: 0.021, green: 0.286, blue: 0.557))
-                        .cornerRadius(10)
+                        .cornerRadius(100)
                 }
                 .cornerRadius(10.0)
                 .frame(width: 350, height: 220, alignment: .center)
@@ -36,9 +36,7 @@ struct VolumenDeRiegoView: View {
                     .padding(15)
                 }
                 .cornerRadius(10.0)
-                .frame(width: 350, height: 555, alignment: .center)
-                Color(red: 0.681, green: 0.695, blue: 1.000)
-               
+                .frame(width: 350, height: 565, alignment: .center)
             }
         }
         .background(Color(red: 0.681, green: 0.695, blue: 1.000))
