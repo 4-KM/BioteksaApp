@@ -11,9 +11,10 @@ struct Calculadora: View {
     var body: some View {
         
             ScrollView {
+                
                 VStack {
                     Color(red: 0.681, green: 0.695, blue: 1.000)
-                    
+                   /*
                     Text("NECESARIO")// vistas reusables
                         .frame(width: 350, height: 50, alignment: .center)
                         .foregroundColor(.white)
@@ -61,7 +62,7 @@ struct Calculadora: View {
                     .frame(width: 350, height: 360, alignment: .center)
                     .background(Color(red: 0.681, green: 0.695, blue: 1.000))
                     Color(red: 0.681, green: 0.695, blue: 1.000)
-
+*/
                     Text("Acido Nitrico")// vistas reusables
                         .frame(width: 350, height: 50, alignment: .center)
                         .foregroundColor(.white)
