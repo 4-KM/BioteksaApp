@@ -24,8 +24,8 @@ struct Calculadora: View {
                         ForEach( necesario,  id: \.molecula ) { option in Text(option.molecula)
                         }
                     }
-                    .cornerRadius(10.0)
-                    .frame(width: 350, height: 360, alignment: .center)
+                    .cornerRadius(10)
+                    .frame(width: 350, height: 330, alignment: .center)
                     
                     
                     Text("Milequivalentes requeridos por el cultivo")
@@ -38,7 +38,7 @@ struct Calculadora: View {
                         }
                     }
                     .cornerRadius(10.0)
-                    .frame(width: 350, height: 360, alignment: .center)
+                    .frame(width: 350, height: 330, alignment: .center)
                     
                     Text("Acido sulfurico")// vistas reusables
                         .frame(width: 350, height: 50, alignment: .center)

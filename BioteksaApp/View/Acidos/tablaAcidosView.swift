@@ -31,7 +31,8 @@ struct AcidosTabBar: View {
                                 .frame(width: 280, height: 30, alignment: .trailing)
                             )
                             {
-                                ForEach(acidos,  id: \.descripcion) { option in Text(option.descripcion)
+                                ForEach(acidos,  id: \.descripcion) { option in Text(option.descripcion) + Text("           text1 ") + Text ("text2")
+                                        .foregroundColor(.black)
                                         //.background(Color(red: 0.997, green: 0.970, blue: 0.848))
                                 }
                             }
@@ -53,7 +54,8 @@ struct AcidosTabBar: View {
                             .frame(width: 280, height: 30, alignment: .trailing)
                         )
                         {
-                            ForEach(acidos,  id: \.descripcion) { option in Text(option.descripcion)
+                            ForEach(acidos,  id: \.descripcion) { option in Text(option.descripcion) + Text("           text1 ") + Text ("text2")
+                                    .foregroundColor(.black)
                             }
                         }
                     }
@@ -73,7 +75,8 @@ struct AcidosTabBar: View {
                             .frame(width: 280, height: 30, alignment: .trailing)
                         )
                         {
-                            ForEach(acidos,  id: \.descripcion) { option in Text(option.descripcion)
+                            ForEach(acidos,  id: \.descripcion) { option in Text(option.descripcion) + Text("           text1 ") + Text ("text2")
+                                    .foregroundColor(.black)
                             }
                         }
                     }
