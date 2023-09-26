@@ -10,21 +10,26 @@ import SwiftUI
 struct Bioteksa_Otros: View {
     var body: some View {
         NavigationView {
-            
-            
             List {
-                Section(header: Text("Bioteksa       Otros")
-                    .frame(width: 280, height: 30, alignment: .trailing))
-                {
-                    ForEach( meq  + (acidos + cantidad), id: \.descripcion ) { option in Text(option.descripcion)
+                Form {
+                    Section {
+                        Text("hola")
                         
+                        Section {
+                            Section(header: Text("Bioteksa       Otros")
+                                .frame(width: 280, height: 30, alignment: .trailing))
+                            {
+                                ForEach( meq  + (acidos + cantidad), id: \.descripcion ) { option in Text(option.descripcion)
+                                    
+                                }
+                            }
+                        }
+                        .cornerRadius(10.0)
+                        .frame(width: 350, height: 60, alignment: .leading)
                     }
+                    .navigationTitle("hola mundo")
                 }
             }
-            .cornerRadius(10.0)
-            .frame(width: 350, height: 360, alignment: .center)
-            
-            
             /*
              List {
              NavigationLink ( destination: TabBarBioteksa()) {
@@ -62,6 +67,9 @@ struct Bioteksa_Otros: View {
              }
              }*/
         }
+        //.navigationBarTitleDisplayMode(.automatic)
+       // .navigationBarTitleDisplayMode(.inline)
+
     }
 }
 #Preview {

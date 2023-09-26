@@ -26,7 +26,7 @@ struct LoginBioteksa: View {
                 Image("bioteksaLogo")
                 TextField("Name",
                           text: $name ,
-                          prompt: Text("Login").foregroundColor(.white)
+                          prompt: Text("   Login").foregroundColor(.white)
                 )
                 .padding()
                 .autocapitalization(.none)
