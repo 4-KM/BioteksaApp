@@ -8,19 +8,17 @@
 import Foundation
 
 struct LoginRequest: Encodable {
-    let username: String
+    let email: String
     let password: String
 }
 
 struct LoginResponse: Decodable {
-    let data: LoginResponseData
+    let token: String
+    let succses: Bool
 }
 
 
-struct LoginResponseData: Decodable {
-    let accessToken: String
-    let refreshToken: String
-}
+
 
 
 /*

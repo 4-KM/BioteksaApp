@@ -11,15 +11,17 @@ class LoginViewModel: ObservableObject {
     
     @Published var username: String = ""
     @Published var password: String = ""
+    @Published var showPassword: Bool = false
+
     
     func login() {
         LoginAction(
             parameters: LoginRequest(
-                username: username,
+                email: username,
                 password: password
             )
-        ).call { _ in
-            // Login successful, navigate to the Home screen
+        ).call { respuesta in
+            print(respuesta)
         }
     }
 }

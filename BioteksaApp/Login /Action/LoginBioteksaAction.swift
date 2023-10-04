@@ -15,19 +15,19 @@ struct LoginAction {
     func call(completion: @escaping (LoginResponse) -> Void) {
         
         let scheme: String = "https"
-        let host: String = "base_url"
-        let path = "/login"
+        let host: String = "https://bioteksa.anuncia.space/api"
+        let path = "/auth/signup"
         
         var components = URLComponents()
         components.scheme = scheme
         components.host = host
         components.path = path
         
-        guard let url = components.url else {
-            return
-        }
+      //  guard let url = components.url else {
+        //    return
+        //}
         
-        var request = URLRequest(url: url)
+        var request = URLRequest(url: URL(string: "https://bioteksa.anuncia.space/api/auth/signup")!)
         request.httpMethod = "post"
         
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -40,6 +40,7 @@ struct LoginAction {
         }
         
         let task = URLSession.shared.dataTask(with: request) { data, _, error in
+            print(data, error)
             if let data = data {
                 let response = try? JSONDecoder().decode(LoginResponse.self, from: data)
                 
@@ -47,6 +48,7 @@ struct LoginAction {
                     completion(response)
                 } else {
                     // Error: Unable to decode response JSON
+                    
                 }
             } else {
                 // Error: API request failed

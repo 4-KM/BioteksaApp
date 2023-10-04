@@ -17,10 +17,11 @@ struct Elementos {
 let elementos =  [
     
     Elementos(nombre: "NITROGENO"),
-    Elementos(nombre: "FOSFORO "),
-    Elementos(nombre: "POTASIO"),
-    Elementos(nombre: "CALCIO"),
-    Elementos(nombre: "MAGNECIO"),
-    Elementos(nombre: "AZUFRE"),
+    Elementos(nombre: "FOSFORO     "),
+    Elementos(nombre: "POTASIO       "),
+    Elementos(nombre: "CALCIO         "),
+    Elementos(nombre: "MAGNECIO   "),
+    Elementos(nombre: "AZUFRE        "),
     
 ]
+ 

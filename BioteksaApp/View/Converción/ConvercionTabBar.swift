@@ -25,7 +25,8 @@ struct ConvercionTabBar: View {
                     .background(Color(red: 0.021, green: 0.286, blue: 0.557))
                     .cornerRadius(10)
                     List {
-                        ForEach( elementos ,  id: \.nombre ) { option in Text(option.nombre) + Text("           text1 ") + Text ("text2")
+                        ForEach( elementos ,  id: \.nombre ) 
+                        { option in Text(option.nombre) + Text("           text1 ") + Text ("text2")
                                 .foregroundColor(.black)
                         }
                         .padding(25)

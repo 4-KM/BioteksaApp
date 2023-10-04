@@ -34,12 +34,13 @@ struct VolumenDeRiegoView: View {
                     List {
                         ForEach(productos,  id: \.nombre) { option in Text(option.nombre) + Text("                    textos")
                                 .foregroundColor(.red)
+                                //.alignment(.leading)
                         }
                         .padding(15)
                     }
                     .padding(5)
                     .cornerRadius(10)
-                    .frame(width: 350, height: 605, alignment: .center)
+                    .frame(width: 350, height: 610, alignment: .center)
                 }
                 .cornerRadius(10)
                 .frame(width: 350, height: 800, alignment: .top)

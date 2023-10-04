@@ -16,12 +16,12 @@ struct VolumenDeRiegoModel {
 
 let productos =  [
     
-    VolumenDeRiegoModel(nombre: "HBK Plus"),
-    VolumenDeRiegoModel(nombre: "ULTRA N"),
-    VolumenDeRiegoModel(nombre: "ULTRA P"),
-    VolumenDeRiegoModel(nombre: "ULTRA K"),
-    VolumenDeRiegoModel(nombre: "ULTRA CA"),
-    VolumenDeRiegoModel(nombre: "ULTRA MG"),
-    VolumenDeRiegoModel(nombre: "HYPER MN")
+    VolumenDeRiegoModel(nombre: "HBK Plus "),
+    VolumenDeRiegoModel(nombre: "ULTRA N  "),
+    VolumenDeRiegoModel(nombre: "ULTRA P  "),
+    VolumenDeRiegoModel(nombre: "ULTRA K  "),
+    VolumenDeRiegoModel(nombre: "ULTRA CA "),
+    VolumenDeRiegoModel(nombre: "ULTRA MG "),
+    VolumenDeRiegoModel(nombre: "HYPER MN ")
     
 ]

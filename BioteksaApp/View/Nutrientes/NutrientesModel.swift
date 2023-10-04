@@ -15,11 +15,11 @@ struct LTProducto {
 
 let lTProductos =  [
     
-    Elementos(nombre: " N "),
-    Elementos(nombre: " P "),
-    Elementos(nombre: " K "),
-    Elementos(nombre: " CA "),
-    Elementos(nombre: " MG "),
-    Elementos(nombre: " S "),
+    Elementos(nombre: " N            "),
+    Elementos(nombre: " P            "),
+    Elementos(nombre: " K            "),
+    Elementos(nombre: " CA          "),
+    Elementos(nombre: " MG          "),
+    Elementos(nombre: " S             "),
     
 ]

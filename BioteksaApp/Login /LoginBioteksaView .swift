@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct LoginBioteksa: View {
+    @State private var textValues: [String] = Array(repeating: "", count: 10)
+    @State private var isLogged: Bool = false
+
     @ObservedObject var loginViewModel: LoginViewModel = LoginViewModel()
-    @State var name: String = ""
-    @State var password: String = ""
-    @State var showPassword: Bool = false
     
     var isSignInButtonDisabled: Bool {
-        [name, password].contains(where: \.isEmpty)
+        [loginViewModel.username, loginViewModel.password].contains(where: \.isEmpty)
     }
-    
     var body: some View {
         // Rectangle().fill(.blue.gradient)
         //  .ignoresSafeArea()
@@ -24,9 +23,10 @@ struct LoginBioteksa: View {
             VStack {
                 Spacer()
                 Image("bioteksaLogo")
-                TextField("Name",
-                          text: $name ,
-                          prompt: Text("   Login").foregroundColor(.white)
+                TextField(
+                    "Name",
+                    text: $loginViewModel.username,
+                    prompt: Text("   Login").foregroundColor(.white)
                 )
                 .padding()
                 .autocapitalization(.none)
@@ -35,30 +35,30 @@ struct LoginBioteksa: View {
                 .overlay {
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(.white, lineWidth: 2)
-                }                .padding(.horizontal)
-                
+                }                
+                .padding(.horizontal)
                 
                 Divider()
                 
                 HStack {
                     Group {
-                        if showPassword {
-                            TextField("Password",
-                                      text: $password,
-                                      prompt: Text("Password").foregroundColor(.white))
+                        if loginViewModel.showPassword {
+                            TextField(
+                                "Password",
+                                text: $loginViewModel.password,
+                                prompt: Text("Password").foregroundColor(.white))
                         } else {
-                            SecureField("Password",
-                                        text: $password,
-                                        prompt: Text("Password").foregroundColor(.white))
+                            SecureField(
+                                "Password",
+                                text: $loginViewModel.password,
+                                prompt: Text("Password").foregroundColor(.white))
                         }
-                        
                         Button {
-                            showPassword.toggle()
+                            loginViewModel.showPassword.toggle()
                         } label: {
-                            Image(systemName: showPassword ? "eye.slash" : "eye")
+                            Image(systemName: loginViewModel.showPassword ? "eye.slash" : "eye")
                                 .foregroundColor(.white)
                         }
-                        
                     }.padding(.horizontal)
                         .padding(.top, 0)
                 }
@@ -70,8 +70,15 @@ struct LoginBioteksa: View {
                 .padding(.horizontal)
                 
                 Spacer()
-                NavigationLink ( destination: TabBarBioteksa()) {
-                    Text("Entrar")
+                NavigationLink ( 
+                    destination: TabBarBioteksa(),
+                    isActive: $isLogged) {
+                    
+                    Button("Entrar")
+                    {
+                        isLogged = true
+                        //loginViewModel.login()
+                    }
                         .foregroundColor(Color(red: 0.068, green: 0.277, blue: 0.473))
                         .frame(width: 359, height: 60, alignment: .center)
                         .background(Color.white)
@@ -97,6 +104,7 @@ struct LoginBioteksa_Previews: PreviewProvider {
         LoginBioteksa()
     }
 }
+
 
 
 

@@ -21,8 +21,8 @@ struct AcidosSolucionesMeqANeutralizar {
 
 let acidos =  [
     AcidosSolucionesMeqANeutralizar(descripcion: "PesoExpecifico"),
-    AcidosSolucionesMeqANeutralizar(descripcion: "Densidad"),
-    AcidosSolucionesMeqANeutralizar(descripcion: "Riqueza")
+    AcidosSolucionesMeqANeutralizar(descripcion: "Densidad          "),
+    AcidosSolucionesMeqANeutralizar(descripcion: "Riqueza             ")
 ]
 
 let meq =  [
@@ -30,6 +30,6 @@ let meq =  [
 ]
 
 let cantidad =  [
-    AcidosSolucionesMeqANeutralizar(descripcion: "HMNO3ml/L"),
-    AcidosSolucionesMeqANeutralizar(descripcion: "HMNO3mLTS/100M3")
+    AcidosSolucionesMeqANeutralizar(descripcion: "HMNO3ml/L        "),
+    AcidosSolucionesMeqANeutralizar(descripcion: "HMNO3mLTS/100M3  ")
 ]
