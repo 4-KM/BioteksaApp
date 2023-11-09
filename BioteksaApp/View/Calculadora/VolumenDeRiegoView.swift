@@ -10,7 +10,6 @@ import SwiftUI
 struct VolumenDeRiegoView: View {
     var body: some View {
         ScrollView {
-            VStack {
                 Color(red: 0.681, green: 0.695, blue: 1.000)
                 
                 List {
@@ -28,25 +27,22 @@ struct VolumenDeRiegoView: View {
                         .foregroundColor(.white)
                         .background(Color(red: 0.021, green: 0.286, blue: 0.557))
                         .cornerRadius(100)
-                //}
                 //.cornerRadius(10)
                 //.frame(width: 350, height: 800, alignment: .top)
-                    List {
-                        ForEach(productos,  id: \.nombre) { option in Text(option.nombre) + Text("                    textos")
-                                .foregroundColor(.red)
-                                //.alignment(.leading)
-                        }
-                        .padding(15)
-                    }
-                    .padding(5)
-                    .cornerRadius(10)
-                    .frame(width: 350, height: 610, alignment: .center)
+                  
                 }
                 .cornerRadius(10)
-                .frame(width: 350, height: 800, alignment: .top)
+                .frame(width: 350, height: 235, alignment: .top)
                 
+            List {
+                ForEach(productos,  id: \.nombre) { option in Text(option.nombre) + Text("                    textos")
+                        .foregroundColor(.red)
+                    //.alignment(.leading)
+                }
+                .padding(15)
             }
-            
+            .cornerRadius(10)
+            .frame(width: 350, height: 590, alignment: .center)
         }
         
         .background(Color(red: 0.681, green: 0.695, blue: 1.000))

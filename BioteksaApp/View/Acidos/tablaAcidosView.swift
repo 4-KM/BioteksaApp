@@ -8,22 +8,34 @@
 import SwiftUI
 
 struct AcidosTabBar: View {
-    @State var comparativa: String = "0"
     
-    // var acidosViewModel = AcidosViewModel()
+    @ObservedObject var acidosViewModel: AcidosViewModel = AcidosViewModel()
+
+
+    @State var comparativa: String = "0"
+        
     var body: some View {
         
         ScrollView {
-                
                 VStack {
+                    
                     Color(red: 0.681, green: 0.695, blue: 1.000)
                     
-                    
-                    Text("acido sulfurico")// vistas reusables
-                        .frame(width: 350, height: 50, alignment: .center)
-                        .foregroundColor(.white)
-                        .background(Color(red: 0.757, green: 0.916, blue: 0.025))
-                        .cornerRadius(10)
+                    VStack {
+                        HStack {
+                            Text("acido sulfurico")// vistas reusables
+                                .frame(width: 350, height: 50, alignment: .center)
+                                .foregroundColor(.white)
+                                .background(Color(red: 0.757, green: 0.916, blue: 0.025))
+                                .cornerRadius(10)
+                        }
+                        
+                        HStack {
+                            Text("peso especifico")
+                            TextField("", text: $acidosViewModel.sulfurico.bioteksa.pesoEspesifico)
+                        }
+                    }
+                   
                         List {
                             Section(header: Text("Bioteksa       Otros")//,footer: Rectangle()
                                     //.background(Color(red: 0.754, green: 0.916, blue: 0.026))

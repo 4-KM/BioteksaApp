@@ -12,33 +12,41 @@ struct TabBarBioteksa: View {
         UITabBar.appearance().backgroundColor = UIColor.white
     }
     var body: some View {
-        TabView {
-            Group {
-                
-                AcidosTabBar()
-                    .tabItem {
-                        Image(systemName:"flask")
-                        Text("Acidos")
+        ZStack {
+
+        GeometryReader { proxy in
+            TabView {
+                    Group {
+                        
+                        
+                        AcidosTabBar()
+                            .tabItem {
+                                Image(systemName:"flask")
+                                Text("Acidos")
+                            }
+                        NutrientesTabBar()
+                            .tabItem {
+                                Label("Nutrientes", systemImage: "circle.hexagongrid")
+                            }
+                        ConvercionTabBar()
+                            .tabItem {
+                                Label("Comverción", systemImage: "rectangle.2.swap")
+                            }
+                        Calculadora()
+                            .tabItem {
+                                Label("Calculadora", systemImage: "minus.forwardslash.plus")
+                            }
                     }
-                NutrientesTabBar()
-                    .tabItem {
-                        Label("Nutrientes", systemImage: "circle.hexagongrid")
-                    }
-                ConvercionTabBar()
-                    .tabItem {
-                        Label("Comverción", systemImage: "rectangle.2.swap")
-                    }
-                Calculadora()
-                    .tabItem {
-                        Label("Calculadora", systemImage: "minus.forwardslash.plus")
-                    }
+                    .navigationTitle("hola")
+                    .toolbar(.visible, for: .tabBar)
+                    .toolbarBackground(Color(red: 0.757, green: 0.916, blue: 0.025), for: .tabBar)
+                }
+                .frame(width:proxy.size.width, height:proxy.size.height) //W390 H780
             }
-            .navigationTitle("hola")
-            .toolbar(.visible, for: .tabBar)
-            .toolbarBackground(Color(red: 0.757, green: 0.916, blue: 0.025), for: .tabBar)
         }
     }
 }
+
 
 struct TabBarbioteksa_Previews: PreviewProvider {
     static var previews: some View {

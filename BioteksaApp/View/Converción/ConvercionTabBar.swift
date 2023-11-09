@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ConvercionTabBar: View {
     var body: some View {
-        NavigationView {
             ScrollView {
                
                 VStack {
@@ -42,7 +41,7 @@ struct ConvercionTabBar: View {
             .background(Color(red: 0.681, green: 0.695, blue: 1.000))
         }
     }
-}
+
 struct ConverciónTabBar_Previews: PreviewProvider {
     static var previews: some View {
         ConvercionTabBar()

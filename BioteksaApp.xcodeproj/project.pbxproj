@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,8 +20,13 @@
 		2B8A83FA2AB9129400F6A2C5 /* NutrientesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A83F92AB9129400F6A2C5 /* NutrientesView.swift */; };
 		2B8A83FC2AB912B000F6A2C5 /* ConvercionTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A83FB2AB912B000F6A2C5 /* ConvercionTabBar.swift */; };
 		2B8A83FE2AB912BC00F6A2C5 /* CalculadoraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A83FD2AB912BC00F6A2C5 /* CalculadoraView.swift */; };
+		2B956D422AD59AB1009ADA3E /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B956D412AD59AB1009ADA3E /* Package.swift */; };
+		2B956D442ADBB32C009ADA3E /* GeometryRider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B956D432ADBB32C009ADA3E /* GeometryRider.swift */; };
 		2B9E562A2AC19CAB0042C90F /* NutrientesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9E56292AC19CAB0042C90F /* NutrientesModel.swift */; };
-		2B9E562C2AC19CBA0042C90F /* NewModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9E562B2AC19CBA0042C90F /* NewModelView.swift */; };
+		2B9E562C2AC19CBA0042C90F /* NutrientesModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9E562B2AC19CBA0042C90F /* NutrientesModelView.swift */; };
+		2BB9BAA22AF9AEB100EA212C /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 2BB9BAA12AF9AEB100EA212C /* Networking */; };
+		2BB9BAA52AF9AF6600EA212C /* BioteksaAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 2BB9BAA42AF9AF6600EA212C /* BioteksaAPI */; };
+		2BD2E5E82AFC23070073D2C9 /* CalculadoraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD2E5E72AFC23070073D2C9 /* CalculadoraViewModel.swift */; };
 		2BED05822AB9545900C3A75D /* LoginBioteksaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BED05812AB9545900C3A75D /* LoginBioteksaViewModel.swift */; };
 		2BED05872AB956AF00C3A75D /* LoginBioteksaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BED05862AB956AF00C3A75D /* LoginBioteksaModel.swift */; };
 		2BED058A2AB9581100C3A75D /* LoginBioteksaAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BED05892AB9581100C3A75D /* LoginBioteksaAction.swift */; };
@@ -73,8 +78,11 @@
 		2B8A83F92AB9129400F6A2C5 /* NutrientesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientesView.swift; sourceTree = "<group>"; };
 		2B8A83FB2AB912B000F6A2C5 /* ConvercionTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvercionTabBar.swift; sourceTree = "<group>"; };
 		2B8A83FD2AB912BC00F6A2C5 /* CalculadoraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculadoraView.swift; sourceTree = "<group>"; };
+		2B956D412AD59AB1009ADA3E /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		2B956D432ADBB32C009ADA3E /* GeometryRider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryRider.swift; sourceTree = "<group>"; };
 		2B9E56292AC19CAB0042C90F /* NutrientesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientesModel.swift; sourceTree = "<group>"; };
-		2B9E562B2AC19CBA0042C90F /* NewModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewModelView.swift; sourceTree = "<group>"; };
+		2B9E562B2AC19CBA0042C90F /* NutrientesModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientesModelView.swift; sourceTree = "<group>"; };
+		2BD2E5E72AFC23070073D2C9 /* CalculadoraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculadoraViewModel.swift; sourceTree = "<group>"; };
 		2BED05812AB9545900C3A75D /* LoginBioteksaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBioteksaViewModel.swift; sourceTree = "<group>"; };
 		2BED05862AB956AF00C3A75D /* LoginBioteksaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBioteksaModel.swift; sourceTree = "<group>"; };
 		2BED05892AB9581100C3A75D /* LoginBioteksaAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBioteksaAction.swift; sourceTree = "<group>"; };
@@ -97,6 +105,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BB9BAA22AF9AEB100EA212C /* Networking in Frameworks */,
+				2BB9BAA52AF9AF6600EA212C /* BioteksaAPI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +130,7 @@
 		2B8A83BD2AB9111D00F6A2C5 = {
 			isa = PBXGroup;
 			children = (
+				2B956D412AD59AB1009ADA3E /* Package.swift */,
 				2B8A83C82AB9111D00F6A2C5 /* BioteksaApp */,
 				2B8A83D92AB9111F00F6A2C5 /* BioteksaAppTests */,
 				2B8A83E32AB9111F00F6A2C5 /* BioteksaAppUITests */,
@@ -221,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				2BED05892AB9581100C3A75D /* LoginBioteksaAction.swift */,
+				2B956D432ADBB32C009ADA3E /* GeometryRider.swift */,
 			);
 			path = Action;
 			sourceTree = "<group>";
@@ -241,7 +253,7 @@
 			children = (
 				2B8A83F92AB9129400F6A2C5 /* NutrientesView.swift */,
 				2B9E56292AC19CAB0042C90F /* NutrientesModel.swift */,
-				2B9E562B2AC19CBA0042C90F /* NewModelView.swift */,
+				2B9E562B2AC19CBA0042C90F /* NutrientesModelView.swift */,
 			);
 			path = Nutrientes;
 			sourceTree = "<group>";
@@ -262,6 +274,7 @@
 			children = (
 				2B8A83FD2AB912BC00F6A2C5 /* CalculadoraView.swift */,
 				2BF31D802ABEE5AA004FC52C /* CalculadoraModel.swift */,
+				2BD2E5E72AFC23070073D2C9 /* CalculadoraViewModel.swift */,
 				2BF31D742ABE6590004FC52C /* VolumenDeRiegoView.swift */,
 				2BF31D762ABE7260004FC52C /* VolumenDeriegoModel.swift */,
 				2BF31D782ABE7270004FC52C /* VolumenDeriegoViewmodel.swift */,
@@ -309,6 +322,10 @@
 			dependencies = (
 			);
 			name = BioteksaApp;
+			packageProductDependencies = (
+				2BB9BAA12AF9AEB100EA212C /* Networking */,
+				2BB9BAA42AF9AF6600EA212C /* BioteksaAPI */,
+			);
 			productName = BioteksaApp;
 			productReference = 2B8A83C62AB9111D00F6A2C5 /* BioteksaApp.app */;
 			productType = "com.apple.product-type.application";
@@ -381,6 +398,10 @@
 				Base,
 			);
 			mainGroup = 2B8A83BD2AB9111D00F6A2C5;
+			packageReferences = (
+				2BB9BAA02AF9AEB100EA212C /* XCLocalSwiftPackageReference "Networking" */,
+				2BB9BAA32AF9AF6600EA212C /* XCLocalSwiftPackageReference "BioteksaAPI" */,
+			);
 			productRefGroup = 2B8A83C72AB9111D00F6A2C5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -423,6 +444,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BD2E5E82AFC23070073D2C9 /* CalculadoraViewModel.swift in Sources */,
 				2BF31D772ABE7260004FC52C /* VolumenDeriegoModel.swift in Sources */,
 				2BED05822AB9545900C3A75D /* LoginBioteksaViewModel.swift in Sources */,
 				2BF31D7D2ABEE1F3004FC52C /* ComversionModel.swift in Sources */,
@@ -435,9 +457,11 @@
 				2BED05922AB9C6E600C3A75D /* AcidosViewModel.swift in Sources */,
 				2B8A83CA2AB9111D00F6A2C5 /* BioteksaAppApp.swift in Sources */,
 				2BED05872AB956AF00C3A75D /* LoginBioteksaModel.swift in Sources */,
+				2B956D422AD59AB1009ADA3E /* Package.swift in Sources */,
 				2B8A83FA2AB9129400F6A2C5 /* NutrientesView.swift in Sources */,
 				2BF31D732ABE352E004FC52C /* acidosView.swift in Sources */,
-				2B9E562C2AC19CBA0042C90F /* NewModelView.swift in Sources */,
+				2B956D442ADBB32C009ADA3E /* GeometryRider.swift in Sources */,
+				2B9E562C2AC19CBA0042C90F /* NutrientesModelView.swift in Sources */,
 				2BF31D792ABE7270004FC52C /* VolumenDeriegoViewmodel.swift in Sources */,
 				2BF31D6D2ABD0C37004FC52C /* textFieldScreams.swift in Sources */,
 				2BF31D752ABE6590004FC52C /* VolumenDeRiegoView.swift in Sources */,
@@ -778,6 +802,28 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		2BB9BAA02AF9AEB100EA212C /* XCLocalSwiftPackageReference "Networking" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Networking;
+		};
+		2BB9BAA32AF9AF6600EA212C /* XCLocalSwiftPackageReference "BioteksaAPI" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = BioteksaAPI;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2BB9BAA12AF9AEB100EA212C /* Networking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Networking;
+		};
+		2BB9BAA42AF9AF6600EA212C /* BioteksaAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BioteksaAPI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2B8A83BE2AB9111D00F6A2C5 /* Project object */;
 }

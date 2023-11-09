@@ -5,6 +5,7 @@
 //  Created by Eduardo Gersai Garcia Ventura on 18/09/23.
 //
 
+import BioteksaAPI
 import Foundation
 
 

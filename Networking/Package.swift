@@ -1,13 +1,6 @@
-//
-//  Package.swift
-//  BioteksaApp
-//
-//  Created by Eduardo Gersai Garcia Ventura on 10/10/23.
-//
+// swift-tools-version: 5.9
+// The swift-tools-version declares the minimum version of Swift required to build this package.
 
-
-
-/*
 import PackageDescription
 
 let package = Package(
@@ -38,4 +31,3 @@ let package = Package(
             dependencies: ["Networking"]),
     ]
 )
-*/
