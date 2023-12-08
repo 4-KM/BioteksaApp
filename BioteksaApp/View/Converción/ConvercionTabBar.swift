@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ConvercionTabBar: View {
+    
+    @ObservedObject var convertionVM: ComversionViewModel = ComversionViewModel()
+
     var body: some View {
             ScrollView {
                
@@ -17,16 +20,26 @@ struct ConvercionTabBar: View {
                     Text("""
                                     Tabla De Conversión
                          Element      Formula       Formula
-                                              Soluble         Bioteksa
+                                              Soluble        Bioteksa
                       """)
                     .frame(width: 350, height: 100, alignment: .center)
                     .foregroundColor(.white)
                     .background(Color(red: 0.021, green: 0.286, blue: 0.557))
                     .cornerRadius(10)
                     List {
-                        ForEach( elementos ,  id: \.nombre ) 
-                        { option in Text(option.nombre) + Text("           text1 ") + Text ("text2")
-                                .foregroundColor(.black)
+                        ForEach( elementos ,  id: \.nombre )
+                        { option in
+                            HStack {
+                                Text(option.nombre.rawValue).padding(.trailing, 0)
+                                Spacer()
+                                HStack(spacing: 40) {
+                                    Text("\(convertionVM.sustratos[TypeNutriente.allCases.firstIndex(of: option.nombre)!].soluble)" as String )
+                                    Text("\(convertionVM.sustratos[TypeNutriente.allCases.firstIndex(of: option.nombre)!].bioteksa)" as String)
+                                }
+                            }
+                                
+                           /* Text(option.nombre.rawValue) + Text("            \(convertionVM.sustratos[TypeNutriente.allCases.firstIndex(of: option.nombre)!].soluble) " as String) + Text ("     \(convertionVM.sustratos[TypeNutriente.allCases.firstIndex(of: option.nombre)!].bioteksa) " as String)
+                                .foregroundColor(.black)*/
                         }
                         .padding(25)
                     }

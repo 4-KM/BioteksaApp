@@ -22,6 +22,20 @@ class AcidosViewModel: ObservableObject {
         var pesoEspesifico: String
         var densidad: String
         var riqueza: String
+        
+        func getAcido(typeInfo: TypeInfo) -> String {
+            switch typeInfo {
+            case .PesoExpecifico:
+                return pesoEspesifico
+            case .Densidad:
+                return densidad
+            case .Riqueza:
+                return riqueza
+            default: 
+                return ""
+                break
+            }
+        }
     }
     
     var sulfurico: Acido!
@@ -52,7 +66,7 @@ class AcidosViewModel: ObservableObject {
             )
             
             var nitricoResponse = configuration.nitrico
-            sulfurico = Acido(
+            nitrico = Acido(
                 bioteksa:
                     AcidoInfo(
                         pesoEspesifico: "\(nitricoResponse.peso_especifico.bioteksa)",
@@ -67,7 +81,7 @@ class AcidosViewModel: ObservableObject {
             )
             
             var fosforicoResponse = configuration.fosforico
-            sulfurico = Acido(
+            fosforico = Acido(
                 bioteksa:
                     AcidoInfo(
                         pesoEspesifico: "\(fosforicoResponse.peso_especifico.bioteksa)",

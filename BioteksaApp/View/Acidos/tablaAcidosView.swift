@@ -44,7 +44,7 @@ struct AcidosTabBar: View {
                             )
                             {
                                 ForEach(acidos,  id: \.descripcion)
-                                { option in Text(option.descripcion) + Text("           text1 ") + Text ("      text2")
+                                { option in Text(option.descripcion) + Text("           \(acidosViewModel.sulfurico.bioteksa.getAcido(typeInfo: option.typeAcido! )) ") + Text ("      \(acidosViewModel.sulfurico.otros.getAcido(typeInfo: option.typeAcido!))")
 
                                         .foregroundColor(.black)
                                         //.background(Color(red: 0.997, green: 0.970, blue: 0.848))
@@ -69,7 +69,7 @@ struct AcidosTabBar: View {
                         )
                         {
                             ForEach(acidos,  id: \.descripcion)
-                            { option in Text(option.descripcion) + Text("           text1 ") + Text ("      text2")
+                            { option in Text(option.descripcion) + Text("             \(acidosViewModel.nitrico.bioteksa.getAcido(typeInfo: option.typeAcido! ))") + Text ("        \(acidosViewModel.nitrico.otros.getAcido(typeInfo: option.typeAcido! ))")
                                     .foregroundColor(.black)
                             }
                         }
@@ -91,7 +91,7 @@ struct AcidosTabBar: View {
                         )
                         {
                             ForEach(acidos,  id: \.descripcion) 
-                            { option in Text(option.descripcion) + Text("           text1 ") + Text ("      text2")
+                            { option in Text(option.descripcion) + Text("            \(acidosViewModel.fosforico.bioteksa.getAcido(typeInfo: option.typeAcido! )) ") + Text ("       \(acidosViewModel.fosforico.otros.getAcido(typeInfo: option.typeAcido! )) ")
                                     .foregroundColor(.black)
                             }
                         }

@@ -10,18 +10,39 @@ import Foundation
 
 
 struct Elementos {
-    let nombre: String
+    let nombre: TypeNutriente
 }
 
 
 let elementos =  [
     
-    Elementos(nombre: "NITROGENO"),
-    Elementos(nombre: "FOSFORO     "),
-    Elementos(nombre: "POTASIO       "),
-    Elementos(nombre: "CALCIO         "),
-    Elementos(nombre: "MAGNECIO   "),
-    Elementos(nombre: "AZUFRE        "),
+    Elementos(nombre: TypeNutriente.NITROGENO),
+    Elementos(nombre: TypeNutriente.FOSFORO),
+    Elementos(nombre: TypeNutriente.POTASIO),
+    Elementos(nombre: TypeNutriente.CALCIO),
+    Elementos(nombre: TypeNutriente.MAGNECIO),
+    Elementos(nombre: TypeNutriente.AZUFRE),
     
 ]
+
+enum TypeNutriente: String, CaseIterable {
+    case NITROGENO
+    case FOSFORO
+    case POTASIO
+    case CALCIO
+    case MAGNECIO
+    case AZUFRE
+    
+    func getAbbreviation() -> String{
+        switch self {
+
+        case .NITROGENO: "N"
+        case .FOSFORO: "P"
+        case .POTASIO: "K"
+        case .CALCIO: "CA"
+        case .MAGNECIO: "MG"
+        case .AZUFRE: "S"
+        }
+    }
+}
  

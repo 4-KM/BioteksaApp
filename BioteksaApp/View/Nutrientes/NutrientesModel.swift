@@ -9,17 +9,17 @@ import Foundation
 
 
 struct LTProducto {
-    let nombre: String
+    let nombre: TypeNutriente
 }
 
 
 let lTProductos =  [
     
-    Elementos(nombre: " N            "),
-    Elementos(nombre: " P            "),
-    Elementos(nombre: " K            "),
-    Elementos(nombre: " CA          "),
-    Elementos(nombre: " MG          "),
-    Elementos(nombre: " S             "),
+    LTProducto(nombre: TypeNutriente.NITROGENO),
+    LTProducto(nombre: TypeNutriente.FOSFORO),
+    LTProducto(nombre: TypeNutriente.POTASIO),
+    LTProducto(nombre: TypeNutriente.CALCIO),
+    LTProducto(nombre: TypeNutriente.MAGNECIO),
+    LTProducto(nombre: TypeNutriente.AZUFRE),
     
 ]
