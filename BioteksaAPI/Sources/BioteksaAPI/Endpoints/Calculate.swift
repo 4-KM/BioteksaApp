@@ -14,7 +14,7 @@ public struct Calculate: RestEndpoint {
     }
     
     public struct CalculateResponse: Codable {
-        var recommended: [String: Double]
+       public var recommended: [String: Double]
     }
     
     public typealias ResponseType = CalculateResponse

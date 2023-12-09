@@ -13,23 +13,33 @@ import SwiftUI
 
 
 
-struct AcidosSolucionesMeqANeutralizar {
+struct AcidosSolucionesMeqANeutralizar: Hashable {
     let descripcion: String // caracteristicas
+    let typeAcido: TypeInfo?
     //let textField: TextField<Label: View>
 
 }
 
 let acidos =  [
-    AcidosSolucionesMeqANeutralizar(descripcion: "PesoExpecifico"),
-    AcidosSolucionesMeqANeutralizar(descripcion: "Densidad          "),
-    AcidosSolucionesMeqANeutralizar(descripcion: "Riqueza             ")
+    AcidosSolucionesMeqANeutralizar(descripcion: "PesoExpecifico", typeAcido: .PesoExpecifico),
+    AcidosSolucionesMeqANeutralizar(descripcion: "Densidad          ",typeAcido: .Densidad),
+    AcidosSolucionesMeqANeutralizar(descripcion: "Riqueza             ",typeAcido: .Riqueza)
 ]
 
 let meq =  [
-    AcidosSolucionesMeqANeutralizar(descripcion: "Meq a Neutralizar")
+    AcidosSolucionesMeqANeutralizar(descripcion: "Meq a Neutralizar" , typeAcido: .MedNeutralizar)
 ]
 
 let cantidad =  [
-    AcidosSolucionesMeqANeutralizar(descripcion: "HMNO3ml/L        "),
-    AcidosSolucionesMeqANeutralizar(descripcion: "HMNO3mLTS/100M3  ")
+    AcidosSolucionesMeqANeutralizar(descripcion: "HMNO3ml/L        ", typeAcido: .HMNOL),
+    AcidosSolucionesMeqANeutralizar(descripcion: "HMNO3mLTS/100M3  " ,typeAcido:  .HMNOL100)
 ]
+
+enum TypeInfo: String {
+    case PesoExpecifico
+    case Densidad
+    case Riqueza
+    case MedNeutralizar
+    case HMNOL
+    case HMNOL100
+}

@@ -8,7 +8,21 @@
 import BioteksaAPI
 import Dependencies
 import Foundation
+import Dependencies
+import BioteksaAPI
 import SwiftUI
+
+
+
+
+class ComversionViewModel: ObservableObject {
+    
+    var NITROGENO: ConvertionModel?
+    var FOSFORO: ConvertionModel?
+    var POTASIO: ConvertionModel?
+    var CALCIO: ConvertionModel?
+    var MAGNECIO: ConvertionModel?
+    var AZUFRE: ConvertionModel?
 
 class ConversionViewModel: ObservableObject {
     
@@ -26,6 +40,17 @@ class ConversionViewModel: ObservableObject {
                 ConvertionNutrient(id: respons.id, nutrient_id: respons.nutrient_id, bioteksa: "\(respons.bioteksa)", soluble: "\(respons.soluble)")
             })
         }
+    }
+    
+    
+    
+}
+
+
+extension Double {
+    func rounded(toRounded: Int) -> Double {
+        let cocient = Self(Int( pow(10.0, Double(toRounded))))
+        return (self * cocient).rounded() / cocient
     }
     
 }

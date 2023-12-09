@@ -32,18 +32,23 @@ class LoginViewModel: ObservableObject {
     func login() async {
         
         do {
+            print("Entro a la app0 🟢")
             try await apiManager.login(email: username, password: password)
-            isLogged = true
             userDefaults.set(true, forKey: LoginKeys.authenticated)
-            
+            print("Entro a la app1 🟢")
             let configuration = try await apiManager.fetch(GetConfiguration())
+            print("Entro a la app1.5 🟢")
             try userDefaults.set(
                 JSONEncoder().encode(configuration),
                 forKey: LoginKeys.configuration
             )
+            print("Entro a la app2 🟢")
             let configurationData = userDefaults.data(forKey: LoginKeys.configuration)
+            print("Entro a la app 🟢")
+            let configuration2 = try? JSONDecoder().decode(GetConfigurationResponse.self, from: configurationData!)
+            isLogged = true
         } catch {
-            print("error", error)
+            print("error 🔴", error)
         }
     }
 }
