@@ -18,17 +18,20 @@ struct AcidosTabBar: View {
                 Color(red: 0.681, green: 0.695, blue: 1.000)
                 
                 VStack {
-                    BioteksaAcidosView(acidTitle: "Acido Sulforico", acidoSelect: .AcidoSulfurico)
-                    BioteksaAcidosView(acidTitle: "Acido Nitrico", acidoSelect: .AcidoNitrico)
-                    BioteksaAcidosView(acidTitle: "Acido Fosforico", acidoSelect: .AcidoFosforico)
+                    BioteksaAcidosView(acidTitle: "Acido Sulforico", acidoSelect: .AcidoSulfurico, viewModel: acidosViewModel)
+                    BioteksaAcidosView(acidTitle: "Acido Nitrico", acidoSelect: .AcidoNitrico, viewModel: acidosViewModel)
+                    BioteksaAcidosView(acidTitle: "Acido Fosforico", acidoSelect: .AcidoFosforico, viewModel: acidosViewModel)
                 }
                 Button("Actualizar") {
-                    
+                    print(acidosViewModel.sulfurico)
+                    print(acidosViewModel.nitrico)
+                    print(acidosViewModel.fosforico)
+
                 }
-                .frame(width: 200, height: 40)
+                .frame(width: 350, height: 50, alignment: .center)
+                .foregroundColor(.black)
                 .background(Color.gray)
-                .foregroundColor(Color.white)
-                .padding()
+                .cornerRadius(10)
                 
             }
             .background(Color(red: 0.681, green: 0.695, blue: 1.000))

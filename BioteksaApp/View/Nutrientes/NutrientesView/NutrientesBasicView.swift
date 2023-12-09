@@ -11,7 +11,7 @@ struct NutrientesBasicView: View {
     
     var acidTitle: LocalizedStringKey
     @State var bioteksa : Bioteksa
-    @ObservedObject var model: NutrientesModelView = NutrientesModelView()
+    @ObservedObject var model: NutrientesModelView
 
     var body: some View {
         
@@ -52,5 +52,5 @@ struct NutrientesBasicView: View {
 }
 
 #Preview {
-    NutrientesBasicView(acidTitle: "HBK Plus", bioteksa: Bioteksa(key: "1", value: [NutrientElement(nutrient_id: 1, quantity: "1.0"),NutrientElement(nutrient_id: 2, quantity: "2.0"),NutrientElement(nutrient_id: 3, quantity: "3.0"),NutrientElement(nutrient_id: 4, quantity: "3.0"),NutrientElement(nutrient_id: 5, quantity: "3.0"),NutrientElement(nutrient_id: 6, quantity: "3.0")]))
+    NutrientesBasicView(acidTitle: "HBK Plus", bioteksa: Bioteksa(key: "1", value: [NutrientElement(nutrient_id: 1, quantity: "1.0"),NutrientElement(nutrient_id: 2, quantity: "2.0"),NutrientElement(nutrient_id: 3, quantity: "3.0"),NutrientElement(nutrient_id: 4, quantity: "3.0"),NutrientElement(nutrient_id: 5, quantity: "3.0"),NutrientElement(nutrient_id: 6, quantity: "3.0")]), model: NutrientesModelView())
 }

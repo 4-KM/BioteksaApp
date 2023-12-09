@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AcidoNitricoView: View {
-    @ObservedObject var viewModel = AcidosViewModel()
+    @ObservedObject var viewModel: AcidosViewModel
     
     var body: some View {
         HStack{
@@ -31,5 +31,5 @@ struct AcidoNitricoView: View {
 }
 
 #Preview {
-    AcidoNitricoView()
+    AcidoNitricoView(viewModel: AcidosViewModel())
 }

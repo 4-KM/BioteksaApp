@@ -10,6 +10,8 @@ import SwiftUI
 struct BioteksaAcidosView: View {
     var acidTitle: LocalizedStringKey
     var acidoSelect : Acidos
+    @ObservedObject var viewModel : AcidosViewModel
+
     var body: some View {
         ZStack() {
             HStack{
@@ -18,11 +20,11 @@ struct BioteksaAcidosView: View {
                     HStack{
                         switch acidoSelect {
                         case .AcidoSulfurico:
-                            AcidoSulforicoView()
+                            AcidoSulforicoView(viewModel: viewModel)
                         case .AcidoNitrico:
-                            AcidoNitricoView()
+                            AcidoNitricoView(viewModel: viewModel)
                         case .AcidoFosforico:
-                            AcidoFosforicoView()
+                            AcidoFosforicoView(viewModel: viewModel)
                         }
                     }
                     .background(Color(red: 0.997, green: 0.970, blue: 0.848))
@@ -73,5 +75,5 @@ struct BioteksaAcidosSubView: View {
 }
 
 #Preview {
-    BioteksaAcidosView(acidTitle: "Acido Sulforico", acidoSelect: .AcidoSulfurico)
+    BioteksaAcidosView(acidTitle: "Acido Sulforico", acidoSelect: .AcidoSulfurico, viewModel: AcidosViewModel())
 }

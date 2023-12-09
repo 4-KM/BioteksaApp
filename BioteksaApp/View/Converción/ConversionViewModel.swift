@@ -1,5 +1,5 @@
 //
-//  ComversiónViewModel.swift
+//  ConversionViewModel.swift
 //  BioteksaApp
 //
 //  Created by Eduardo Gersai Garcia Ventura on 23/09/23.
