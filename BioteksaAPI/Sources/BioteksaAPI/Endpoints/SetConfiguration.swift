@@ -52,3 +52,20 @@ public struct SetConfiguration: RestEndpoint {
         self.bodyParams = configuration
     }
 }
+
+/*struct Demo {
+    func sendDatos(){
+        var bioteksa = SetConfigurationParams.SetBioteksa()
+        var convertion = SetConfigurationParams.Convertion()
+        var setConfigurationOarams = SetConfigurationParams(
+            bioteksa: bioteksa,
+            convertion: convertion,
+            nitrico: <#T##ProductComparison#>,
+            sulfurico: <#T##ProductComparison#>,
+            fosforico: <#T##ProductComparison#>
+        )
+        
+    }
+}*/
+
+

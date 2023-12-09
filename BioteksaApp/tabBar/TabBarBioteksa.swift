@@ -18,7 +18,6 @@ struct TabBarBioteksa: View {
             TabView {
                     Group {
                         
-                        
                         AcidosTabBar()
                             .tabItem {
                                 Image(systemName:"flask")

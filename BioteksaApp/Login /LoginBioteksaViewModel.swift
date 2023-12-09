@@ -42,8 +42,6 @@ class LoginViewModel: ObservableObject {
                 forKey: LoginKeys.configuration
             )
             let configurationData = userDefaults.data(forKey: LoginKeys.configuration)
-            
-            let configuration2 = try? JSONDecoder().decode(GetConfigurationResponse.self, from: configurationData)
         } catch {
             print("error", error)
         }

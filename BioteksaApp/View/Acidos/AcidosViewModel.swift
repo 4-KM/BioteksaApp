@@ -13,21 +13,9 @@ import SwiftUI
 
 class AcidosViewModel: ObservableObject {
     
-    
-    struct Acido {
-        var bioteksa: AcidoInfo
-        var otros: AcidoInfo
-    }
-    struct AcidoInfo {
-        var pesoEspesifico: String
-        var densidad: String
-        var riqueza: String
-    }
-    
-    var sulfurico: Acido!
-    var nitrico: Acido!
-    var fosforico: Acido!
-    
+    @Published var sulfurico: AcidoModel = AcidoModel(pesoEspecifico: AcidoInfo(bioteksa: "0", otros: "0"), densidad: AcidoInfo(bioteksa: "0", otros: "0"), riqueza: AcidoInfo(bioteksa: "0", otros: "0"))
+    @Published var nitrico: AcidoModel = AcidoModel(pesoEspecifico: AcidoInfo(bioteksa: "0", otros: "0"), densidad: AcidoInfo(bioteksa: "0", otros: "0"), riqueza: AcidoInfo(bioteksa: "0", otros: "0"))
+    @Published var fosforico: AcidoModel = AcidoModel(pesoEspecifico: AcidoInfo(bioteksa: "0", otros: "0"), densidad: AcidoInfo(bioteksa: "0", otros: "0"), riqueza: AcidoInfo(bioteksa: "0", otros: "0"))
     
     init() {
         
@@ -35,65 +23,31 @@ class AcidosViewModel: ObservableObject {
         
         if let configurationData = userDefaults.data(forKey: LoginKeys.configuration),
            let configuration = try? JSONDecoder().decode(GetConfigurationResponse.self, from: configurationData)
- {
-            var sulfuricoResponse = configuration.sulfurico
-            sulfurico = Acido(
-                bioteksa:
-                    AcidoInfo(
-                        pesoEspesifico: "\(sulfuricoResponse.peso_especifico.bioteksa)",
-                        densidad: "\(sulfuricoResponse.densidad.bioteksa)",
-                        riqueza: "\(sulfuricoResponse.riqueza.bioteksa)"),
-                otros:
-                    AcidoInfo(
-                        pesoEspesifico: "\(sulfuricoResponse.peso_especifico.greenHow)",
-                        densidad: "\(sulfuricoResponse.densidad.greenHow)",
-                        riqueza: "\(sulfuricoResponse.riqueza.greenHow)"
-                    )
+        {
+            let sulfuricoResponse = configuration.sulfurico
+            sulfurico = AcidoModel(
+                pesoEspecifico: AcidoInfo(bioteksa: String(sulfuricoResponse.peso_especifico.bioteksa), otros: String(sulfuricoResponse.peso_especifico.greenHow)),
+                densidad: AcidoInfo(bioteksa: String(sulfuricoResponse.densidad.bioteksa), otros: String(sulfuricoResponse.densidad.greenHow)),
+                riqueza: AcidoInfo(bioteksa: String(sulfuricoResponse.riqueza.bioteksa), otros: String(sulfuricoResponse.riqueza.greenHow))
             )
             
-            var nitricoResponse = configuration.nitrico
-            sulfurico = Acido(
-                bioteksa:
-                    AcidoInfo(
-                        pesoEspesifico: "\(nitricoResponse.peso_especifico.bioteksa)",
-                        densidad: "\(nitricoResponse.densidad.bioteksa)",
-                        riqueza: "\(nitricoResponse.riqueza.bioteksa)"),
-                otros:
-                    AcidoInfo(
-                        pesoEspesifico: "\(nitricoResponse.peso_especifico.greenHow)",
-                        densidad: "\(nitricoResponse.densidad.greenHow)",
-                        riqueza: "\(nitricoResponse.riqueza.greenHow)"
-                    )
+            let nitricoResponse = configuration.nitrico
+            nitrico = AcidoModel(
+                pesoEspecifico: AcidoInfo(bioteksa: String(nitricoResponse.peso_especifico.bioteksa), otros: String(nitricoResponse.peso_especifico.greenHow)),
+                densidad: AcidoInfo(bioteksa: String(nitricoResponse.densidad.bioteksa), otros: String(nitricoResponse.densidad.greenHow)),
+                riqueza: AcidoInfo(bioteksa: String(nitricoResponse.riqueza.bioteksa), otros: String(nitricoResponse.riqueza.greenHow))
             )
             
-            var fosforicoResponse = configuration.fosforico
-            sulfurico = Acido(
-                bioteksa:
-                    AcidoInfo(
-                        pesoEspesifico: "\(fosforicoResponse.peso_especifico.bioteksa)",
-                        densidad: "\(fosforicoResponse.densidad.bioteksa)",
-                        riqueza: "\(fosforicoResponse.riqueza.bioteksa)"),
-                otros:
-                    AcidoInfo(
-                        pesoEspesifico: "\(fosforicoResponse.peso_especifico.greenHow)",
-                        densidad: "\(fosforicoResponse.densidad.greenHow)",
-                        riqueza: "\(fosforicoResponse.riqueza.greenHow)"
-                    )
+            let fosforicoResponse = configuration.fosforico
+            fosforico = AcidoModel(
+                pesoEspecifico: AcidoInfo(bioteksa: String(fosforicoResponse.peso_especifico.bioteksa), otros: String(fosforicoResponse.peso_especifico.greenHow)),
+                densidad: AcidoInfo(bioteksa: String(fosforicoResponse.densidad.bioteksa), otros: String(fosforicoResponse.densidad.greenHow)),
+                riqueza: AcidoInfo(bioteksa: String(fosforicoResponse.riqueza.bioteksa), otros: String(fosforicoResponse.riqueza.greenHow))
             )
-            
         }
+        
     }
     
-    func tablasComparativas() {
-        
-        ForEach(acidos,  id: \.descripcion) { option in Text(option.descripcion)
-        }
-        
-        
-        
-        ForEach(acidos,  id: \.descripcion) { option in Text(option.descripcion)
-        }
-    }
 }
 
 

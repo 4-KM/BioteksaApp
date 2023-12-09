@@ -54,9 +54,7 @@ struct Bioteksa_Otros: View {
                             Section(header: Text("Bioteksa       Otros")
                                 .frame(width: 280, height: 30, alignment: .trailing))
                             {
-                                ForEach( meq  + (acidos + cantidad), id: \.descripcion ) { option in Text(option.descripcion)
-                                    
-                                }
+                                Text("option.descripcion")
                             
                         }
                             .padding(10)

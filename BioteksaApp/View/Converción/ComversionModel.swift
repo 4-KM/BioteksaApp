@@ -8,20 +8,35 @@
 import Foundation
 
 
-
-struct Elementos {
-    let nombre: String
+struct ConvertionNutrient: Hashable{
+    let id: Int
+    let nutrient_id: Int
+    var bioteksa : String
+    var soluble: String
+    var name: String {
+        get {
+            return ElementsNames(rawValue: nutrient_id)?.name ?? ""
+        }
+    }
 }
 
-
-let elementos =  [
+enum ElementosNames: Int{
+    case NITROGENO = 1
+    case FOSFORO = 2
+    case POTASIO = 3
+    case CALCIO = 4
+    case MAGNECIO = 5
+    case AZUFRE = 6
     
-    Elementos(nombre: "NITROGENO"),
-    Elementos(nombre: "FOSFORO     "),
-    Elementos(nombre: "POTASIO       "),
-    Elementos(nombre: "CALCIO         "),
-    Elementos(nombre: "MAGNECIO   "),
-    Elementos(nombre: "AZUFRE        "),
-    
-]
- 
+    var name : String {
+        switch self {
+        case .NITROGENO: return "NITROGENO"
+        case .FOSFORO: return "FOSFORO"
+        case .POTASIO: return "POTASIO"
+        case .CALCIO: return "CALCIO"
+        case .MAGNECIO: return "MAGNECIO"
+        case .AZUFRE: return "AZUFRE"
+        default: return "other"
+        }
+    }
+}
