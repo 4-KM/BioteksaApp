@@ -34,54 +34,9 @@ struct Calculadora: View {
                 Group {
                     Color(red: 0.681, green: 0.695, blue: 1.000)
                     
-                    Text("Agua")// vistas reusables
-                        .frame(width: 350, height: 50, alignment: .center)
-                        .foregroundColor(.white)
-                        .background(Color(red: 0.757, green: 0.916, blue: 0.025))
-                        .cornerRadius(10)
-                    List {
-                        ForEach( Array(textWater.enumerated()),  id: \.offset ) { index, option in
-                            HStack(){
-                                Text(option.molecula)
-                                Spacer()
-                                TextField("", text: $textWater[index].valueMole)
-                                    .keyboardType(.decimalPad)
-                                    .background(option.isCorrect ? Color(.clear) : Color(red: 242/255, green: 97/255, blue: 58/255,opacity: 0.5))
-                                    .frame(width: 140, height: 35)
-                            }.onChange(of: textWater) { newValue in
-                                calculator()
-                            }.onChange(of: milEquivalente) { _ in
-                                calculator()
-                            }
-                        }
-                    }
-                    .cornerRadius(10)
-                    .frame(width: 350, height: 400, alignment: .center)
+                    CalculatorView(title: "Agua", calculatorTypeView: .water,arrValues: $calculadoraVM.aguaModel)
                     
-                    
-                    Text("Milequivalentes requeridos por el cultivo")
-                        .frame(width: 350, height: 50, alignment: .center)
-                        .foregroundColor(.white)
-                        .background(Color(red: 0.021, green: 0.286, blue: 0.557))
-                        .cornerRadius(10)
-                    List {
-                        ForEach( Array(milEquivalente.enumerated()),  id: \.offset ) { index, option in
-                            HStack(){
-                                Text(option.molecula)
-                                Spacer()
-                                TextField("", text: $milEquivalente[index].valueMole)
-                                    .keyboardType(.decimalPad)
-                                    .background(option.isCorrect ? Color(.clear) : Color(red: 242/255, green: 97/255, blue: 58/255,opacity: 0.5))
-                                    .frame(width: 140, height: 35)
-                            }.onChange(of: textWater ) { _ in
-                                calculator()
-                            }.onChange(of: milEquivalente) { _ in
-                                calculator()
-                            }
-                        }
-                    }
-                    .cornerRadius(10.0)
-                    .frame(width: 350, height: 330, alignment: .center)
+                    CalculatorView(title: "Milequivalentes requeridos por el cultivo", calculatorTypeView: .milEq, arrValues: $calculadoraVM.miliEq)
                     
                     
                     VStack() {
@@ -101,7 +56,7 @@ struct Calculadora: View {
                         HStack(alignment: .center,spacing: 80){
                             Text("HCO3")
                             
-                            Text("\(HCO3ToNeutralize, specifier: "%.3f")").frame(width: 80, height: 40, alignment: .center).background(Color(red: 0.80, green: 0.80, blue: 0.80)).cornerRadius(5)
+                            Text("\(calculadoraVM.HCO3ToNeutralize, specifier: "%.3f")").frame(width: 80, height: 40, alignment: .center).background(Color(red: 0.80, green: 0.80, blue: 0.80)).cornerRadius(5)
                             
                             
                         }.padding()
@@ -111,32 +66,18 @@ struct Calculadora: View {
                     .frame(width: 350, alignment: .center)
                     
                     Button("Calcular"){
-                        isReadyToEvaluate = true
-                        calculator()
+                        calculadoraVM.isReadyToEvaluate = true
+                        calculadoraVM.calculator()
+                       // calculator()
                         
                     }.frame(width: 350, height: 50, alignment: .center)
                     .foregroundColor(.black)
                     .background(Color.gray)
                     .cornerRadius(10)
                     
-                    if showNutrientsViews {
-                        Text("Necesario")// vistas reusables
-                            .frame(width: 350, height: 50, alignment: .center)
-                            .foregroundColor(.white)
-                            .background(Color(red: 0.757, green: 0.916, blue: 0.025))
-                            .cornerRadius(10)
-                        List {
-                            ForEach( Array(necessary.enumerated()),  id: \.offset ) { index, option in
-                                HStack(){
-                                    Text(option.molecula)
-                                    Spacer()
-                                    resultNecessary.isEmpty ? Text("") : Text("\(resultNecessary[index].valueMole)")
-
-                                }
-                            }
-                        }
-                        .cornerRadius(10)
-                        .frame(width: 350, height: 340, alignment: .center)
+                    if calculadoraVM.showNutrientsViews {
+                        
+                        CalculatorView(title: "Necesario", calculatorTypeView: .necessary,arrValues: $calculadoraVM.necessaryModel)
                         
                         Text("Acido sulfurico")// vistas reusables
                             .frame(width: 350, height: 50, alignment: .center)
@@ -334,7 +275,11 @@ struct Calculadora: View {
                     }
 
                     
-                }
+                }.onChange(of: calculadoraVM.aguaModel) {  newValue in
+                    calculadoraVM.calculator()
+            }.onChange(of: calculadoraVM.miliEq) {  newValue in
+                calculadoraVM.calculator()
+        }
             }
             .background(Color(red: 0.681, green: 0.695, blue: 1.000))
         }
@@ -347,7 +292,7 @@ struct Calculadora: View {
       
         return result2
     }
-    func calculator()  {
+   /* func calculator()  {
         var index = 0
         var hasError: Bool = false
         guard isReadyToEvaluate else { return }
@@ -390,7 +335,7 @@ struct Calculadora: View {
             showBtnSolucionMadre = true
         }
         getOperationNecessary()
-    }
+    }*/
     
     func getOperationNecessary() {
         var milEquivalente = milEquivalente

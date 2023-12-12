@@ -41,6 +41,7 @@
 		2BF31D7D2ABEE1F3004FC52C /* ComversionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF31D7C2ABEE1F3004FC52C /* ComversionModel.swift */; };
 		2BF31D7F2ABEE20B004FC52C /* ComversionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF31D7E2ABEE20B004FC52C /* ComversionViewModel.swift */; };
 		2BF31D812ABEE5AA004FC52C /* CalculadoraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF31D802ABEE5AA004FC52C /* CalculadoraModel.swift */; };
+		D5A456CF2B27377E00B6288B /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A456CE2B27377E00B6288B /* CalculatorView.swift */; };
 		F0388F042B1EB37A00D33B6C /* AcidoNitricoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0388F032B1EB37A00D33B6C /* AcidoNitricoView.swift */; };
 		F0388F062B1EB40E00D33B6C /* AcidoFosforicoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0388F052B1EB40E00D33B6C /* AcidoFosforicoView.swift */; };
 		F0BDB2EE2B201DE60046758C /* ConversionBasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BDB2ED2B201DE60046758C /* ConversionBasicView.swift */; };
@@ -104,6 +105,7 @@
 		2BF31D7C2ABEE1F3004FC52C /* ComversionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComversionModel.swift; sourceTree = "<group>"; };
 		2BF31D7E2ABEE20B004FC52C /* ComversionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComversionViewModel.swift; sourceTree = "<group>"; };
 		2BF31D802ABEE5AA004FC52C /* CalculadoraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculadoraModel.swift; sourceTree = "<group>"; };
+		D5A456CE2B27377E00B6288B /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
 		F0388F032B1EB37A00D33B6C /* AcidoNitricoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcidoNitricoView.swift; sourceTree = "<group>"; };
 		F0388F052B1EB40E00D33B6C /* AcidoFosforicoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcidoFosforicoView.swift; sourceTree = "<group>"; };
 		F0BDB2ED2B201DE60046758C /* ConversionBasicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionBasicView.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 		2BED058E2AB9608100C3A75D /* Calculadora */ = {
 			isa = PBXGroup;
 			children = (
+				D5A456CD2B27349600B6288B /* view */,
 				2B8A83FD2AB912BC00F6A2C5 /* CalculadoraView.swift */,
 				2BF31D802ABEE5AA004FC52C /* CalculadoraModel.swift */,
 				2BD2E5E72AFC23070073D2C9 /* CalculadoraViewModel.swift */,
@@ -325,6 +328,14 @@
 				F0388F052B1EB40E00D33B6C /* AcidoFosforicoView.swift */,
 			);
 			path = AcidosView;
+			sourceTree = "<group>";
+		};
+		D5A456CD2B27349600B6288B /* view */ = {
+			isa = PBXGroup;
+			children = (
+				D5A456CE2B27377E00B6288B /* CalculatorView.swift */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		F0BDB2EF2B201DED0046758C /* Conversion */ = {
@@ -497,6 +508,7 @@
 				2B8A83F42AB911EC00F6A2C5 /* TabBarBioteksa.swift in Sources */,
 				F0F301D12B1C066E00A579DF /* BioteksaTextField.swift in Sources */,
 				2B8A83F62AB9123A00F6A2C5 /* LoginBioteksaView .swift in Sources */,
+				D5A456CF2B27377E00B6288B /* CalculatorView.swift in Sources */,
 				2BED05902AB9C6CD00C3A75D /* AcidoModel.swift in Sources */,
 				2BED058A2AB9581100C3A75D /* LoginBioteksaAction.swift in Sources */,
 				2BED05922AB9C6E600C3A75D /* AcidosViewModel.swift in Sources */,

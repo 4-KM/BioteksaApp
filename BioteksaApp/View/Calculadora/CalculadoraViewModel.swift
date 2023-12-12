@@ -61,9 +61,54 @@ class CalculadoraViewModel: ObservableObject {
     }
     struct Neutralizar{}
     
-    struct Necesario {
-        let molecula: String
+    struct NecesarioCalculator: Hashable {
+        var molecula: String
+        var valueMole: String = ""
+        var isCorrect: Bool = true
     }
+    
+    @Published var aguaModel =  [
+        
+        NecesarioCalculator(molecula: "NO3", isCorrect: true),
+        NecesarioCalculator(molecula: "H2PO4", isCorrect: false),
+        NecesarioCalculator(molecula: "K+", isCorrect: true),
+        NecesarioCalculator(molecula: "CA+2", isCorrect: true),
+        NecesarioCalculator(molecula: "MG+2", isCorrect: true),
+        NecesarioCalculator(molecula: "SO4-2", isCorrect: true),
+        NecesarioCalculator(molecula: "HCO3", isCorrect: true),
+        NecesarioCalculator(molecula: "CO3", isCorrect: true)
+        
+    ]
+    
+    @Published var miliEq =  [
+        
+        NecesarioCalculator(molecula: "NO3",isCorrect: true),
+        NecesarioCalculator(molecula: "H2PO4",isCorrect: true),
+        NecesarioCalculator(molecula: "K+",isCorrect: true),
+        NecesarioCalculator(molecula: "CA+2",isCorrect: true),
+        NecesarioCalculator(molecula: "MG+2",isCorrect: true),
+        NecesarioCalculator(molecula: "SO4-2",isCorrect: true),
+
+        
+    ]
+    @Published var necessaryModel: [NecesarioCalculator] = [
+        
+        NecesarioCalculator(molecula: "NO3", isCorrect: true),
+        NecesarioCalculator(molecula: "H2PO4", isCorrect: true),
+        NecesarioCalculator(molecula: "K+", isCorrect: true),
+        NecesarioCalculator(molecula: "CA+2", isCorrect: true),
+        NecesarioCalculator(molecula: "MG+2", isCorrect: true),
+        NecesarioCalculator(molecula: "SO4-2", isCorrect: true)
+        
+    ]
+
+    
+    
+    @Published var isReadyToEvaluate = false
+    @Published var showBtnSolucionMadre = false
+    @Published var  showNutrientsViews = false
+    @Published var HCO3ToNeutralize = 0.0
+
     
     
     init() {
@@ -142,5 +187,83 @@ class CalculadoraViewModel: ObservableObject {
             
             
         }
+        
+
+    }
+    
+    func operationHML(pesoEspe: String, densidad: String, riqueza: String) -> String {
+        let result = HCO3ToNeutralize * (Double(pesoEspe) ?? 0.0)
+        let result1  = result  * 1 / (Double(densidad) ?? 0.0)
+        var result2 = result1 * 100 / (Double(riqueza) ?? 0.0) * 0.001
+        result2 = result2.rounded(toRounded: 3)
+        
+        return String(result2)
+    }
+    
+    func calculator()  {
+        var index = 0
+        var hasError: Bool = false
+        guard isReadyToEvaluate else { return }
+        showBtnSolucionMadre = true
+        aguaModel.forEach { molecula in
+            if molecula.valueMole.isEmpty  {
+               // print("agregar valor a \(molecula.molecula)")
+                aguaModel[index].isCorrect = false
+                hasError = true
+            } else {
+                aguaModel[index].isCorrect = true
+            }
+            index += 1
+          //  print("Termino el proceso 1")
+            
+        }
+        index = 0
+        miliEq.forEach { molecula in
+            if molecula.valueMole.isEmpty  {
+              //  print("agregar valor a \(molecula.molecula)")
+                miliEq[index].isCorrect = false
+                hasError = true
+            } else {
+                miliEq[index].isCorrect = true
+            }
+            index += 1
+           // print("Termino el proceso 2")
+            
+        }
+        if let valueHCO3 = Double(aguaModel[6].valueMole), let valueCo3 = Double(aguaModel[7].valueMole) {
+            var result = ((valueHCO3  ) + (valueCo3 * 2)) - 0.500
+            
+            if result < 0.500 {
+                result =  0.0
+            }
+            HCO3ToNeutralize = result.rounded(toRounded: 3)
+        }
+        if !hasError {
+            showNutrientsViews = true
+            showBtnSolucionMadre = true
+        }
+        getOperationNecessary()
+        
+        
+    }
+    
+    
+    func getOperationNecessary() {
+        var milEquivalente = miliEq
+        var index = 0
+        var result = 0.0
+        necessaryModel = milEquivalente.map({ necessaries in
+            var necessaries = necessaries
+            if index == 5 {
+                HCO3ToNeutralize = HCO3ToNeutralize.rounded(toRounded: 3)
+                result =  (Double(necessaries.valueMole) ?? 0.0) - (Double(aguaModel[index].valueMole) ?? 0.0) - HCO3ToNeutralize
+            } else {
+                result = ( Double(necessaries.valueMole) ?? 0.0 ) - (Double(aguaModel[index].valueMole) ?? 0.0)
+            }
+            result = result.rounded(toRounded: 3)
+            necessaries.valueMole = String(result)
+            index += 1
+            return necessaries
+        })
     }
 }
