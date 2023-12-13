@@ -44,9 +44,9 @@ class CalculadoraViewModel: ObservableObject {
         }
     }
     
-    var sulfurico: Acido!
-    var nitrico: Acido!
-    var fosforico: Acido!
+    @Published var sulfurico: Acido!
+    @Published var nitrico: Acido!
+    @Published  var fosforico: Acido!
     
     struct MiliequivalentesRequeridos{
         var textField: MilequivalentesInfo
@@ -191,13 +191,12 @@ class CalculadoraViewModel: ObservableObject {
 
     }
     
-    func operationHML(pesoEspe: String, densidad: String, riqueza: String) -> String {
+    func operationHML(pesoEspe: String, densidad: String, riqueza: String) -> Double {
         let result = HCO3ToNeutralize * (Double(pesoEspe) ?? 0.0)
         let result1  = result  * 1 / (Double(densidad) ?? 0.0)
         var result2 = result1 * 100 / (Double(riqueza) ?? 0.0) * 0.001
-        result2 = result2.rounded(toRounded: 3)
         
-        return String(result2)
+        return result2
     }
     
     func calculator()  {
@@ -236,8 +235,11 @@ class CalculadoraViewModel: ObservableObject {
             if result < 0.500 {
                 result =  0.0
             }
-            HCO3ToNeutralize = result.rounded(toRounded: 3)
+            print("RESULTADO", result)
+            HCO3ToNeutralize = result
         }
+        doOperationRequeriedToAcidos()
+        
         if !hasError {
             showNutrientsViews = true
             showBtnSolucionMadre = true
@@ -265,5 +267,35 @@ class CalculadoraViewModel: ObservableObject {
             index += 1
             return necessaries
         })
+    }
+    
+    func doOperationRequeriedToAcidos()  {
+//        get medNeutrailar to Acidos
+        sulfurico.bioteksa.medNeutrailar = String(format:"%.3f", HCO3ToNeutralize)
+        sulfurico.otros.medNeutrailar = String(format:"%.3f", HCO3ToNeutralize)
+        nitrico.bioteksa.medNeutrailar = String(format:"%.3f", HCO3ToNeutralize)
+        nitrico.otros.medNeutrailar = String(format:"%.3f", HCO3ToNeutralize)
+        fosforico.bioteksa.medNeutrailar = String(format:"%.3f", HCO3ToNeutralize)
+        fosforico.otros.medNeutrailar = String(format:"%.3f", HCO3ToNeutralize)
+        
+//        get HMNOL too acidos
+        sulfurico.bioteksa.HMNOL = String(format: "%.3f", operationHML(pesoEspe: sulfurico.bioteksa.pesoEspesifico, densidad: sulfurico.bioteksa.densidad, riqueza: sulfurico.bioteksa.densidad))
+        sulfurico.otros.HMNOL = String(format: "%.3f", operationHML(pesoEspe: sulfurico.otros.pesoEspesifico, densidad: sulfurico.otros.densidad, riqueza: sulfurico.otros.densidad))
+
+        nitrico.bioteksa.HMNOL = String(format: "%.3f", operationHML(pesoEspe: nitrico.bioteksa.pesoEspesifico, densidad: nitrico.bioteksa.densidad, riqueza: nitrico.bioteksa.densidad))
+        nitrico.otros.HMNOL = String(format: "%.3f", operationHML(pesoEspe: nitrico.otros.pesoEspesifico, densidad: nitrico.otros.densidad, riqueza: nitrico.otros.densidad))
+        
+        fosforico.bioteksa.HMNOL = String(format: "%.3f", operationHML(pesoEspe: fosforico.bioteksa.pesoEspesifico, densidad: fosforico.bioteksa.densidad, riqueza: fosforico.bioteksa.densidad))
+        fosforico.otros.HMNOL = String(format: "%.3f", operationHML(pesoEspe: fosforico.otros.pesoEspesifico, densidad: fosforico.otros.densidad, riqueza: fosforico.otros.densidad))
+        
+//     get HMNOL too acidos X 100
+        sulfurico.bioteksa.HMNOL100 = String(format: "%.3f", operationHML(pesoEspe: sulfurico.bioteksa.pesoEspesifico, densidad: sulfurico.bioteksa.densidad, riqueza: sulfurico.bioteksa.densidad) * 100)
+        sulfurico.otros.HMNOL100 = String(format: "%.3f", operationHML(pesoEspe: sulfurico.otros.pesoEspesifico, densidad: sulfurico.otros.densidad, riqueza: sulfurico.otros.densidad) * 100)
+
+        nitrico.bioteksa.HMNOL100 = String(format: "%.3f", operationHML(pesoEspe: nitrico.bioteksa.pesoEspesifico, densidad: nitrico.bioteksa.densidad, riqueza: nitrico.bioteksa.densidad) * 100 )
+        nitrico.otros.HMNOL100 = String(format: "%.3f", operationHML(pesoEspe: nitrico.otros.pesoEspesifico, densidad: nitrico.otros.densidad, riqueza: nitrico.otros.densidad) * 100 )
+        
+        fosforico.bioteksa.HMNOL100 = String(format: "%.3f", operationHML(pesoEspe: fosforico.bioteksa.pesoEspesifico, densidad: fosforico.bioteksa.densidad, riqueza: fosforico.bioteksa.densidad) * 100 )
+        fosforico.otros.HMNOL100 = String(format: "%.3f", operationHML(pesoEspe: fosforico.otros.pesoEspesifico, densidad: fosforico.otros.densidad, riqueza: fosforico.otros.densidad) * 100)
     }
 }

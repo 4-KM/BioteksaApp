@@ -84,3 +84,18 @@ let miliEq =  [
 
     
 ]
+
+struct AcidoCalculator: Hashable {
+    var name: String
+    var rowColor: Color
+    var textColor: Color
+}
+
+let acidosCalculator = [
+    AcidoCalculator(name: "Meq a Neutralizar", rowColor: .clear, textColor: .blue ),
+    AcidoCalculator(name: "Peso Especifico", rowColor: Color(red: 0.997, green: 0.970, blue: 0.848), textColor: .black),
+    AcidoCalculator(name: "Densidad", rowColor: Color(red: 0.997, green: 0.970, blue: 0.848), textColor: .black),
+    AcidoCalculator(name: "Riqueza", rowColor: Color(red: 0.997, green: 0.970, blue: 0.848), textColor: .black),
+    AcidoCalculator(name: "HNO3ml/L", rowColor: .clear, textColor: .red),
+    AcidoCalculator(name: "HNO3ml/100M3", rowColor: .clear, textColor: .red)
+]
