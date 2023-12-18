@@ -87,7 +87,7 @@ struct Calculadora: View {
                     }
                     
                     if calculadoraVM.showBtnSolucionMadre {
-                        NavigationLink(destination: VolumenDeRiegoView(volumentVM: VolumenDeriegoViewmodel(products: milEquivalente))) {
+                        NavigationLink(destination: VolumenDeRiegoView(volumentVM: VolumenDeriegoViewmodel(products: calculadoraVM.miliEq) )) {
                             Text("VOLUMEN DE RIEGO M3")
                                 .frame(width: 350, height: 50, alignment: .center)
                                 .foregroundColor(.black)

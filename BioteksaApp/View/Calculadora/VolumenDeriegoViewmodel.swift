@@ -12,18 +12,21 @@ import BioteksaAPI
 
 class VolumenDeriegoViewmodel: ObservableObject {
     @Dependency(\.apiManager) var apiManager
-    @Published var calculatorDic : [String:Double] = [:]
+    @Published var calculatorDic : [String:Double] = ["test":2.2]
     @Published var arrayCalculo: [VolumenDeRiegoModel] = productosVolumenRiengo
     @Published var m3Multiply: Double = 100.0
+    var product:[CalculadoraViewModel.NecesarioCalculator]?
     
     
-    init(products: [Necesario]? ) {
+    init(products: [CalculadoraViewModel.NecesarioCalculator]? ) {
         guard let product = products else { return }
+        self.product = product
         var index = 1
-        product.forEach { item in
-            calculatorDic[String(index)] = Double(item.valueMole)
+        self.product?.forEach { item in
+            calculatorDic["\(index)"] = Double(item.valueMole)
             index += 1
         }
+        
     }
     
     func calculatorM3() async  {

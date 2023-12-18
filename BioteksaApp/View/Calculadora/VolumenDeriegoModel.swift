@@ -9,7 +9,7 @@ import Foundation
 
 
 struct VolumenDeRiegoModel: Hashable {
-    let nombre: TypeProduct
+    var nombre: TypeProduct
     var valueProduct: String = ""
     var idVolumen: String = ""
 }
