@@ -33,6 +33,9 @@ class LoginViewModel: ObservableObject {
         
         do {
             print("Entro a la app0 🟢")
+			  Color.anatomy.blue
+			  
+			  //Color.anatomy.red
             try await apiManager.login(email: username, password: password)
             userDefaults.set(true, forKey: LoginKeys.authenticated)
             print("Entro a la app1 🟢")
