@@ -8,6 +8,7 @@
 import Dependencies
 import Foundation
 
+@MainActor 
 class RootViewModel: ObservableObject {
 	enum ActiveView {
 		case login

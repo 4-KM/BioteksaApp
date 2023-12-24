@@ -20,10 +20,13 @@ struct RootView: View {
 						}
 					)
 				case .loggedIn:
-					TabBarBioteksa()
+                    TabBarView(
+                        viewModel: TabbarViewModel {
+                            viewModel.getSessionState()
+                        }
+                    )
 			}
 		}
-		.background { Color.anatomy.blue }
 		.task {
 			viewModel.getSessionState()
 		}

@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct BioteksaAppApp: App {
+struct BioteksaApp: App {
     var body: some Scene {
         WindowGroup {
 			  RootView(viewModel: RootViewModel())
