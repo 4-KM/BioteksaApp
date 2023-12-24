@@ -5,6 +5,7 @@
 //  Created by mabas on 23/12/23.
 //
 
+import Dependencies
 import Foundation
 
 class RootViewModel: ObservableObject {
@@ -13,10 +14,12 @@ class RootViewModel: ObservableObject {
 		case loggedIn
 	}
 	
+	@Dependency(\.apiManager) var apiManager
+
 	@Published var activeView: ActiveView = .login
 	
 	func getSessionState() {
-		if let token = UserDefaults.standard.string(forKey: "token") {
+		if apiManager.isLogged {
 			activeView = .loggedIn
 		} else {
 			activeView = .login
