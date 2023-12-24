@@ -14,13 +14,13 @@ struct RootView: View {
 		Group {
 			switch viewModel.activeView {
 				case .login:
-					LoginTestView(viewModel: LoginTestViewModel(onSuccessfulLogin: {
-						viewModel.getSessionState()
-					}))
+					LoginView(
+						viewModel: LoginViewModel {
+							viewModel.getSessionState()
+						}
+					)
 				case .loggedIn:
-					HomeView(viewModel: HomeViewModel(onLogout: {
-						viewModel.getSessionState()
-					}))
+					TabBarBioteksa()
 			}
 		}
 		.background { Color.anatomy.blue }
@@ -34,3 +34,5 @@ struct RootView: View {
 #Preview{
 	RootView(viewModel: RootViewModel())
 }
+
+

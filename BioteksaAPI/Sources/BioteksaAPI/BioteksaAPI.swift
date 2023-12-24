@@ -36,13 +36,16 @@ private class BioteksaAuthProvider: AuthenticationProvider {
 }
 
 public protocol BioteksaAPIManager: APIManager {
+	var isLogged: Bool { get }
     func login(email: String, password: String) async throws
 }
 
 public class LiveBioteksaAPI: BioteksaAPIManager {
     public var authProvider: AuthenticationProvider? = BioteksaAuthProvider()
     public var domain: String = BioteksaServer.prod
-    
+	public var isLogged: Bool {
+		authProvider?.token != nil
+	}
     public func login(email: String, password: String) async throws {
         let response = try await fetch(Login(email: email, password: password))
         authProvider?.token = response.token
@@ -53,7 +56,7 @@ public class TestBioteksaAPI: BioteksaAPIManager {
     public var authProvider: AuthenticationProvider?
     
     public var domain: String = BioteksaServer.test
-    
+	public var isLogged: Bool = false
     public func login(email: String, password: String) async throws {
         
     }
@@ -62,7 +65,8 @@ public class TestBioteksaAPI: BioteksaAPIManager {
 public class MockBioteksaAPI: BioteksaAPIManager {
     public var authProvider: AuthenticationProvider?
     public var domain: String = BioteksaServer.mock
-    
+	public var isLogged: Bool = true
+	
     public func login(email: String, password: String) async throws {
         
     }

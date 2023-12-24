@@ -11,7 +11,7 @@ import SwiftUI
 struct BioteksaAppApp: App {
     var body: some Scene {
         WindowGroup {
-            LoginBioteksa()
+			  RootView(viewModel: RootViewModel())
         }
     }
 }
