@@ -9,18 +9,18 @@ import SwiftUI
 
 struct AcidosView: View {
     
-    @ObservedObject var acidosViewModel: AcidosViewModel = AcidosViewModel()
+    @ObservedObject var viewModel: AcidosViewModel = AcidosViewModel()
     
     var body: some View {
         Page {
             VStack(spacing: 16) {
-                AcidosContainer(acidTitle: "Acido Sulforico", acidoSelect: .AcidoSulfurico, viewModel: acidosViewModel)
-                AcidosContainer(acidTitle: "Acido Nitrico", acidoSelect: .AcidoNitrico, viewModel: acidosViewModel)
-                AcidosContainer(acidTitle: "Acido Fosforico", acidoSelect: .AcidoFosforico, viewModel: acidosViewModel)
+                AcidosContainer(acidTitle: "Acido Sulforico", model: $viewModel.sulfurico)
+                AcidosContainer(acidTitle: "Acido Nitrico", model: $viewModel.nitrico)
+                AcidosContainer(acidTitle: "Acido Fosforico", model: $viewModel.fosforico)
                 BioteksaButton(title: "Actualizar") {
-                    print(acidosViewModel.sulfurico)
-                    print(acidosViewModel.nitrico)
-                    print(acidosViewModel.fosforico)
+                    Task {
+                        await viewModel.update()
+                    }
                 }
             }
         }

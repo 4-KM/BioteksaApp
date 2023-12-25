@@ -11,6 +11,7 @@ import Networking
 public struct SetConfigurationParams: Codable {
     public typealias SetBioteksa = [String: [String: Double]]
     public typealias Convertion = [String: ConvertionNutrient]
+    
     public struct ConvertionNutrient: Codable {
         var soluble: Double
         var bioteksa: Double
@@ -21,14 +22,19 @@ public struct SetConfigurationParams: Codable {
         }
     }
 
+    public var bioteksa: SetBioteksa?
+    public var convertion: Convertion?
+    public var nitrico: ProductComparison?
+    public var sulfurico: ProductComparison?
+    public var fosforico: ProductComparison?
     
-    public var bioteksa: SetBioteksa
-    public var convertion: Convertion
-    public var nitrico: ProductComparison
-    public var sulfurico: ProductComparison
-    public var fosforico: ProductComparison
-    
-    public init(bioteksa: SetBioteksa, convertion: Convertion, nitrico: ProductComparison, sulfurico: ProductComparison, fosforico: ProductComparison) {
+    public init(
+        bioteksa: SetBioteksa? = nil,
+        convertion: Convertion? = nil,
+        nitrico: ProductComparison? = nil,
+        sulfurico: ProductComparison? = nil,
+        fosforico: ProductComparison? = nil
+    ) {
         self.bioteksa = bioteksa
         self.convertion = convertion
         self.nitrico = nitrico

@@ -12,7 +12,6 @@ struct ConvertionView: View {
 
     var body: some View {
         Page {
-            Color(red: 0.681, green: 0.695, blue: 1.000)
             ConversionBasicView(viewModel: viewModel)
             BioteksaButton(title: "Actualizar") {
                 print(viewModel.convertion)

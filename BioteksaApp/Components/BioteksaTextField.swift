@@ -19,7 +19,6 @@ struct BioteksaTextField: View {
             Divider()
                 .background(Color.gray)
         }
-        .padding()
     }
 }
 
@@ -35,7 +34,6 @@ struct BioteksaNumberTextField: View {
             Divider()
                 .background(Color.gray)
         }
-        
     }
 }
 

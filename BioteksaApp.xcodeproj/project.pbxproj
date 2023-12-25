@@ -45,12 +45,10 @@
 		54EC413A2B38C952008B5A71 /* TabbarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EC41392B38C952008B5A71 /* TabbarViewModel.swift */; };
 		54EC413C2B38D271008B5A71 /* BioteksaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EC413B2B38D271008B5A71 /* BioteksaButton.swift */; };
 		54EC413E2B38D517008B5A71 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EC413D2B38D517008B5A71 /* Page.swift */; };
+		54EC41402B39EC1C008B5A71 /* LocalConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EC413F2B39EC1C008B5A71 /* LocalConfigurationManager.swift */; };
 		D5E02EC42B29085B00FE40E8 /* CalculatorAcidoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E02EC32B29085B00FE40E8 /* CalculatorAcidoView.swift */; };
 		D5E02EC62B2915FF00FE40E8 /* CalculatorTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E02EC52B2915FF00FE40E8 /* CalculatorTableView.swift */; };
-		F0388F042B1EB37A00D33B6C /* AcidoNitricoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0388F032B1EB37A00D33B6C /* AcidoNitricoView.swift */; };
-		F0388F062B1EB40E00D33B6C /* AcidoFosforicoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0388F052B1EB40E00D33B6C /* AcidoFosforicoView.swift */; };
 		F0D039622B1D6BF300648E2F /* NutrientesBasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D039612B1D6BF300648E2F /* NutrientesBasicView.swift */; };
-		F0D039642B1D7D0000648E2F /* AcidoSulforicoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D039632B1D7D0000648E2F /* AcidoSulforicoView.swift */; };
 		F0F301D12B1C066E00A579DF /* BioteksaTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F301D02B1C066E00A579DF /* BioteksaTextField.swift */; };
 		F0F301D32B1C06B000A579DF /* TableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F301D22B1C06B000A579DF /* TableContainer.swift */; };
 		F0F301D52B1C09A500A579DF /* AcidosContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F301D42B1C09A500A579DF /* AcidosContainer.swift */; };
@@ -113,12 +111,10 @@
 		54EC41392B38C952008B5A71 /* TabbarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewModel.swift; sourceTree = "<group>"; };
 		54EC413B2B38D271008B5A71 /* BioteksaButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioteksaButton.swift; sourceTree = "<group>"; };
 		54EC413D2B38D517008B5A71 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		54EC413F2B39EC1C008B5A71 /* LocalConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalConfigurationManager.swift; sourceTree = "<group>"; };
 		D5E02EC32B29085B00FE40E8 /* CalculatorAcidoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorAcidoView.swift; sourceTree = "<group>"; };
 		D5E02EC52B2915FF00FE40E8 /* CalculatorTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTableView.swift; sourceTree = "<group>"; };
-		F0388F032B1EB37A00D33B6C /* AcidoNitricoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcidoNitricoView.swift; sourceTree = "<group>"; };
-		F0388F052B1EB40E00D33B6C /* AcidoFosforicoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcidoFosforicoView.swift; sourceTree = "<group>"; };
 		F0D039612B1D6BF300648E2F /* NutrientesBasicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientesBasicView.swift; sourceTree = "<group>"; };
-		F0D039632B1D7D0000648E2F /* AcidoSulforicoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcidoSulforicoView.swift; sourceTree = "<group>"; };
 		F0F301D02B1C066E00A579DF /* BioteksaTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BioteksaTextField.swift; sourceTree = "<group>"; };
 		F0F301D22B1C06B000A579DF /* TableContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableContainer.swift; sourceTree = "<group>"; };
 		F0F301D42B1C09A500A579DF /* AcidosContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcidosContainer.swift; sourceTree = "<group>"; };
@@ -192,6 +188,7 @@
 				2BED05842AB9565600C3A75D /* Tabbar */,
 				2BED05852AB9566E00C3A75D /* Tabs */,
 				2B8A83CD2AB9111F00F6A2C5 /* Assets.xcassets */,
+				54EC413F2B39EC1C008B5A71 /* LocalConfigurationManager.swift */,
 				2B8A83CF2AB9111F00F6A2C5 /* Preview Content */,
 			);
 			path = BioteksaApp;
@@ -330,9 +327,6 @@
 			isa = PBXGroup;
 			children = (
 				F0F301D42B1C09A500A579DF /* AcidosContainer.swift */,
-				F0D039632B1D7D0000648E2F /* AcidoSulforicoView.swift */,
-				F0388F032B1EB37A00D33B6C /* AcidoNitricoView.swift */,
-				F0388F052B1EB40E00D33B6C /* AcidoFosforicoView.swift */,
 			);
 			path = AcidosView;
 			sourceTree = "<group>";
@@ -518,11 +512,8 @@
 				F0F301D32B1C06B000A579DF /* TableContainer.swift in Sources */,
 				54EC413C2B38D271008B5A71 /* BioteksaButton.swift in Sources */,
 				54EC413A2B38C952008B5A71 /* TabbarViewModel.swift in Sources */,
-				F0D039642B1D7D0000648E2F /* AcidoSulforicoView.swift in Sources */,
 				2BED05822AB9545900C3A75D /* LoginViewModel.swift in Sources */,
-				F0388F062B1EB40E00D33B6C /* AcidoFosforicoView.swift in Sources */,
 				F0D039622B1D6BF300648E2F /* NutrientesBasicView.swift in Sources */,
-				F0388F042B1EB37A00D33B6C /* AcidoNitricoView.swift in Sources */,
 				2B8A83F42AB911EC00F6A2C5 /* TabbarView.swift in Sources */,
 				F0F301D12B1C066E00A579DF /* BioteksaTextField.swift in Sources */,
 				54EC41362B38C3D2008B5A71 /* ConvertionViewModel.swift in Sources */,
@@ -544,6 +535,7 @@
 				2BF31D752ABE6590004FC52C /* VolumenDeRiegoView.swift in Sources */,
 				2BF31D812ABEE5AA004FC52C /* CalculadoraModel.swift in Sources */,
 				2B9E562A2AC19CAB0042C90F /* NutrientesModel.swift in Sources */,
+				54EC41402B39EC1C008B5A71 /* LocalConfigurationManager.swift in Sources */,
 				54EC413E2B38D517008B5A71 /* Page.swift in Sources */,
 				2BF31D7B2ABEC0DD004FC52C /* PreViewColores .swift in Sources */,
 				29F33FA52B3758E900DD3688 /* RootView.swift in Sources */,

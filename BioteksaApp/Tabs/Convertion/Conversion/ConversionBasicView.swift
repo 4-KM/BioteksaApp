@@ -14,17 +14,17 @@ struct ConversionBasicView: View {
             ConversionSubHeaders()
                 .foregroundColor(.white)
             HStack{
-                VStack{
-                    ForEach(viewModel.convertion,  id: \.self) { option in 
+                VStack(spacing: 16) {
+                    ForEach(viewModel.convertion,  id: \.self) { option in
                         BioteksaAcidosText(title: option.name)
                     }
                 }
-                VStack{
+                VStack(spacing: 16) {
                     ForEach($viewModel.convertion,  id: \.self) { $option in
                         BioteksaTextField(title: "", text: $option.soluble)
                     }
                 }
-                VStack{
+                VStack(spacing: 16) {
                     ForEach($viewModel.convertion,  id: \.self) { $option in
                         BioteksaTextField(title: "", text: $option.bioteksa)
                     }

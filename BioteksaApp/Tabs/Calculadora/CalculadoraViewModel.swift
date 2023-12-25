@@ -39,7 +39,6 @@ class CalculadoraViewModel: ObservableObject {
                 return HMNOL
             case .HMNOL100:
                 return HMNOL100
-            default : break
             }
         }
     }
@@ -113,9 +112,9 @@ class CalculadoraViewModel: ObservableObject {
     
     
     init() {
-        guard let configuration = GetConfigurationResponse.fetchLocalConfiguration() else { return }
+        @Dependency(\.dataManager) var dataManager
 
-        var sulfuricoResponse = configuration.sulfurico
+        var sulfuricoResponse = dataManager.sulfurico
         sulfurico = Acido(
             bioteksa:
                 AcidoInfo(
@@ -137,7 +136,7 @@ class CalculadoraViewModel: ObservableObject {
                 )
         )
         
-        var nitricoResponse = configuration.nitrico
+        var nitricoResponse = dataManager.nitrico
         nitrico = Acido(
             bioteksa:
                 AcidoInfo(
@@ -159,7 +158,7 @@ class CalculadoraViewModel: ObservableObject {
                 )
         )
         
-        var fosforicoResponse = configuration.fosforico
+        var fosforicoResponse = dataManager.fosforico
         fosforico = Acido(
             bioteksa:
                 AcidoInfo(
@@ -186,7 +185,7 @@ class CalculadoraViewModel: ObservableObject {
     func operationHML(pesoEspe: String, densidad: String, riqueza: String) -> Double {
         let result = HCO3ToNeutralize * (Double(pesoEspe) ?? 0.0)
         let result1  = result  * 1 / (Double(densidad) ?? 0.0)
-        var result2 = result1 * 100 / (Double(riqueza) ?? 0.0) * 0.001
+        let result2 = result1 * 100 / (Double(riqueza) ?? 0.0) * 0.001
         
         return result2
     }
@@ -243,16 +242,15 @@ class CalculadoraViewModel: ObservableObject {
     
     
     func getOperationNecessary() {
-        var milEquivalente = miliEq
         var index = 0
         var result = 0.0
-        necessaryModel = milEquivalente.map({ necessaries in
+        necessaryModel = miliEq.map({ necessaries in
             var necessaries = necessaries
             if index == 5 {
                 HCO3ToNeutralize = HCO3ToNeutralize.rounded(toRounded: 3)
-                result =  (Double(necessaries.valueMole) ?? 0.0) - (Double(aguaModel[index].valueMole) ?? 0.0) - HCO3ToNeutralize
+                result =  necessaries.valueMole - aguaModel[index].valueMole - HCO3ToNeutralize
             } else {
-                result = ( Double(necessaries.valueMole) ?? 0.0 ) - (Double(aguaModel[index].valueMole) ?? 0.0)
+                result = necessaries.valueMole - aguaModel[index].valueMole
             }
             result = result.rounded(toRounded: 3)
             necessaries.valueMole = result

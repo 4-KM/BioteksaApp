@@ -11,6 +11,11 @@ import Networking
 public struct Nutrient: Codable {
     public var nutrient_id: Int
     public var quantity: Double
+    
+    public init(nutrient_id: Int, quantity: Double) {
+        self.nutrient_id = nutrient_id
+        self.quantity = quantity
+    }
 }
 
 public typealias Bioteksa = [String: [Nutrient]]
@@ -20,13 +25,32 @@ public struct ConvertionNutrient: Codable {
     public var nutrient_id: Int
     public var bioteksa: Double
     public var soluble: Double
+    
+    public init(id: Int, nutrient_id: Int, bioteksa: Double, soluble: Double) {
+        self.id = id
+        self.nutrient_id = nutrient_id
+        self.bioteksa = bioteksa
+        self.soluble = soluble
+    }
 }
 
 public struct ProductComparison: Codable {
     public struct Comparison: Codable {
         public var bioteksa: Double
         public var greenHow: Double
+        
+        public init(bioteksa: Double, greenHow: Double) {
+            self.bioteksa = bioteksa
+            self.greenHow = greenHow
+        }
     }
+    
+    public init(peso_especifico: Comparison, densidad: Comparison, riqueza: Comparison) {
+        self.peso_especifico = peso_especifico
+        self.densidad = densidad
+        self.riqueza = riqueza
+    }
+    
     public var peso_especifico: Comparison
     public var densidad: Comparison
     public var riqueza: Comparison
