@@ -9,37 +9,34 @@ import Dependencies
 import Foundation
 import SwiftUI
 
-
-
 class AcidosViewModel: ObservableObject {
-    
-    @Published var sulfurico: AcidoModel = AcidoModel(pesoEspecifico: AcidoInfo(bioteksa: "0", otros: "0"), densidad: AcidoInfo(bioteksa: "0", otros: "0"), riqueza: AcidoInfo(bioteksa: "0", otros: "0"))
-    @Published var nitrico: AcidoModel = AcidoModel(pesoEspecifico: AcidoInfo(bioteksa: "0", otros: "0"), densidad: AcidoInfo(bioteksa: "0", otros: "0"), riqueza: AcidoInfo(bioteksa: "0", otros: "0"))
-    @Published var fosforico: AcidoModel = AcidoModel(pesoEspecifico: AcidoInfo(bioteksa: "0", otros: "0"), densidad: AcidoInfo(bioteksa: "0", otros: "0"), riqueza: AcidoInfo(bioteksa: "0", otros: "0"))
+    @Dependency(\.apiManager) var apiManager
+
+    @Published var sulfurico: AcidoModel!
+    @Published var nitrico: AcidoModel!
+    @Published var fosforico: AcidoModel!
     
     init() {
-        guard let configuration = GetConfigurationResponse.fetchLocalConfiguration() else { return }
-        let sulfuricoResponse = configuration.sulfurico
-        sulfurico = AcidoModel(
-            pesoEspecifico: AcidoInfo(bioteksa: String(sulfuricoResponse.peso_especifico.bioteksa), otros: String(sulfuricoResponse.peso_especifico.greenHow)),
-            densidad: AcidoInfo(bioteksa: String(sulfuricoResponse.densidad.bioteksa), otros: String(sulfuricoResponse.densidad.greenHow)),
-            riqueza: AcidoInfo(bioteksa: String(sulfuricoResponse.riqueza.bioteksa), otros: String(sulfuricoResponse.riqueza.greenHow))
-        )
+        @Dependency(\.dataManager) var dataManager
+        sulfurico = AcidoModel(productComparison: dataManager.sulfurico)
+        nitrico = AcidoModel(productComparison: dataManager.nitrico)
+        fosforico = AcidoModel(productComparison: dataManager.fosforico)
+    }
+    
+    func update() async {
+        let sulfurico = ProductComparison(acido: sulfurico)
+        let nitrico = ProductComparison(acido: nitrico)
+        let fosforico = ProductComparison(acido: fosforico)
         
-        let nitricoResponse = configuration.nitrico
-        nitrico = AcidoModel(
-            pesoEspecifico: AcidoInfo(bioteksa: String(nitricoResponse.peso_especifico.bioteksa), otros: String(nitricoResponse.peso_especifico.greenHow)),
-            densidad: AcidoInfo(bioteksa: String(nitricoResponse.densidad.bioteksa), otros: String(nitricoResponse.densidad.greenHow)),
-            riqueza: AcidoInfo(bioteksa: String(nitricoResponse.riqueza.bioteksa), otros: String(nitricoResponse.riqueza.greenHow))
+        let config = SetConfigurationParams(
+            nitrico: nitrico,
+            sulfurico: sulfurico,
+            fosforico: fosforico
         )
-        
-        let fosforicoResponse = configuration.fosforico
-        fosforico = AcidoModel(
-            pesoEspecifico: AcidoInfo(bioteksa: String(fosforicoResponse.peso_especifico.bioteksa), otros: String(fosforicoResponse.peso_especifico.greenHow)),
-            densidad: AcidoInfo(bioteksa: String(fosforicoResponse.densidad.bioteksa), otros: String(fosforicoResponse.densidad.greenHow)),
-            riqueza: AcidoInfo(bioteksa: String(fosforicoResponse.riqueza.bioteksa), otros: String(fosforicoResponse.riqueza.greenHow))
-        )
+        do {
+            try await apiManager.fetch(SetConfiguration(configuration: config))
+        } catch {
+            
+        }
     }
 }
-
-

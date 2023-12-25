@@ -12,15 +12,13 @@ import Dependencies
 import BioteksaAPI
 import SwiftUI
 
-
 class ConvertionViewModel: ObservableObject {
-    
-    @Published var convertion : [ConvertionNutrient] = [ConvertionNutrient(id: 1, nutrient_id: 1, bioteksa: "0.0", soluble: "0.0")]
+
+    @Published var convertion : [ConvertionNutrient]
     
     init() {
-        guard let configuration = GetConfigurationResponse.fetchLocalConfiguration() else { return }
-        let convertionResponse = configuration.convertion
-        convertion = convertionResponse.map({ respons in
+        @Dependency(\.dataManager) var dataManager
+        convertion = dataManager.convertion.map({ respons in
             ConvertionNutrient(id: respons.id, nutrient_id: respons.nutrient_id, bioteksa: "\(respons.bioteksa)", soluble: "\(respons.soluble)")
         })
     }

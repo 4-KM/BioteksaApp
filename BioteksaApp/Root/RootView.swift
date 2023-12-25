@@ -18,19 +18,26 @@ struct RootView: View {
             case .login:
                 LoginView(
                     viewModel: LoginViewModel {
-                        viewModel.getSessionState()
+                        Task {
+                            await viewModel.getSessionState()
+                        }
                     }
                 )
             case .loggedIn:
                 TabBarView(
                     viewModel: TabbarViewModel {
-                        viewModel.getSessionState()
+                        Task {
+                            await viewModel.getSessionState()
+                        }
                     }
                 )
             }
         }
         .task {
-            viewModel.getSessionState()
+            Task {
+                await viewModel.getSessionState()
+
+            }
         }
     }
 }

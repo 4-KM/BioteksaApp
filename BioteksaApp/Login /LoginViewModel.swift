@@ -17,9 +17,9 @@ enum LoginKeys: String, StorageKey {
 class LoginViewModel: ObservableObject {
 	
 	@Dependency(\.apiManager) var apiManager
-	@Dependency(\.userDefaults) var userDefaults
 	
 	var onSuccessfulLogin: () -> Void
+    
 	@Published var isLogged = true
 	@Published var username: String = ""
 	@Published var password: String = ""
@@ -32,11 +32,6 @@ class LoginViewModel: ObservableObject {
 	func login() async {
 		do {
 			try await apiManager.login(email: username, password: password)
-			let configuration = try await apiManager.fetch(GetConfiguration())
-			try userDefaults.set(
-				JSONEncoder().encode(configuration),
-				forKey: LoginKeys.configuration
-			)
 			onSuccessfulLogin()
 		} catch {
 			print("error 🔴", error)
