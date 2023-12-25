@@ -26,22 +26,31 @@ struct TabBarView: View {
             .padding()
             .background(Color.blue)
             TabView {
-                AcidosView()
-                    .tabItem {
-                        Label("Acidos", systemImage: "flask")
+                ForEach(Array(viewModel.tabs.enumerated()), id: \.offset) { _, tab in
+                    switch tab {
+                    case .acidos(let viewModel):
+                        AcidosView(viewModel: viewModel)
+                            .tabItem {
+                                Label(tab.title, systemImage: tab.image)
+                            }
+                    case .nutrientes(let viewModel):
+                        NutrientesView(viewModel: viewModel)
+                            .tabItem {
+                                Label(tab.title, systemImage: tab.image)
+                            }
+                    case .convertion(let viewModel):
+                        ConvertionView(viewModel: viewModel)
+                            .tabItem {
+                                Label(tab.title, systemImage: tab.image)
+                            }
+                    case .calculadora(let viewModel):
+                        CalculadoraView(viewModel: viewModel)
+                            .tabItem {
+                                Label(tab.title, systemImage: tab.image)
+                            }
                     }
-                NutrientesTabBar()
-                    .tabItem {
-                        Label("Nutrientes", systemImage: "circle.hexagongrid")
-                    }
-                ConvertionView()
-                    .tabItem {
-                        Label("Converción", systemImage: "rectangle.2.swap")
-                    }
-                Calculadora()
-                    .tabItem {
-                        Label("Calculadora", systemImage: "minus.forwardslash.plus")
-                    }
+                }
+                
             }
         }
     }

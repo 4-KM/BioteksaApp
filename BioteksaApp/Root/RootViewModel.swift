@@ -24,8 +24,8 @@ class RootViewModel: ObservableObject {
 	
 	func getSessionState() async {
 		if apiManager.isLogged {
-			activeView = .loggedIn
             await load()
+			activeView = .loggedIn
 		} else {
 			activeView = .login
 		}

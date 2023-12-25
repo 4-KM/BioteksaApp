@@ -114,7 +114,7 @@ class CalculadoraViewModel: ObservableObject {
     init() {
         @Dependency(\.dataManager) var dataManager
 
-        var sulfuricoResponse = dataManager.sulfurico
+        let sulfuricoResponse = dataManager.sulfurico
         sulfurico = Acido(
             bioteksa:
                 AcidoInfo(
@@ -136,7 +136,7 @@ class CalculadoraViewModel: ObservableObject {
                 )
         )
         
-        var nitricoResponse = dataManager.nitrico
+        let nitricoResponse = dataManager.nitrico
         nitrico = Acido(
             bioteksa:
                 AcidoInfo(
@@ -158,7 +158,7 @@ class CalculadoraViewModel: ObservableObject {
                 )
         )
         
-        var fosforicoResponse = dataManager.fosforico
+        let fosforicoResponse = dataManager.fosforico
         fosforico = Acido(
             bioteksa:
                 AcidoInfo(

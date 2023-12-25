@@ -7,27 +7,27 @@
 
 import SwiftUI
 
-struct Calculadora: View {
+struct CalculadoraView: View {
     
-    @ObservedObject var calculadoraVM: CalculadoraViewModel = CalculadoraViewModel()
+    @ObservedObject var viewModel: CalculadoraViewModel
    
     var body: some View {
         NavigationView {
             Page {
-                elementTable(title: "Agua", arrValues: $calculadoraVM.aguaModel)
-                elementTable(title: "Milequivalentes requeridos por el cultivo", arrValues: $calculadoraVM.miliEq)
+                elementTable(title: "Agua", arrValues: $viewModel.aguaModel)
+                elementTable(title: "Milequivalentes requeridos por el cultivo", arrValues: $viewModel.miliEq)
                 hcoTable()
                 BioteksaButton(title: "Calcular") {
-                    calculadoraVM.isReadyToEvaluate = true
-                    calculadoraVM.calculator()
+                    viewModel.isReadyToEvaluate = true
+                    viewModel.calculator()
                 }
                 nutrientsTable()
                 solucionMadreTable()
             }
-            .onChange(of: calculadoraVM.aguaModel) {  newValue in
-                calculadoraVM.calculator()
-            }.onChange(of: calculadoraVM.miliEq) {  newValue in
-                calculadoraVM.calculator()
+            .onChange(of: viewModel.aguaModel) {  newValue in
+                viewModel.calculator()
+            }.onChange(of: viewModel.miliEq) {  newValue in
+                viewModel.calculator()
             }
         }
     }
@@ -53,7 +53,7 @@ struct Calculadora: View {
     @ViewBuilder func hcoTable() -> some View {
         VStack() {
             TableContainer(title: "HCO3 a neutralizar", backgroundColor: .blue) {
-                Picker(selection: $calculadoraVM.selectedAcid) {
+                Picker(selection: $viewModel.selectedAcid) {
                     Text("Sulfurico").tag(0)
                     Text("Nitrico").tag(1)
                     Text("Fosforico").tag(2)
@@ -64,29 +64,29 @@ struct Calculadora: View {
 
                 HStack(alignment: .center) {
                     Text("HCO3")
-                    BioteksaNumberTextField(title: "HCO3", value: $calculadoraVM.HCO3ToNeutralize)
+                    BioteksaNumberTextField(title: "HCO3", value: $viewModel.HCO3ToNeutralize)
                 }
             }
         }
     }
     
     @ViewBuilder func nutrientsTable() -> some View {
-        if calculadoraVM.showNutrientsViews {
-            elementTable(title: "Necesario", arrValues: $calculadoraVM.necessaryModel)
+        if viewModel.showNutrientsViews {
+            elementTable(title: "Necesario", arrValues: $viewModel.necessaryModel)
             
-            CalculatorAcidoView(title: "Acido sulfurico",viewModel: calculadoraVM, values: $calculadoraVM.sulfurico)
+            CalculatorAcidoView(title: "Acido sulfurico",viewModel: viewModel, values: $viewModel.sulfurico)
             
-            CalculatorAcidoView(title: "Acido Nitrico",viewModel: calculadoraVM, values: $calculadoraVM.nitrico)
+            CalculatorAcidoView(title: "Acido Nitrico",viewModel: viewModel, values: $viewModel.nitrico)
             
-            CalculatorAcidoView(title: "Acido Fosforico",viewModel: calculadoraVM, values: $calculadoraVM.fosforico)
+            CalculatorAcidoView(title: "Acido Fosforico",viewModel: viewModel, values: $viewModel.fosforico)
         } else {
             EmptyView()
         }
     }
     
     @ViewBuilder func solucionMadreTable() -> some View {
-        if calculadoraVM.showBtnSolucionMadre {
-            NavigationLink(destination: VolumenDeRiegoView(volumentVM: VolumenDeriegoViewmodel(products: calculadoraVM.miliEq) )) {
+        if viewModel.showBtnSolucionMadre {
+            NavigationLink(destination: VolumenDeRiegoView(volumentVM: VolumenDeriegoViewmodel(products: viewModel.miliEq) )) {
                 Text("VOLUMEN DE RIEGO M3")
                     .frame(width: 350, height: 50, alignment: .center)
                     .foregroundColor(.black)
@@ -105,6 +105,6 @@ struct Calculadora: View {
                     
 struct Calculadora_Previews: PreviewProvider {
     static var previews: some View {
-        Calculadora()
+        CalculadoraView(viewModel: CalculadoraViewModel())
     }
 }

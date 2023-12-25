@@ -9,28 +9,24 @@ import SwiftUI
 import Foundation
 import UIKit
 
-struct NutrientesTabBar: View {
-    @State var texto: String = ""
-    @ObservedObject var viewModel: NutrientesViewModel = NutrientesViewModel()
+struct NutrientesView: View {
+    @ObservedObject var viewModel: NutrientesViewModel
 
     var body: some View {
         Page {
-            ForEach(viewModel.response) { bioteksa in
-                NutrientesBasicView(bioteksa: bioteksa)
+            ForEach($viewModel.response) { $bioteksa in
+                NutrientesBasicView(bioteksa: $bioteksa)
             }
             BioteksaButton(title: "Actualizar") {
-                print(viewModel.response)
+                await viewModel.update()
             }
         }
     }
-    
 }
-
-
 
 struct NutrientesTabBar_Previews: PreviewProvider {
     static var previews: some View {
-        NutrientesTabBar()
+        NutrientesView(viewModel: NutrientesViewModel())
     }
 }
 

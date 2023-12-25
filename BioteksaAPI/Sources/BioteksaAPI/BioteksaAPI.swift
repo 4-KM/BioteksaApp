@@ -11,8 +11,8 @@ import Networking
 // MARK: - PharmacyRepository
 
 public enum BioteksaServer {
-    static let test = "https://bioteksa.anuncia.space/api"
-    static let prod = "https://phplaravel-1083716-3910861.cloudwaysapps.com/api"
+    static let test = "https://phplaravel-1083716-3910861.cloudwaysapps.com/api"
+    static let prod = "https://bioteksa.anuncia.space/api"
     static let mock = "https://phplaravel-1083716-3910861.cloudwaysapps.com/api"
 }
 
@@ -20,6 +20,7 @@ private class BioteksaAuthProvider: AuthenticationProvider {
     
     enum TokenStorageKey: String, StorageKey {
         case token
+        case rol
     }
     
     @Dependency(\.userDefaults) var userDefaults
@@ -34,6 +35,14 @@ private class BioteksaAuthProvider: AuthenticationProvider {
         }
     }
     
+    var rol: Int? {
+        get {
+            userDefaults.value(forKey: TokenStorageKey.rol) as? Int
+        }
+        set {
+            userDefaults.set(newValue, forKey: TokenStorageKey.rol)
+        }
+    }
 }
 
 public protocol BioteksaAPIManager: APIManager {
@@ -44,7 +53,7 @@ public protocol BioteksaAPIManager: APIManager {
 
 public class LiveBioteksaAPI: BioteksaAPIManager {
     public var authProvider: AuthenticationProvider? = BioteksaAuthProvider()
-    public var domain: String = BioteksaServer.prod
+    public var domain: String = BioteksaServer.test
     
 	public var isLogged: Bool {
 		authProvider?.token != nil
@@ -53,6 +62,7 @@ public class LiveBioteksaAPI: BioteksaAPIManager {
     public func login(email: String, password: String) async throws {
         let response = try await fetch(Login(email: email, password: password))
         authProvider?.token = response.token
+        authProvider?.rol = response.user.rol
     }
     
     public func logout() async throws {

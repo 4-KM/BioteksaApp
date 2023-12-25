@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AcidosView: View {
     
-    @ObservedObject var viewModel: AcidosViewModel = AcidosViewModel()
+    @ObservedObject var viewModel: AcidosViewModel
     
     var body: some View {
         Page {
@@ -18,9 +18,7 @@ struct AcidosView: View {
                 AcidosContainer(acidTitle: "Acido Nitrico", model: $viewModel.nitrico)
                 AcidosContainer(acidTitle: "Acido Fosforico", model: $viewModel.fosforico)
                 BioteksaButton(title: "Actualizar") {
-                    Task {
-                        await viewModel.update()
-                    }
+                    await viewModel.update()
                 }
             }
         }
@@ -30,7 +28,7 @@ struct AcidosView: View {
 
 struct AcidosTabBar_Previews: PreviewProvider {
     static var previews: some View {
-        AcidosView()
+        AcidosView(viewModel: AcidosViewModel())
     }
 }
 

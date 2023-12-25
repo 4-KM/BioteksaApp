@@ -14,7 +14,7 @@ struct BioteksaTextField: View {
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             TextField(title, text: $text)
-                .frame(height: 40)
+                .padding(8)
                 .background(Color(red: 0, green: 0, blue: 0, opacity: 0.05))
             Divider()
                 .background(Color.gray)
@@ -25,12 +25,20 @@ struct BioteksaTextField: View {
 struct BioteksaNumberTextField: View {
     var title: LocalizedStringKey
     @Binding var value: Double
+
+    private let formatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 3
+        return formatter
+    }()
     
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
-            TextField(title, value: $value, format: .number)
+            TextField(title, value: $value, formatter: formatter)
                 .padding(8)
                 .background(Color(red: 0, green: 0, blue: 0, opacity: 0.05))
+                .keyboardType(.decimalPad)
             Divider()
                 .background(Color.gray)
         }
