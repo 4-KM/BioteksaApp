@@ -26,7 +26,8 @@ private class BioteksaAuthProvider: AuthenticationProvider {
     
     var token: String? {
         get {
-            "Bearer " + (userDefaults.value(forKey: TokenStorageKey.token) as? String ?? "")
+            guard let token = userDefaults.value(forKey: TokenStorageKey.token) as? String else { return nil }
+            return "Bearer " + token
         }
         set {
             userDefaults.set(newValue, forKey: TokenStorageKey.token)
@@ -36,16 +37,26 @@ private class BioteksaAuthProvider: AuthenticationProvider {
 }
 
 public protocol BioteksaAPIManager: APIManager {
+	var isLogged: Bool { get }
     func login(email: String, password: String) async throws
+    func logout() async throws
 }
 
 public class LiveBioteksaAPI: BioteksaAPIManager {
     public var authProvider: AuthenticationProvider? = BioteksaAuthProvider()
     public var domain: String = BioteksaServer.prod
     
+	public var isLogged: Bool {
+		authProvider?.token != nil
+	}
+    
     public func login(email: String, password: String) async throws {
         let response = try await fetch(Login(email: email, password: password))
         authProvider?.token = response.token
+    }
+    
+    public func logout() async throws {
+        authProvider?.token = nil
     }
 }
 
@@ -53,17 +64,26 @@ public class TestBioteksaAPI: BioteksaAPIManager {
     public var authProvider: AuthenticationProvider?
     
     public var domain: String = BioteksaServer.test
-    
+	public var isLogged: Bool = false
     public func login(email: String, password: String) async throws {
         
+    }
+    
+    public func logout() async throws {
+        authProvider?.token = nil
     }
 }
 
 public class MockBioteksaAPI: BioteksaAPIManager {
     public var authProvider: AuthenticationProvider?
     public var domain: String = BioteksaServer.mock
-    
+	public var isLogged: Bool = true
+	
     public func login(email: String, password: String) async throws {
         
+    }
+    
+    public func logout() async throws {
+        authProvider?.token = nil
     }
 }
