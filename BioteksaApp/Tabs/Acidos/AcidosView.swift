@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AcidosView: View {
     
-    @ObservedObject var viewModel: AcidosViewModel = AcidosViewModel()
+    @ObservedObject var viewModel: AcidosViewModel
     
     var body: some View {
         Page {
@@ -28,7 +28,7 @@ struct AcidosView: View {
 
 struct AcidosTabBar_Previews: PreviewProvider {
     static var previews: some View {
-        AcidosView()
+        AcidosView(viewModel: AcidosViewModel())
     }
 }
 

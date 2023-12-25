@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ConvertionView: View {
-    @ObservedObject var viewModel = ConvertionViewModel()
+    @ObservedObject var viewModel: ConvertionViewModel
 
     var body: some View {
         Page {
@@ -70,6 +70,6 @@ struct ConversionSubHeaders: View {
 
 struct ConverciónTabBar_Previews: PreviewProvider {
     static var previews: some View {
-        ConvertionView()
+        ConvertionView(viewModel: ConvertionViewModel())
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 struct NutrientesView: View {
-    @ObservedObject var viewModel: NutrientesViewModel = NutrientesViewModel()
+    @ObservedObject var viewModel: NutrientesViewModel
 
     var body: some View {
         Page {
@@ -26,7 +26,7 @@ struct NutrientesView: View {
 
 struct NutrientesTabBar_Previews: PreviewProvider {
     static var previews: some View {
-        NutrientesView()
+        NutrientesView(viewModel: NutrientesViewModel())
     }
 }
 

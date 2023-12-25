@@ -43,8 +43,7 @@ public extension APIManager {
             request.httpBody = body
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         }
-        
-        
+
         let response = try await URLSession.shared.data(for: request)
         return try endpoint.decode(response.0)
     }

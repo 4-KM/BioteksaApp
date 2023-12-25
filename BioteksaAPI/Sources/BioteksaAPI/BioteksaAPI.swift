@@ -20,6 +20,7 @@ private class BioteksaAuthProvider: AuthenticationProvider {
     
     enum TokenStorageKey: String, StorageKey {
         case token
+        case rol
     }
     
     @Dependency(\.userDefaults) var userDefaults
@@ -34,6 +35,14 @@ private class BioteksaAuthProvider: AuthenticationProvider {
         }
     }
     
+    var rol: Int? {
+        get {
+            userDefaults.value(forKey: TokenStorageKey.rol) as? Int
+        }
+        set {
+            userDefaults.set(newValue, forKey: TokenStorageKey.rol)
+        }
+    }
 }
 
 public protocol BioteksaAPIManager: APIManager {
@@ -53,6 +62,7 @@ public class LiveBioteksaAPI: BioteksaAPIManager {
     public func login(email: String, password: String) async throws {
         let response = try await fetch(Login(email: email, password: password))
         authProvider?.token = response.token
+        authProvider?.rol = response.user.rol
     }
     
     public func logout() async throws {

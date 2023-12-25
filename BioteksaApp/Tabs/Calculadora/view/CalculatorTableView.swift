@@ -17,7 +17,7 @@ struct CalculatorTableView: View {
         HStack(spacing: 0) {
             
             VStack( spacing: 0) {
-                ForEach( acidosCalculator, id: \.self){ acido in
+                ForEach(acidosCalculator, id: \.self) { acido in
                     TitlesView(title: acido.name, colorText: acido.textColor, colorCell: acido.rowColor)
                 }
             }.frame(maxWidth: .infinity).padding(.bottom)

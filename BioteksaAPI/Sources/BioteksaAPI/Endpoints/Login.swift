@@ -14,8 +14,13 @@ public struct Login: RestEndpoint {
         var password: String
     }
     
+    public struct User: Codable {
+        var rol: Int
+    }
+    
     public struct LoginResponse: Codable {
         public var success: Bool
+        public var user: User
         public var token: String?
         public var error: [String]?
     }
