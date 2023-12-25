@@ -11,7 +11,7 @@ struct TabBarView: View {
     @ObservedObject var viewModel: TabbarViewModel
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             HStack {
                 Spacer()
                 Button(action: {

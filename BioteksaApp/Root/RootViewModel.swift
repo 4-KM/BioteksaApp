@@ -11,13 +11,14 @@ import Foundation
 @MainActor 
 class RootViewModel: ObservableObject {
 	enum ActiveView {
+        case splash
 		case login
 		case loggedIn
 	}
 	
 	@Dependency(\.apiManager) var apiManager
 
-	@Published var activeView: ActiveView = .login
+	@Published var activeView: ActiveView = .splash
 	
 	func getSessionState() {
 		if apiManager.isLogged {
