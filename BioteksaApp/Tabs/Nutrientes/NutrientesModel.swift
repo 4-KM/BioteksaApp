@@ -10,7 +10,7 @@ import Foundation
 struct NutrientElement: Identifiable{
     let id = UUID()
     public var nutrient_id: Int
-    public var quantity: String
+    public var quantity: Double
     var name: String {
         get {
             return ElementsNames(rawValue: nutrient_id)?.name ?? ""

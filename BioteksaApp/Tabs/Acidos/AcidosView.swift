@@ -18,9 +18,7 @@ struct AcidosView: View {
                 AcidosContainer(acidTitle: "Acido Nitrico", model: $viewModel.nitrico)
                 AcidosContainer(acidTitle: "Acido Fosforico", model: $viewModel.fosforico)
                 BioteksaButton(title: "Actualizar") {
-                    Task {
-                        await viewModel.update()
-                    }
+                    await viewModel.update()
                 }
             }
         }

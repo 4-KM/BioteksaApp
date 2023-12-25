@@ -30,7 +30,7 @@ struct TabBarView: View {
                     .tabItem {
                         Label("Acidos", systemImage: "flask")
                     }
-                NutrientesTabBar()
+                NutrientesView()
                     .tabItem {
                         Label("Nutrientes", systemImage: "circle.hexagongrid")
                     }

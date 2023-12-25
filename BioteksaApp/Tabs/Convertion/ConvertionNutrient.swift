@@ -8,11 +8,11 @@
 import Foundation
 
 
-struct ConvertionNutrient: Hashable{
+struct ConvertionNutrient: Hashable {
     let id: Int
     let nutrient_id: Int
-    var bioteksa : String
-    var soluble: String
+    var bioteksa : Double
+    var soluble: Double
     var name: String {
         get {
             return ElementsNames(rawValue: nutrient_id)?.name ?? ""

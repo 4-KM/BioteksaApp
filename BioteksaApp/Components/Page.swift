@@ -22,6 +22,9 @@ struct Page<Content: View>: View {
             .padding()
         }
         .background(Color(red: 0.681, green: 0.695, blue: 1.000))
+        .onTapGesture {
+            hideKeyboard()
+        }
     }
 }
 

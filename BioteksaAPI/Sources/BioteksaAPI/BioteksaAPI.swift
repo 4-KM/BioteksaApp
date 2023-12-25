@@ -11,8 +11,8 @@ import Networking
 // MARK: - PharmacyRepository
 
 public enum BioteksaServer {
-    static let test = "https://bioteksa.anuncia.space/api"
-    static let prod = "https://phplaravel-1083716-3910861.cloudwaysapps.com/api"
+    static let test = "https://phplaravel-1083716-3910861.cloudwaysapps.com/api"
+    static let prod = "https://bioteksa.anuncia.space/api"
     static let mock = "https://phplaravel-1083716-3910861.cloudwaysapps.com/api"
 }
 
@@ -44,7 +44,7 @@ public protocol BioteksaAPIManager: APIManager {
 
 public class LiveBioteksaAPI: BioteksaAPIManager {
     public var authProvider: AuthenticationProvider? = BioteksaAuthProvider()
-    public var domain: String = BioteksaServer.prod
+    public var domain: String = BioteksaServer.test
     
 	public var isLogged: Bool {
 		authProvider?.token != nil
