@@ -13,12 +13,8 @@ struct VolumenDeRiegoView: View {
    // var productoView: [CalculadoraViewModel.NecesarioCalculator] = []
     @ObservedObject var volumentVM: VolumenDeriegoViewmodel
     
-
-    
     var body: some View {
-        ScrollView {
-            Color(red: 0.681, green: 0.695, blue: 1.000)
-            
+        Page {
             List {
                 HStack() {
                     Text("superficie en m3")
@@ -70,9 +66,6 @@ struct VolumenDeRiegoView: View {
             .cornerRadius(10)
             .frame(width: 350, height: 720, alignment: .center)
         }
-        
-        .background(Color(red: 0.681, green: 0.695, blue: 1.000))
-        
         .onAppear{
             Task{
                     await volumentVM.calculatorM3()
@@ -80,12 +73,3 @@ struct VolumenDeRiegoView: View {
         }
     }
 }
-/*
- #Preview {
- VolumenDeRiegoView()
- }
- */
-
-
-
-

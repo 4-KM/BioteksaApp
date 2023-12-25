@@ -15,22 +15,11 @@ struct CalculatorAcidoView: View {
     @Binding var values: CalculadoraViewModel.Acido
     
     var body: some View {
-        
-        ZStack {
-            VStack(spacing: 0) {
-                
-                Text(title).frame(maxWidth: .infinity, minHeight: 45).background(.green)
-                
-                CalculatorAcidoHeaderView()
-                CalculatorTableView(viewModel: viewModel, valuesAcidoInfo: $values)
-                    .background(.white)
-            }
-            VStack {
-                
-            }
+        TableContainer(title: LocalizedStringKey(title), backgroundColor: .blue) {
+            CalculatorAcidoHeaderView()
+            CalculatorTableView(viewModel: viewModel, valuesAcidoInfo: $values)
+                .background(.white)
         }
-        .cornerRadius(10)
-        .padding()
     }
 }
 
@@ -43,10 +32,6 @@ struct CalculatorAcidoHeaderView: View {
         }.frame(height: 45).background(.white)
     }
 }
-
-
-
-
 
 #Preview {
     HStack {

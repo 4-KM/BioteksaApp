@@ -8,14 +8,10 @@
 import SwiftUI
 
 struct NutrientesBasicView: View {
-    
-    var acidTitle: LocalizedStringKey
     @State var bioteksa : Bioteksa
-    @ObservedObject var model: NutrientesModelView
 
     var body: some View {
-        
-        TableContainer(title: acidTitle, backgroundColor:  Color(red: 0.021, green: 0.286, blue: 0.557)) {
+        TableContainer(title: "\(bioteksa.name)", backgroundColor:  Color(red: 0.021, green: 0.286, blue: 0.557)) {
             VStack{
                 HStack(alignment: .center, spacing: 2){
                     VStack{
@@ -52,5 +48,5 @@ struct NutrientesBasicView: View {
 }
 
 #Preview {
-    NutrientesBasicView(acidTitle: "HBK Plus", bioteksa: Bioteksa(key: "1", value: [NutrientElement(nutrient_id: 1, quantity: "1.0"),NutrientElement(nutrient_id: 2, quantity: "2.0"),NutrientElement(nutrient_id: 3, quantity: "3.0"),NutrientElement(nutrient_id: 4, quantity: "3.0"),NutrientElement(nutrient_id: 5, quantity: "3.0"),NutrientElement(nutrient_id: 6, quantity: "3.0")]), model: NutrientesModelView())
+    NutrientesBasicView(bioteksa: Bioteksa(key: "1", value: [NutrientElement(nutrient_id: 1, quantity: "1.0"),NutrientElement(nutrient_id: 2, quantity: "2.0"),NutrientElement(nutrient_id: 3, quantity: "3.0"),NutrientElement(nutrient_id: 4, quantity: "3.0"),NutrientElement(nutrient_id: 5, quantity: "3.0"),NutrientElement(nutrient_id: 6, quantity: "3.0")]))
 }

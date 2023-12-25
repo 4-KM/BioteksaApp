@@ -47,7 +47,8 @@ class CalculadoraViewModel: ObservableObject {
     @Published var sulfurico: Acido!
     @Published var nitrico: Acido!
     @Published  var fosforico: Acido!
-    
+    @Published var selectedAcid: Int = 0
+
     struct MiliequivalentesRequeridos{
         var textField: MilequivalentesInfo
     }
@@ -63,7 +64,7 @@ class CalculadoraViewModel: ObservableObject {
     
     struct NecesarioCalculator: Hashable {
         var molecula: String
-        var valueMole: String = ""
+        var valueMole: Double = 0.0
         var isCorrect: Bool = true
     }
     
@@ -112,82 +113,73 @@ class CalculadoraViewModel: ObservableObject {
     
     
     init() {
-        @Dependency(\.userDefaults) var UserDefaults
+        guard let configuration = GetConfigurationResponse.fetchLocalConfiguration() else { return }
+
+        var sulfuricoResponse = configuration.sulfurico
+        sulfurico = Acido(
+            bioteksa:
+                AcidoInfo(
+                    pesoEspesifico: String(format:"%.3f", sulfuricoResponse.peso_especifico.bioteksa),
+                    densidad: String(format:"%.3f", sulfuricoResponse.densidad.bioteksa),
+                    riqueza: String(format:"%.3f",sulfuricoResponse.riqueza.bioteksa),
+                    medNeutrailar: "",
+                    HMNOL: "",
+                    HMNOL100: ""
+                ),
+            otros:
+                AcidoInfo(
+                    pesoEspesifico: String(format:"%.3f",sulfuricoResponse.peso_especifico.greenHow),
+                    densidad: String(format:"%.3f",sulfuricoResponse.densidad.greenHow),
+                    riqueza: String(format:"%.3f",sulfuricoResponse.riqueza.greenHow),
+                    medNeutrailar: "",
+                    HMNOL: "",
+                    HMNOL100: ""
+                )
+        )
         
-        if var configurationData = UserDefaults.data(forKey: LoginKeys.configuration), 
-            var configuration = try? JSONDecoder().decode(GetConfigurationResponse.self, from: configurationData) {
-            
-            
-            var sulfuricoResponse = configuration.sulfurico
-            sulfurico = Acido(
-                bioteksa:
-                    AcidoInfo(
-                        pesoEspesifico: String(format:"%.3f", sulfuricoResponse.peso_especifico.bioteksa),
-                        densidad: String(format:"%.3f", sulfuricoResponse.densidad.bioteksa),
-                        riqueza: String(format:"%.3f",sulfuricoResponse.riqueza.bioteksa),
-                        medNeutrailar: "",
-                        HMNOL: "",
-                        HMNOL100: ""
-                    ),
-                otros:
-                    AcidoInfo(
-                        pesoEspesifico: String(format:"%.3f",sulfuricoResponse.peso_especifico.greenHow),
-                        densidad: String(format:"%.3f",sulfuricoResponse.densidad.greenHow),
-                        riqueza: String(format:"%.3f",sulfuricoResponse.riqueza.greenHow),
-                        medNeutrailar: "",
-                        HMNOL: "",
-                        HMNOL100: ""
-                    )
-            )
-            
-            var nitricoResponse = configuration.nitrico
-            nitrico = Acido(
-                bioteksa:
-                    AcidoInfo(
-                        pesoEspesifico: String(format:"%.3f",nitricoResponse.peso_especifico.bioteksa),
-                        densidad: String(format:"%.3f", nitricoResponse.densidad.bioteksa),
-                        riqueza: String(format:"%.3f", nitricoResponse.riqueza.bioteksa),
-                        medNeutrailar: "",
-                        HMNOL: "",
-                        HMNOL100: ""
-                    ),
-                otros:
-                    AcidoInfo(
-                        pesoEspesifico: String(format:"%.3f", nitricoResponse.peso_especifico.greenHow),
-                        densidad: String(format:"%.3f", nitricoResponse.densidad.greenHow),
-                        riqueza: String(format:"%.3f", nitricoResponse.riqueza.greenHow),
-                        medNeutrailar: "",
-                        HMNOL: "",
-                        HMNOL100: ""
-                    )
-            )
-            
-            var fosforicoResponse = configuration.fosforico
-            fosforico = Acido(
-                bioteksa:
-                    AcidoInfo(
-                        pesoEspesifico: String(format:"%.3f", fosforicoResponse.peso_especifico.bioteksa),
-                        densidad: String(format:"%.3f", fosforicoResponse.densidad.bioteksa),
-                        riqueza: String(format:"%.3f", fosforicoResponse.riqueza.bioteksa),
-                        medNeutrailar: "",
-                        HMNOL: "",
-                        HMNOL100: ""
-                    ),
-                otros:
-                    AcidoInfo(
-                        pesoEspesifico: String(format:"%.3f", fosforicoResponse.peso_especifico.greenHow),
-                        densidad: String(format:"%.3f", fosforicoResponse.densidad.greenHow),
-                        riqueza: String(format:"%.3f", fosforicoResponse.riqueza.greenHow),
-                        medNeutrailar: "",
-                        HMNOL: "",
-                        HMNOL100: ""
-                    )
-            )
-            
-            
-            
-        }
+        var nitricoResponse = configuration.nitrico
+        nitrico = Acido(
+            bioteksa:
+                AcidoInfo(
+                    pesoEspesifico: String(format:"%.3f",nitricoResponse.peso_especifico.bioteksa),
+                    densidad: String(format:"%.3f", nitricoResponse.densidad.bioteksa),
+                    riqueza: String(format:"%.3f", nitricoResponse.riqueza.bioteksa),
+                    medNeutrailar: "",
+                    HMNOL: "",
+                    HMNOL100: ""
+                ),
+            otros:
+                AcidoInfo(
+                    pesoEspesifico: String(format:"%.3f", nitricoResponse.peso_especifico.greenHow),
+                    densidad: String(format:"%.3f", nitricoResponse.densidad.greenHow),
+                    riqueza: String(format:"%.3f", nitricoResponse.riqueza.greenHow),
+                    medNeutrailar: "",
+                    HMNOL: "",
+                    HMNOL100: ""
+                )
+        )
         
+        var fosforicoResponse = configuration.fosforico
+        fosforico = Acido(
+            bioteksa:
+                AcidoInfo(
+                    pesoEspesifico: String(format:"%.3f", fosforicoResponse.peso_especifico.bioteksa),
+                    densidad: String(format:"%.3f", fosforicoResponse.densidad.bioteksa),
+                    riqueza: String(format:"%.3f", fosforicoResponse.riqueza.bioteksa),
+                    medNeutrailar: "",
+                    HMNOL: "",
+                    HMNOL100: ""
+                ),
+            otros:
+                AcidoInfo(
+                    pesoEspesifico: String(format:"%.3f", fosforicoResponse.peso_especifico.greenHow),
+                    densidad: String(format:"%.3f", fosforicoResponse.densidad.greenHow),
+                    riqueza: String(format:"%.3f", fosforicoResponse.riqueza.greenHow),
+                    medNeutrailar: "",
+                    HMNOL: "",
+                    HMNOL100: ""
+                )
+        )
 
     }
     
@@ -205,7 +197,7 @@ class CalculadoraViewModel: ObservableObject {
         guard isReadyToEvaluate else { return }
         showBtnSolucionMadre = true
         aguaModel.forEach { molecula in
-            if molecula.valueMole.isEmpty  {
+            if molecula.valueMole == 0  {
                // print("agregar valor a \(molecula.molecula)")
                 aguaModel[index].isCorrect = false
                 hasError = true
@@ -218,7 +210,7 @@ class CalculadoraViewModel: ObservableObject {
         }
         index = 0
         miliEq.forEach { molecula in
-            if molecula.valueMole.isEmpty  {
+            if molecula.valueMole == 0  {
               //  print("agregar valor a \(molecula.molecula)")
                 miliEq[index].isCorrect = false
                 hasError = true
@@ -229,15 +221,15 @@ class CalculadoraViewModel: ObservableObject {
            // print("Termino el proceso 2")
             
         }
-        if let valueHCO3 = Double(aguaModel[6].valueMole), let valueCo3 = Double(aguaModel[7].valueMole) {
-            var result = ((valueHCO3  ) + (valueCo3 * 2)) - 0.500
-            
-            if result < 0.500 {
-                result =  0.0
-            }
-            print("RESULTADO", result)
-            HCO3ToNeutralize = result
+        let valueHCO3 = aguaModel[6].valueMole
+        let valueCo3 = aguaModel[7].valueMole
+        var result = ((valueHCO3  ) + (valueCo3 * 2)) - 0.500
+        
+        if result < 0.500 {
+            result =  0.0
         }
+        print("RESULTADO", result)
+        HCO3ToNeutralize = result
         doOperationRequeriedToAcidos()
         
         if !hasError {
@@ -263,7 +255,7 @@ class CalculadoraViewModel: ObservableObject {
                 result = ( Double(necessaries.valueMole) ?? 0.0 ) - (Double(aguaModel[index].valueMole) ?? 0.0)
             }
             result = result.rounded(toRounded: 3)
-            necessaries.valueMole = String(result)
+            necessaries.valueMole = result
             index += 1
             return necessaries
         })

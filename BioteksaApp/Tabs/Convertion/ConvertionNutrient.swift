@@ -36,7 +36,6 @@ enum ElementosNames: Int{
         case .CALCIO: return "CALCIO"
         case .MAGNECIO: return "MAGNECIO"
         case .AZUFRE: return "AZUFRE"
-        default: return "other"
         }
     }
 }

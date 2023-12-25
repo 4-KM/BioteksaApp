@@ -13,9 +13,6 @@ struct TabBarView: View {
     var body: some View {
         VStack {
             HStack {
-                VStack(alignment: .center, content: {
-                    Text("Calculadora")
-                })
                 Spacer()
                 Button(action: {
                     Task {
@@ -23,19 +20,21 @@ struct TabBarView: View {
                     }
                 }, label: {
                     Image(systemName: "rectangle.portrait.and.arrow.right.fill")
+                        .foregroundColor(.white)
                 })
             }
+            .padding()
+            .background(Color.blue)
             TabView {
-                AcidosTabBar()
+                AcidosView()
                     .tabItem {
-                        Image(systemName:"flask")
-                        Text("Acidos")
+                        Label("Acidos", systemImage: "flask")
                     }
                 NutrientesTabBar()
                     .tabItem {
                         Label("Nutrientes", systemImage: "circle.hexagongrid")
                     }
-                ConvercionTabBar()
+                ConvertionView()
                     .tabItem {
                         Label("Converción", systemImage: "rectangle.2.swap")
                     }
@@ -48,11 +47,8 @@ struct TabBarView: View {
     }
 }
 
-struct TabBarbioteksa_Previews: PreviewProvider {
-    static var previews: some View {
-        TabBarView(viewModel: TabbarViewModel(onLogout: {
-            
-        }))
-    }
+#Preview {
+    TabBarView(viewModel: TabbarViewModel(onLogout: {
+        
+    }))
 }
-

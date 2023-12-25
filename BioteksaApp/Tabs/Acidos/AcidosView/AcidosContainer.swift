@@ -7,29 +7,25 @@
 
 import SwiftUI
 
-struct BioteksaAcidosView: View {
+struct AcidosContainer: View {
     var acidTitle: LocalizedStringKey
     var acidoSelect : Acidos
     @ObservedObject var viewModel : AcidosViewModel
 
     var body: some View {
-        ZStack() {
+        TableContainer(title: acidTitle, backgroundColor:  Color(red: 0.757, green: 0.916, blue: 0.025)) {
+            BioteksaAcidosHeader()
             HStack{
-                TableContainer(title: acidTitle, backgroundColor:  Color(red: 0.757, green: 0.916, blue: 0.025)) {
-                    BioteksaAcidosHeader()
-                    HStack{
-                        switch acidoSelect {
-                        case .AcidoSulfurico:
-                            AcidoSulforicoView(viewModel: viewModel)
-                        case .AcidoNitrico:
-                            AcidoNitricoView(viewModel: viewModel)
-                        case .AcidoFosforico:
-                            AcidoFosforicoView(viewModel: viewModel)
-                        }
-                    }
-                    .background(Color(red: 0.997, green: 0.970, blue: 0.848))
+                switch acidoSelect {
+                case .AcidoSulfurico:
+                    AcidoSulforicoView(viewModel: viewModel)
+                case .AcidoNitrico:
+                    AcidoNitricoView(viewModel: viewModel)
+                case .AcidoFosforico:
+                    AcidoFosforicoView(viewModel: viewModel)
                 }
             }
+            .background(Color(red: 0.997, green: 0.970, blue: 0.848))
         }
     }
 }
@@ -75,5 +71,5 @@ struct BioteksaAcidosSubView: View {
 }
 
 #Preview {
-    BioteksaAcidosView(acidTitle: "Acido Sulforico", acidoSelect: .AcidoSulfurico, viewModel: AcidosViewModel())
+    AcidosContainer(acidTitle: "Acido Sulforico", acidoSelect: .AcidoSulfurico, viewModel: AcidosViewModel())
 }

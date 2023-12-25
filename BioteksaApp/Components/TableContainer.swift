@@ -24,7 +24,6 @@ struct TableContainer<Content: View>: View {
         }
         .background(Color.white)
         .clipShape(RoundedRectangle(cornerSize: CGSize(width: 10, height: 10)))
-        .padding()
     }
 }
 

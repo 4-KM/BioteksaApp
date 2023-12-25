@@ -40,7 +40,6 @@ class VolumenDeriegoViewmodel: ObservableObject {
         } catch {
             print("Error calculator" , error)
         }
-        
     }
     
     func multiplyForInput(response: Calculate.CalculateResponse)  {
@@ -49,6 +48,5 @@ class VolumenDeriegoViewmodel: ObservableObject {
             arrayCalculo[index - 1].valueProduct = String(((response.recommended["\(index)"] ?? 0.0) * m3Multiply).rounded(toRounded: 3) )
             index += 1
         }
-
     }
 }

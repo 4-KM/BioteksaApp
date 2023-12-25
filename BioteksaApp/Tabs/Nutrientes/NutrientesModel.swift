@@ -46,7 +46,6 @@ enum BioteksaNames: String{
         case .ULTRA_CA: return "ULTRA CA"
         case .ULTRA_MG: return "ULTRA MG"
         case .HYPER_MN: return "ULTRA MN"
-        default: return "other"
         }
     }
 }
@@ -66,7 +65,6 @@ enum ElementsNames: Int{
         case .CA: return "CA"
         case .MG: return "MG"
         case .S: return "S"
-        default: return "other"
         }
     }
 }
