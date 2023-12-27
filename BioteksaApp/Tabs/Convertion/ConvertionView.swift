@@ -12,7 +12,7 @@ struct ConvertionView: View {
 
     var body: some View {
         Page {
-            TableContainer(title: "Tabla De Conversión", backgroundColor:  Color(red: 0.021, green: 0.286, blue: 0.557)) {
+            TableContainer(title: "Tabla De Conversión", backgroundColor:  Color.anatomy.bgTitleBlue) {
                 ConversionSubHeaders()
                 HStack {
                     BioteksaAcidosText(title: viewModel.convertion[0].name)
@@ -63,8 +63,8 @@ struct ConversionSubHeaders: View {
                 .frame(maxWidth: .infinity)
         }
         .frame(height: 100)
-        .foregroundColor (.white)
-        .background (Color (red: 0.021, green: 0.286, blue: 0.557))
+        .foregroundColor(.white)
+        .background(Color.anatomy.bgTitleBlue)
     }
 }
 

@@ -35,42 +35,42 @@ struct textFieldScreams: View {
                         // Rectangle()
                         TextField("", text: $valorComparativoBioteksa)
                             .keyboardType(.decimalPad)
-                            .background(Color(red: 0.949, green: 0.949, blue: 0.967))
+                            .background(Color.anatomy.bgUnderlineGrey)
                             .frame(width: 120, height: 50, alignment: .center)
                         
                         
                         TextField("", text: $valorComparativoBioteksa)
                             .keyboardType(.decimalPad)
-                            .background(Color(red: 0.949, green: 0.949, blue: 0.967))
+                            .background(Color.anatomy.bgUnderlineGrey)
                             .frame(width: 120, height: 50, alignment: .center)
                         
                     }
                 }
-                .background(Color(red: 0.997, green: 0.970, blue: 0.848))
+                .background(Color.anatomy.bgUnderlineBeige)
                 Section {
                     
                     HStack {
                         // Rectangle()
                         TextField("", text: $valorComparativoBioteksa)
                             .keyboardType(.decimalPad)
-                            .background(Color(red: 0.949, green: 0.949, blue: 0.967))
+                            .background(Color.anatomy.bgUnderlineGrey)
                             .frame(width: 120, height: 50, alignment: .center)
                             //.padding(1)
                     }
                 }
                 
-                .background(Color(red: 0.997, green: 0.970, blue: 0.848))
+                .background(Color.anatomy.bgUnderlineBeige)
                 
                 Section {
                     HStack {
                         TextField("", text: $valorComparativoOtros)
                             .keyboardType(.decimalPad)
-                            .background(Color(red: 0.949, green: 0.949, blue: 0.967))
+                            .background(Color.anatomy.bgUnderlineGrey)
                             .frame(width: 100, height: 50, alignment: .trailing)
                         
                         TextField("", text: $valorComparativoOtros)
                             .keyboardType(.decimalPad)
-                            .background(Color(red: 0.949, green: 0.949, blue: 0.967))
+                            .background(Color.anatomy.bgUnderlineGrey)
                             .frame(width: 100, height: 50, alignment: .trailing)
                         
                     }
@@ -79,7 +79,7 @@ struct textFieldScreams: View {
                     HStack {
                         TextField("", text: $valorComparativoOtros)
                             .keyboardType(.decimalPad)
-                            .background(Color(red: 0.949, green: 0.949, blue: 0.967))
+                            .background(Color.anatomy.bgUnderlineGrey)
                             .frame(width: 100, height: 50, alignment: .trailing)
                     }
                 }

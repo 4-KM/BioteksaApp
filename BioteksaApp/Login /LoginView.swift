@@ -50,18 +50,18 @@ struct LoginView: View {
 						 TextField(
 							"Password",
 							text: $viewModel.password,
-							prompt: Text("Password").foregroundColor(.white))
+							prompt: Text("Password").foregroundColor(Color.anatomy.white))
 					 } else {
 						 SecureField(
 							"Password",
 							text: $viewModel.password,
-							prompt: Text("Password").foregroundColor(.white))
+							prompt: Text("Password").foregroundColor(Color.anatomy.white))
 					 }
 					 Button {
 						 viewModel.showPassword.toggle()
 					 } label: {
 						 Image(systemName: viewModel.showPassword ? "eye.slash" : "eye")
-							 .foregroundColor(.white)
+							 .foregroundColor(Color.anatomy.white)
 					 }
 				 }.padding(.horizontal)
 					 .padding(.top, 0)
@@ -79,14 +79,14 @@ struct LoginView: View {
 					 await viewModel.login()
 				 }
 			 }
-			 .foregroundColor(Color(red: 0.068, green: 0.277, blue: 0.473))
+             .foregroundColor(Color.anatomy.bgTitleBlue)
 			 .frame(width: 359, height: 60, alignment: .center)
 			 .background(Color.white)
 			 .cornerRadius(10)
 			 
 			 Spacer()
 		 }
-		 .background(LinearGradient(gradient: Gradient(colors: [Color(red: 0.287, green: 0.561, blue: 0.816), Color(red: 0.068, green: 0.277, blue: 0.473)]), startPoint: .top, endPoint: .bottom))
+		 .background(LinearGradient(gradient: Gradient(colors: [Color.anatomy.grandientBlue2, Color.anatomy.grandientBlue1]), startPoint: .top, endPoint: .bottom))
     }
 }
 

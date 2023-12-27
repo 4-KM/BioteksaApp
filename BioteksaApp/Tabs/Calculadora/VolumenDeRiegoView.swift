@@ -19,7 +19,7 @@ struct VolumenDeRiegoView: View {
                 HStack() {
                     Text("superficie en m3")
                         .frame(width: 200, height: 40, alignment: .leading)
-                        .foregroundColor(Color(red: 0.021, green: 0.286, blue: 0.557))
+                        .foregroundColor(Color.anatomy.bgTitleBlue)
                         .cornerRadius(10)
                     TextField("100.00", value: $volumentVM.m3Multiply, format: .number )
                 }
@@ -36,18 +36,20 @@ struct VolumenDeRiegoView: View {
                     
                 }
                 .frame(width: 300, height: 30, alignment: .center)
-                .foregroundColor(.black)
-                .background(Color(red: 0.838, green: 0.849, blue: 0.845))
+                .foregroundColor(Color.anatomy.black)
+                .background(Color.anatomy.bgUnderlineGrey)
                 .cornerRadius(100)
                 Text("Productos                     LTProducto")
                     .frame(width: 300, height: 50, alignment: .center)
                     .foregroundColor(.white)
-                    .background(Color(red: 0.021, green: 0.286, blue: 0.557))
+                    .background(Color.anatomy.bgTitleBlue)
                     .cornerRadius(100)
                 //.cornerRadius(10)
                 //.frame(width: 350, height: 800, alignment: .top)
                 
             }
+            .background(Color.anatomy.bgPurple)
+
             .cornerRadius(10)
             .frame(width: 350, height: 235, alignment: .top)
             
@@ -63,6 +65,7 @@ struct VolumenDeRiegoView: View {
                 }
                 .padding(15)
             }
+            .background(Color.anatomy.bgPurple)
             .cornerRadius(10)
             .frame(width: 350, height: 720, alignment: .center)
         }

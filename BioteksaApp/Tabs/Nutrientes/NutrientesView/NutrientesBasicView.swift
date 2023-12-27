@@ -11,7 +11,7 @@ struct NutrientesBasicView: View {
     @Binding var bioteksa : Bioteksa
 
     var body: some View {
-        TableContainer(title: "\(bioteksa.name)", backgroundColor:  Color(red: 0.021, green: 0.286, blue: 0.557)) {
+        TableContainer(title: "\(bioteksa.name)", backgroundColor:  Color.anatomy.bgTitleBlue) {
             VStack{
                 HStack(alignment: .center, spacing: 2){
                     VStack{

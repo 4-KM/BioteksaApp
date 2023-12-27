@@ -23,8 +23,9 @@ struct TabBarView: View {
                         .foregroundColor(.white)
                 })
             }
-            .padding()
-            .background(Color.blue)
+            .padding(5)
+            .background(LinearGradient(gradient: Gradient(colors: [Color.anatomy.grandientBlue2, Color.anatomy.grandientBlue1]), startPoint: .top, endPoint: .bottom))
+            
             TabView {
                 ForEach(Array(viewModel.tabs.enumerated()), id: \.offset) { _, tab in
                     switch tab {

@@ -106,7 +106,7 @@ class CalculadoraViewModel: ObservableObject {
     
     @Published var isReadyToEvaluate = false
     @Published var showBtnSolucionMadre = false
-    @Published var  showNutrientsViews = false
+    @Published var showNutrientsViews = false
     @Published var HCO3ToNeutralize = 0.0
 
     

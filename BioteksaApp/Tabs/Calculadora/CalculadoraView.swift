@@ -36,7 +36,7 @@ struct CalculadoraView: View {
         title: String,
         arrValues: Binding<[CalculadoraViewModel.NecesarioCalculator]>
     ) -> some View {
-        TableContainer(title: "\(title)", backgroundColor: .blue) {
+        TableContainer(title: "\(title)", backgroundColor: Color.anatomy.bgTitleBlue) {
             HStack {
                 Spacer()
                 VStack(alignment: .trailing) {
@@ -52,7 +52,7 @@ struct CalculadoraView: View {
     
     @ViewBuilder func hcoTable() -> some View {
         VStack() {
-            TableContainer(title: "HCO3 a neutralizar", backgroundColor: .blue) {
+            TableContainer(title: "HCO3 a neutralizar", backgroundColor: Color.anatomy.bgTitleBlue) {
                 Picker(selection: $viewModel.selectedAcid) {
                     Text("Sulfurico").tag(0)
                     Text("Nitrico").tag(1)
@@ -89,8 +89,8 @@ struct CalculadoraView: View {
             NavigationLink(destination: VolumenDeRiegoView(volumentVM: VolumenDeriegoViewmodel(products: viewModel.miliEq) )) {
                 Text("VOLUMEN DE RIEGO M3")
                     .frame(width: 350, height: 50, alignment: .center)
-                    .foregroundColor(.black)
-                    .background(Color.gray)
+                    .foregroundColor(Color.anatomy.black)
+                    .background(Color.anatomy.bgUnderlineGrey)
                     .cornerRadius(10)
                 
             }
