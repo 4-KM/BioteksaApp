@@ -11,7 +11,7 @@ struct ConvertionView: View {
     @ObservedObject var viewModel: ConvertionViewModel
 
     var body: some View {
-        Page {
+        Page(viewModel: viewModel) {
             TableContainer(title: "Tabla De Conversión", backgroundColor:  Color(red: 0.021, green: 0.286, blue: 0.557)) {
                 ConversionSubHeaders()
                 HStack {

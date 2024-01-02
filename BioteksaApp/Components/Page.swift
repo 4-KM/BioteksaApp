@@ -8,28 +8,52 @@
 import SwiftUI
 
 struct Page<Content: View>: View {
+	@ObservedObject var viewModel: ViewModel
+	
     private let content: () -> Content
     
-    init(@ViewBuilder content: @escaping () -> Content) {
+	init(
+		viewModel: ViewModel,
+		@ViewBuilder content: @escaping () -> Content
+	) {
+		self.viewModel = viewModel
         self.content = content
     }
     
     var body: some View {
-        ScrollView {
-            VStack {
-                content()
-            }
-            .padding()
-        }
-        .background(Color(red: 0.681, green: 0.695, blue: 1.000))
-        .onTapGesture {
-            hideKeyboard()
-        }
+		 ZStack {
+             switch viewModel.activeView {
+             case .fetching:
+                 ProgressView()
+             case .error:
+                 Text("Algo salio mal")
+             case .content:
+                 ScrollView {
+                     VStack {
+                         content()
+                     }
+                     .padding()
+                 }
+                 .background(Color(red: 0.681, green: 0.695, blue: 1.000))
+                 
+                 if viewModel.isLoading {
+                     ProgressView()
+                 }
+             }
+		 }
+		 .alert("Error", isPresented: $viewModel.showError, actions: {
+			 
+		 }) {
+			 Text(viewModel.error?.localizedDescription ?? "Algo salio mal")
+		 }
+         .task {
+             await viewModel.load()
+         }
     }
 }
 
 #Preview {
-    Page {
+    Page(viewModel: ViewModel()) {
         Text("Hola")
     }
 }

@@ -13,7 +13,7 @@ struct AcidosContainer: View {
 
     var body: some View {
         TableContainer(title: acidTitle, backgroundColor:  Color(red: 0.757, green: 0.916, blue: 0.025)) {
-            header()
+            ComparisonHeaderView()
             HStack{
                 titlesColumn()
                 VStack{
@@ -30,21 +30,6 @@ struct AcidosContainer: View {
             .frame(maxWidth: .infinity)
             .background(Color(red: 0.997, green: 0.970, blue: 0.848))
         }
-    }
-    
-    @ViewBuilder func header() -> some View {
-        HStack{
-            Text("")
-                .frame(maxWidth: .infinity)
-            Text("Bioteksa")
-                .frame(maxWidth: .infinity)
-                .foregroundColor(Color(red: 0.021, green: 0.286, blue: 0.557))
-            Text("Otros")
-                .frame(maxWidth: .infinity)
-                .foregroundColor(Color.gray)
-        }
-        .frame(height: 40)
-        .background(.white)
     }
     
     @ViewBuilder func titlesColumn() -> some View {

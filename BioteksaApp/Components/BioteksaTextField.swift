@@ -45,6 +45,17 @@ struct BioteksaNumberTextField: View {
     }
 }
 
+struct QuantityText: View {
+    var value: Double
+    var decimals: Int = 3
+    
+    var body: some View {
+        Text(String(format: "%.\(decimals)f", value))
+            .padding(8)
+        
+    }
+}
+
 struct ElementEditableValue: View {
     var title: String
     @Binding var value: Double
@@ -52,8 +63,9 @@ struct ElementEditableValue: View {
     var body: some View {
         HStack {
             Text(title)
+                .frame(maxWidth: .infinity)
             BioteksaNumberTextField(title: "", value: $value)
-                .frame(maxWidth: 100)
+                .frame(maxWidth: .infinity)
         }
     }
 }
@@ -63,7 +75,6 @@ struct TestEditablePair: View {
     
     var body: some View {
         HStack {
-            Spacer()
             VStack(alignment: .trailing) {
                 ElementEditableValue(title: "Test s", value: $value)
                 ElementEditableValue(title: "3s s", value: $value)

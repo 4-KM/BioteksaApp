@@ -34,6 +34,26 @@ extension UserDefaults: UserDefaultStorage, @unchecked Sendable {
     }
 }
 
+public final class MockUserDefaults: UserDefaultStorage {
+    public let storage: (StorageKey) -> Any
+    
+    public init(storage: @escaping (StorageKey) -> Any) {
+        self.storage = storage
+    }
+    
+    public func data(forKey key: some StorageKey) -> Data? {
+        storage(key) as? Data
+    }
+    
+    public func value(forKey key: some StorageKey) -> Any? {
+        storage(key)
+    }
+    
+    public func set(_ value: Any?, forKey key: some StorageKey) {
+        //storage(key) = value
+    }
+}
+
 // MARK: DependencyKey
 
 extension DependencyValues {

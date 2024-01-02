@@ -12,24 +12,26 @@ struct CalculadoraView: View {
     @ObservedObject var viewModel: CalculadoraViewModel
    
     var body: some View {
-        NavigationView {
-            Page {
-                elementTable(title: "Agua", arrValues: $viewModel.aguaModel)
-                elementTable(title: "Milequivalentes requeridos por el cultivo", arrValues: $viewModel.miliEq)
-                hcoTable()
-                BioteksaButton(title: "Calcular") {
-                    viewModel.isReadyToEvaluate = true
-                    viewModel.calculator()
-                }
-                nutrientsTable()
-                solucionMadreTable()
+        Page(viewModel: viewModel) {
+            elementTable(title: "Agua", arrValues: $viewModel.aguaModel)
+            elementTable(title: "Milequivalentes requeridos por el cultivo", arrValues: $viewModel.miliEq)
+            hcoTable()
+            BioteksaButton(title: "Calcular") {
+                viewModel.isReadyToEvaluate = true
+                viewModel.calculator()
             }
-            .onChange(of: viewModel.aguaModel) {  newValue in
-                viewModel.calculator()
-            }.onChange(of: viewModel.miliEq) {  newValue in
-                viewModel.calculator()
+            nutrientsTable()
+            if viewModel.showBtnSolucionMadre {
+                BioteksaButton(title: "Solucion Madre") {
+                    viewModel.showSolucionMadre = true
+                }
             }
         }
+        .sheet(isPresented: $viewModel.showSolucionMadre, content: {
+            if let vRiegoVM = VolumenDeriegoViewmodel(products: viewModel.miliEq) {
+                VolumenDeRiegoView(viewModel: vRiegoVM)
+            }
+        })
     }
     
     @ViewBuilder func elementTable(
@@ -37,15 +39,20 @@ struct CalculadoraView: View {
         arrValues: Binding<[CalculadoraViewModel.NecesarioCalculator]>
     ) -> some View {
         TableContainer(title: "\(title)", backgroundColor: .blue) {
-            HStack {
-                Spacer()
-                VStack(alignment: .trailing) {
-                    ForEach(Array(arrValues.enumerated()),id: \.offset) { index, $option in
-                        ElementEditableValue(title: option.molecula, value: $option.valueMole)
-                            .padding(.horizontal, 16)
-                        Divider()
-                    }
-                }
+            ForEach(Array(arrValues.enumerated()),id: \.offset) { index, $option in
+                ElementEditableValue(title: option.molecula, value: $option.valueMole)
+                Divider()
+            }
+        }
+    }
+    
+    @ViewBuilder func nonEditableElementTable(
+        title: String,
+        arrValues: Binding<[CalculadoraViewModel.NecesarioCalculator]>
+    ) -> some View {
+        TableContainer(title: "\(title)", backgroundColor: .blue) {
+            ForEach(Array(arrValues.enumerated()),id: \.offset) { index, $option in
+                NonEditableValueRow(text: option.molecula, value: option.valueMole)
             }
         }
     }
@@ -53,18 +60,18 @@ struct CalculadoraView: View {
     @ViewBuilder func hcoTable() -> some View {
         VStack() {
             TableContainer(title: "HCO3 a neutralizar", backgroundColor: .blue) {
-                Picker(selection: $viewModel.selectedAcid) {
-                    Text("Sulfurico").tag(0)
-                    Text("Nitrico").tag(1)
-                    Text("Fosforico").tag(2)
-                } label: {
-                    EmptyView()
+                Picker("Options", selection: $viewModel.acidoType) {
+                    ForEach(CalculadoraViewModel.AcidoType.allCases) { option in
+                        Text(option.rawValue).tag(option)
+                            .padding()
+                    }
                 }
                 .pickerStyle(SegmentedPickerStyle())
-
-                HStack(alignment: .center) {
+                HStack {
                     Text("HCO3")
-                    BioteksaNumberTextField(title: "HCO3", value: $viewModel.HCO3ToNeutralize)
+                    QuantityText(value: viewModel.HCO3ToNeutralize)
+                        .frame(maxWidth: .infinity)
+                        .background(Color(red: 0, green: 0, blue: 0, opacity: 0.05))
                 }
             }
         }
@@ -72,31 +79,10 @@ struct CalculadoraView: View {
     
     @ViewBuilder func nutrientsTable() -> some View {
         if viewModel.showNutrientsViews {
-            elementTable(title: "Necesario", arrValues: $viewModel.necessaryModel)
-            
-            CalculatorAcidoView(title: "Acido sulfurico",viewModel: viewModel, values: $viewModel.sulfurico)
-            
-            CalculatorAcidoView(title: "Acido Nitrico",viewModel: viewModel, values: $viewModel.nitrico)
-            
-            CalculatorAcidoView(title: "Acido Fosforico",viewModel: viewModel, values: $viewModel.fosforico)
-        } else {
-            EmptyView()
-        }
-    }
-    
-    @ViewBuilder func solucionMadreTable() -> some View {
-        if viewModel.showBtnSolucionMadre {
-            NavigationLink(destination: VolumenDeRiegoView(volumentVM: VolumenDeriegoViewmodel(products: viewModel.miliEq) )) {
-                Text("VOLUMEN DE RIEGO M3")
-                    .frame(width: 350, height: 50, alignment: .center)
-                    .foregroundColor(.black)
-                    .background(Color.gray)
-                    .cornerRadius(10)
-                
-            }
-            .navigationTitle("VOLUMEN DE RIEGO M3")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarHidden(true)
+            nonEditableElementTable(title: "Necesario", arrValues: $viewModel.necessaryModel)
+            CalculatorAcidoView(title: "Acido sulfurico", values: viewModel.sulfurico)
+            CalculatorAcidoView(title: "Acido Nitrico", values: viewModel.nitrico)
+            CalculatorAcidoView(title: "Acido Fosforico", values: viewModel.fosforico)
         } else {
             EmptyView()
         }

@@ -12,12 +12,13 @@ import Dependencies
 import BioteksaAPI
 import SwiftUI
 
-class ConvertionViewModel: ObservableObject {
+class ConvertionViewModel: ViewModel {
+    
     @Dependency(\.apiManager) var apiManager
 
-    @Published var convertion : [ConvertionNutrient]
+    @Published var convertion : [ConvertionNutrient] = []
     
-    init() {
+    override func load() async {
         @Dependency(\.dataManager) var dataManager
         convertion = dataManager.convertion.map {
             respons in
@@ -28,18 +29,14 @@ class ConvertionViewModel: ObservableObject {
                 soluble: respons.soluble
             )
         }
+        activeView = .content
     }
     func update() async {
-        print("update")
-        var nutrients = convertion.reduce(into: [String: SetConfigurationParams.ConvertionNutrient]()) { (partialResult, element) in
+        let nutrients = convertion.reduce(into: [String: SetConfigurationParams.ConvertionNutrient]()) { (partialResult, element) in
             partialResult["\(element.nutrient_id)"] = SetConfigurationParams.ConvertionNutrient(soluble: element.soluble, bioteksa: element.bioteksa)
         }
         let config = SetConfigurationParams(convertion: nutrients)
-        do {
-            try await apiManager.fetch(SetConfiguration(configuration: config))
-        } catch {
-            
-        }
+		 await sendConfig(config: config)
     }
 }
 

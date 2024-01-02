@@ -10,44 +10,48 @@ import Dependencies
 import Foundation
 import SwiftUI
 
-class CalculadoraViewModel: ObservableObject {
-    struct Acido {
-        var bioteksa: AcidoInfo
-        var otros: AcidoInfo
-    }
-    struct AcidoInfo {
-        var pesoEspesifico: String
-        var densidad: String
-        var riqueza: String
-        var medNeutrailar: String
-        var HMNOL: String
-        var HMNOL100 : String
-
+extension AcidoModel {
+    mutating func neutralize(hco: Double) {
         
-        func getAcido(typeInfo: TypeInfo) -> String {
-            switch typeInfo {
-                
-            case .PesoExpecifico:
-                return pesoEspesifico
-            case .Densidad:
-                return densidad
-            case .Riqueza:
-                return riqueza
-            case .MedNeutralizar:
-                return medNeutrailar
-            case .HMNOL:
-                return HMNOL
-            case .HMNOL100:
-                return HMNOL100
-            }
-        }
     }
     
-    @Published var sulfurico: Acido!
-    @Published var nitrico: Acido!
-    @Published  var fosforico: Acido!
-    @Published var selectedAcid: Int = 0
-
+    func comparison(index: Int) -> AcidoInfo {
+        switch index {
+        case 1:
+            return meqNeutrailar
+        case 2:
+            return pesoEspecifico
+        case 3:
+            return densidad
+        case 4:
+            return riqueza
+        case 5:
+            return HMNOL
+        case 6:
+            return AcidoInfo(bioteksa: HMNOL.bioteksa * 100, otros: HMNOL.otros * 100)
+        default:
+            return AcidoInfo(bioteksa: 0, otros: 0)
+        }
+    }
+}
+class CalculadoraViewModel: ViewModel {
+    enum AcidoType: String, CaseIterable, Identifiable {
+        case sulfurico = "Sulfurico"
+        case nitrico = "Nitrico"
+        case fosforico = "Fosforico"
+        
+        var id: String { self.rawValue }
+    }
+    
+    @Dependency(\.dataManager) var dataManager
+    
+    @Published var sulfurico: AcidoModel!
+    @Published var nitrico: AcidoModel!
+    @Published var fosforico: AcidoModel!
+    
+    @Published var selectedAcid: Int = 1
+    @Published var acidoType: AcidoType = .sulfurico
+    
     struct MiliequivalentesRequeridos{
         var textField: MilequivalentesInfo
     }
@@ -63,7 +67,7 @@ class CalculadoraViewModel: ObservableObject {
     
     struct NecesarioCalculator: Hashable {
         var molecula: String
-        var valueMole: Double = 0.0
+        var valueMole: Double = 1
         var isCorrect: Bool = true
     }
     
@@ -101,85 +105,18 @@ class CalculadoraViewModel: ObservableObject {
         NecesarioCalculator(molecula: "SO4-2", isCorrect: true)
         
     ]
-
-    
     
     @Published var isReadyToEvaluate = false
     @Published var showBtnSolucionMadre = false
     @Published var  showNutrientsViews = false
+    @Published var showSolucionMadre = false
     @Published var HCO3ToNeutralize = 0.0
 
-    
-    
-    init() {
-        @Dependency(\.dataManager) var dataManager
-
-        let sulfuricoResponse = dataManager.sulfurico
-        sulfurico = Acido(
-            bioteksa:
-                AcidoInfo(
-                    pesoEspesifico: String(format:"%.3f", sulfuricoResponse.peso_especifico.bioteksa),
-                    densidad: String(format:"%.3f", sulfuricoResponse.densidad.bioteksa),
-                    riqueza: String(format:"%.3f",sulfuricoResponse.riqueza.bioteksa),
-                    medNeutrailar: "",
-                    HMNOL: "",
-                    HMNOL100: ""
-                ),
-            otros:
-                AcidoInfo(
-                    pesoEspesifico: String(format:"%.3f",sulfuricoResponse.peso_especifico.greenHow),
-                    densidad: String(format:"%.3f",sulfuricoResponse.densidad.greenHow),
-                    riqueza: String(format:"%.3f",sulfuricoResponse.riqueza.greenHow),
-                    medNeutrailar: "",
-                    HMNOL: "",
-                    HMNOL100: ""
-                )
-        )
-        
-        let nitricoResponse = dataManager.nitrico
-        nitrico = Acido(
-            bioteksa:
-                AcidoInfo(
-                    pesoEspesifico: String(format:"%.3f",nitricoResponse.peso_especifico.bioteksa),
-                    densidad: String(format:"%.3f", nitricoResponse.densidad.bioteksa),
-                    riqueza: String(format:"%.3f", nitricoResponse.riqueza.bioteksa),
-                    medNeutrailar: "",
-                    HMNOL: "",
-                    HMNOL100: ""
-                ),
-            otros:
-                AcidoInfo(
-                    pesoEspesifico: String(format:"%.3f", nitricoResponse.peso_especifico.greenHow),
-                    densidad: String(format:"%.3f", nitricoResponse.densidad.greenHow),
-                    riqueza: String(format:"%.3f", nitricoResponse.riqueza.greenHow),
-                    medNeutrailar: "",
-                    HMNOL: "",
-                    HMNOL100: ""
-                )
-        )
-        
-        let fosforicoResponse = dataManager.fosforico
-        fosforico = Acido(
-            bioteksa:
-                AcidoInfo(
-                    pesoEspesifico: String(format:"%.3f", fosforicoResponse.peso_especifico.bioteksa),
-                    densidad: String(format:"%.3f", fosforicoResponse.densidad.bioteksa),
-                    riqueza: String(format:"%.3f", fosforicoResponse.riqueza.bioteksa),
-                    medNeutrailar: "",
-                    HMNOL: "",
-                    HMNOL100: ""
-                ),
-            otros:
-                AcidoInfo(
-                    pesoEspesifico: String(format:"%.3f", fosforicoResponse.peso_especifico.greenHow),
-                    densidad: String(format:"%.3f", fosforicoResponse.densidad.greenHow),
-                    riqueza: String(format:"%.3f", fosforicoResponse.riqueza.greenHow),
-                    medNeutrailar: "",
-                    HMNOL: "",
-                    HMNOL100: ""
-                )
-        )
-
+    override func load() async {
+        sulfurico = AcidoModel(productComparison: dataManager.sulfurico)
+        nitrico = AcidoModel(productComparison: dataManager.nitrico)
+        fosforico = AcidoModel(productComparison: dataManager.fosforico)
+        activeView = .content
     }
     
     func operationHML(pesoEspe: String, densidad: String, riqueza: String) -> Double {
@@ -236,10 +173,7 @@ class CalculadoraViewModel: ObservableObject {
             showBtnSolucionMadre = true
         }
         getOperationNecessary()
-        
-        
     }
-    
     
     func getOperationNecessary() {
         var index = 0
@@ -261,13 +195,10 @@ class CalculadoraViewModel: ObservableObject {
     
     func doOperationRequeriedToAcidos()  {
 //        get medNeutrailar to Acidos
-        sulfurico.bioteksa.medNeutrailar = String(format:"%.3f", HCO3ToNeutralize)
-        sulfurico.otros.medNeutrailar = String(format:"%.3f", HCO3ToNeutralize)
-        nitrico.bioteksa.medNeutrailar = String(format:"%.3f", HCO3ToNeutralize)
-        nitrico.otros.medNeutrailar = String(format:"%.3f", HCO3ToNeutralize)
-        fosforico.bioteksa.medNeutrailar = String(format:"%.3f", HCO3ToNeutralize)
-        fosforico.otros.medNeutrailar = String(format:"%.3f", HCO3ToNeutralize)
-        
+        sulfurico.neutralize(hco: HCO3ToNeutralize)
+        nitrico.neutralize(hco: HCO3ToNeutralize)
+        fosforico.neutralize(hco: HCO3ToNeutralize)
+        /*
 //        get HMNOL too acidos
         sulfurico.bioteksa.HMNOL = String(format: "%.3f", operationHML(pesoEspe: sulfurico.bioteksa.pesoEspesifico, densidad: sulfurico.bioteksa.densidad, riqueza: sulfurico.bioteksa.densidad))
         sulfurico.otros.HMNOL = String(format: "%.3f", operationHML(pesoEspe: sulfurico.otros.pesoEspesifico, densidad: sulfurico.otros.densidad, riqueza: sulfurico.otros.densidad))
@@ -287,5 +218,6 @@ class CalculadoraViewModel: ObservableObject {
         
         fosforico.bioteksa.HMNOL100 = String(format: "%.3f", operationHML(pesoEspe: fosforico.bioteksa.pesoEspesifico, densidad: fosforico.bioteksa.densidad, riqueza: fosforico.bioteksa.densidad) * 100 )
         fosforico.otros.HMNOL100 = String(format: "%.3f", operationHML(pesoEspe: fosforico.otros.pesoEspesifico, densidad: fosforico.otros.densidad, riqueza: fosforico.otros.densidad) * 100)
+         */
     }
 }

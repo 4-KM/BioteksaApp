@@ -11,65 +11,47 @@ struct VolumenDeRiegoView: View {
     @State var volumenM3: Double = 100.00
   //  @State var arrayCalculo: [VolumenDeRiegoModel] = productosVolumenRiengo
    // var productoView: [CalculadoraViewModel.NecesarioCalculator] = []
-    @ObservedObject var volumentVM: VolumenDeriegoViewmodel
+    @ObservedObject var viewModel: VolumenDeriegoViewmodel
     
     var body: some View {
-        Page {
-            List {
-                HStack() {
-                    Text("superficie en m3")
-                        .frame(width: 200, height: 40, alignment: .leading)
-                        .foregroundColor(Color(red: 0.021, green: 0.286, blue: 0.557))
-                        .cornerRadius(10)
-                    TextField("100.00", value: $volumentVM.m3Multiply, format: .number )
+        Page(viewModel: viewModel) {
+            TableContainer(title: "Solucion madre", backgroundColor: .blue) {
+                HStack {
+                    Spacer()
+                    ElementEditableValue(title: "superficie en m3", value: $viewModel.m3Multiply)
                 }
-                Button ("Calcular") {
-                    /*   var index = 1
-                     volumentVM.arrayCalculo.forEach { inter in
-                     
-                     volumentVM.calculatorDic[String(index)] = Double(inter.valueProduct)
-                     index += 1
-                     }*/
-                    Task {
-                        await volumentVM.calculatorM3()
-                    }
-                    
+                BioteksaButton(title: "Calcular") {
+                    await viewModel.calculatorM3()
                 }
-                .frame(width: 300, height: 30, alignment: .center)
-                .foregroundColor(.black)
-                .background(Color(red: 0.838, green: 0.849, blue: 0.845))
-                .cornerRadius(100)
-                Text("Productos                     LTProducto")
-                    .frame(width: 300, height: 50, alignment: .center)
-                    .foregroundColor(.white)
-                    .background(Color(red: 0.021, green: 0.286, blue: 0.557))
-                    .cornerRadius(100)
-                //.cornerRadius(10)
-                //.frame(width: 350, height: 800, alignment: .top)
-                
             }
-            .cornerRadius(10)
-            .frame(width: 350, height: 235, alignment: .top)
-            
-            List {
-                ForEach($volumentVM.arrayCalculo,  id: \.self) {  $option in
-                    HStack(){
-                        Text(option.nombre.rawValue)
-                        Spacer()
-                        Text(option.valueProduct)
-                    }
-                    
-                    //.alignment(.leading)
+            TableContainer(title: "Producto", secondaryTitle: "LT/Producto", backgroundColor: .blue) {
+                ForEach($viewModel.arrayCalculo,  id: \.self) {  $option in
+                    NonEditableValueRow(text: option.nombre.rawValue, value: option.valueProduct)
                 }
-                .padding(15)
             }
-            .cornerRadius(10)
-            .frame(width: 350, height: 720, alignment: .center)
         }
         .onAppear{
             Task{
-                    await volumentVM.calculatorM3()
+                    await viewModel.calculatorM3()
                 } 
         }
+    }
+}
+
+struct NonEditableValueRow: View {
+    var text: String
+    var value: Double
+    var decimals: Int = 2
+    
+    var body: some View {
+        HStack {
+            Text(text)
+                .frame(maxWidth: .infinity)
+            QuantityText(value: value, decimals: decimals)
+                .padding(8)
+                .frame(maxWidth: .infinity)
+                .background(Color(red: 0, green: 0, blue: 0, opacity: 0.05))
+        }
+        Divider()
     }
 }

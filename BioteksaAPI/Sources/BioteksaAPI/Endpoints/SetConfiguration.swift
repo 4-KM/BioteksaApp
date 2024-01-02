@@ -45,7 +45,7 @@ public struct SetConfigurationParams: Codable {
 
 public struct SetConfiguration: RestEndpoint {
     public struct Response: Codable {
-        var success: Bool
+        public var success: Bool
     }
     
     public typealias ResponseType = Response

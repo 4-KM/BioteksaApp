@@ -9,17 +9,33 @@ import SwiftUI
 
 struct TableContainer<Content: View>: View {
     var title: LocalizedStringKey
+    var secondaryTitle: LocalizedStringKey?
     var backgroundColor: Color
     @ViewBuilder var content: () -> Content
     
     var body: some View {
         VStack(spacing: 0) {
-            Text(title)
+            if let secondaryTitle {
+                HStack {
+                    Text(title)
+                        
+                    Spacer()
+                    Text(secondaryTitle)
+                }
+                .padding()
                 .frame(height: 50)
-                .frame(maxWidth: .infinity)
                 .background(backgroundColor)
                 .foregroundColor(Color.white)
                 .font(.headline)
+            } else {
+                Text(title)
+                    .frame(height: 50)
+                    .frame(maxWidth: .infinity)
+                    .background(backgroundColor)
+                    .foregroundColor(Color.white)
+                    .font(.headline)
+            }
+            
             content()
         }
         .background(Color.white)
@@ -29,7 +45,7 @@ struct TableContainer<Content: View>: View {
 
 #Preview {
     HStack {
-        TableContainer(title: "Title", backgroundColor: .red) {
+        TableContainer(title: "Title", secondaryTitle: nil, backgroundColor: .red) {
             Text("test")
                 .frame(maxWidth: .infinity)
                 .frame(height: 50)

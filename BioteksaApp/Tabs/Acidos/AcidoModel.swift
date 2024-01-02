@@ -14,8 +14,14 @@ struct AcidoModel {
     var pesoEspecifico: AcidoInfo
     var densidad: AcidoInfo
     var riqueza: AcidoInfo
+    var meqNeutrailar: AcidoInfo = AcidoInfo(bioteksa: 0, otros: 0)
+    var HMNOL: AcidoInfo = AcidoInfo(bioteksa: 0, otros: 0)
     
-    init(pesoEspecifico: AcidoInfo, densidad: AcidoInfo, riqueza: AcidoInfo) {
+    init(
+        pesoEspecifico: AcidoInfo,
+        densidad: AcidoInfo,
+        riqueza: AcidoInfo
+    ) {
         self.pesoEspecifico = pesoEspecifico
         self.densidad = densidad
         self.riqueza = riqueza

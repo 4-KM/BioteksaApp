@@ -18,30 +18,18 @@ class RootViewModel: ObservableObject {
 	}
 	
 	@Dependency(\.apiManager) var apiManager
-    @Dependency(\.userDefaults) var userDefaults
+	@Dependency(\.configurationRepository) var configurationRepository
     
 	@Published var activeView: ActiveView = .splash
 	
 	func getSessionState() async {
 		if apiManager.isLogged {
-            await load()
+			_ = try? await configurationRepository.getConfiguration()
 			activeView = .loggedIn
 		} else {
 			activeView = .login
 		}
 	}
-    
-    func load() async {
-        do {
-            let configuration = try await apiManager.fetch(GetConfiguration())
-            try userDefaults.set(
-                JSONEncoder().encode(configuration),
-                forKey: LoginKeys.configuration
-            )
-        } catch {
-            
-        }
-    }
 }
 
 struct GlobalMessage {

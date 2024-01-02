@@ -8,33 +8,38 @@
 import SwiftUI
 
 struct CalculatorAcidoView: View {
-//    @Binding var textsBioteksa:[String]
-//    @Binding var textOtros: [String]
     var title: String
-    @ObservedObject var viewModel: CalculadoraViewModel
-    @Binding var values: CalculadoraViewModel.Acido
+    var values: AcidoModel
     
     var body: some View {
         TableContainer(title: LocalizedStringKey(title), backgroundColor: .blue) {
-            CalculatorAcidoHeaderView()
-            CalculatorTableView(viewModel: viewModel, valuesAcidoInfo: $values)
-                .background(.white)
+            ComparisonHeaderView()
+            CalculatorTableView(valuesAcidoInfo: values)
         }
     }
 }
 
-struct CalculatorAcidoHeaderView: View {
+struct ComparisonHeaderView: View {
     var body: some View {
-        HStack() {
-            Text("").frame(maxWidth: .infinity)
-            Text("Bioteksa").frame(maxWidth: .infinity)
-            Text("Otros").frame(maxWidth: .infinity)
-        }.frame(height: 45).background(.white)
+        HStack{
+            Text("")
+                .frame(maxWidth: .infinity)
+            Text("Bioteksa")
+                .frame(maxWidth: .infinity)
+                .foregroundColor(Color(red: 0.021, green: 0.286, blue: 0.557))
+            Text("Otros")
+                .frame(maxWidth: .infinity)
+                .foregroundColor(Color.gray)
+        }
+        .frame(height: 40)
+        .background(.white)
     }
 }
 
+/*
 #Preview {
     HStack {
         CalculatorAcidoView(title: "Acido Sulfurico",viewModel: CalculadoraViewModel(), values: .constant(CalculadoraViewModel.Acido.init(bioteksa: .init(pesoEspesifico: "1", densidad: "2", riqueza: "3", medNeutrailar: "4", HMNOL: "5", HMNOL100: "6" ), otros: .init(pesoEspesifico: "1", densidad: "2", riqueza: "3", medNeutrailar: "4", HMNOL: "5", HMNOL100: "6" )) ) )
     }.background(.yellow)
 }
+*/

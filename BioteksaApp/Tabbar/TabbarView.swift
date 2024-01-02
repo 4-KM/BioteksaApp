@@ -5,7 +5,9 @@
 //  Created by Eduardo Gersai Garcia Ventura on 18/09/23.
 //
 
+import Dependencies
 import SwiftUI
+import BioteksaAPI
 
 struct TabBarView: View {
     @ObservedObject var viewModel: TabbarViewModel
@@ -57,7 +59,13 @@ struct TabBarView: View {
 }
 
 #Preview {
-    TabBarView(viewModel: TabbarViewModel(onLogout: {
-        
-    }))
+    withDependencies {
+        $0.userDefaults = MockUserDefaults(storage: { key in
+            0
+        })
+    } operation: {
+        TabBarView(viewModel: TabbarViewModel(onLogout: {
+            
+        }))
+    }
 }
