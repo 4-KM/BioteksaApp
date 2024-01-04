@@ -13,53 +13,45 @@ struct CalculadoraView: View {
    
     var body: some View {
         Page(viewModel: viewModel) {
-            elementTable(title: "Agua", arrValues: $viewModel.aguaModel)
-            elementTable(title: "Milequivalentes requeridos por el cultivo", arrValues: $viewModel.miliEq)
+            elementTable(elementsSet: $viewModel.waterSet)
+            elementTable(elementsSet: $viewModel.requiredSet)
             hcoTable()
             BioteksaButton(title: "Calcular") {
-                viewModel.isReadyToEvaluate = true
-                viewModel.calculator()
+                viewModel.calculate()
             }
             nutrientsTable()
-            if viewModel.showBtnSolucionMadre {
+            if viewModel.showNutrientsViews {
                 BioteksaButton(title: "Solucion Madre") {
                     viewModel.showSolucionMadre = true
                 }
             }
         }
         .sheet(isPresented: $viewModel.showSolucionMadre, content: {
-            if let vRiegoVM = VolumenDeriegoViewmodel(products: viewModel.miliEq) {
-                VolumenDeRiegoView(viewModel: vRiegoVM)
-            }
+            VolumenDeRiegoView(viewModel: VolumenDeriegoViewmodel(recommendedSet: viewModel.recommendedSet))
         })
     }
     
-    @ViewBuilder func elementTable(
-        title: String,
-        arrValues: Binding<[CalculadoraViewModel.NecesarioCalculator]>
-    ) -> some View {
-        TableContainer(title: "\(title)", backgroundColor: .blue) {
-            ForEach(Array(arrValues.enumerated()),id: \.offset) { index, $option in
-                ElementEditableValue(title: option.molecula, value: $option.valueMole)
+    @ViewBuilder func elementTable(elementsSet: Binding<ElementSet>) -> some View {
+        TableContainer(title: "\(elementsSet.wrappedValue.set.rawValue)", backgroundColor: .blue) {
+            ForEach(Element.allCases) {
+                ElementEditableValue(title: $0.chemicalFormula, value: elementsSet[$0].value)
                 Divider()
             }
         }
     }
     
-    @ViewBuilder func nonEditableElementTable(
-        title: String,
-        arrValues: Binding<[CalculadoraViewModel.NecesarioCalculator]>
-    ) -> some View {
-        TableContainer(title: "\(title)", backgroundColor: .blue) {
-            ForEach(Array(arrValues.enumerated()),id: \.offset) { index, $option in
-                NonEditableValueRow(text: option.molecula, value: option.valueMole)
+    @ViewBuilder func nonEditableElementTable(elementsSet: ElementSet) -> some View {
+        TableContainer(title: "\(elementsSet.set.rawValue)", backgroundColor: .blue) {
+            ForEach(Element.allCases) {
+                NonEditableValueRow(text: $0.chemicalFormula, value: elementsSet[$0].value)
+                Divider()
             }
         }
     }
     
     @ViewBuilder func hcoTable() -> some View {
         VStack() {
-            TableContainer(title: "HCO3 a neutralizar", backgroundColor: .blue) {
+            TableContainer(title: "HCO₃⁻ a neutralizar", backgroundColor: .blue) {
                 Picker("Options", selection: $viewModel.acidoType) {
                     ForEach(CalculadoraViewModel.AcidoType.allCases) { option in
                         Text(option.rawValue).tag(option)
@@ -68,8 +60,8 @@ struct CalculadoraView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 HStack {
-                    Text("HCO3")
-                    QuantityText(value: viewModel.HCO3ToNeutralize)
+                    Text("HCO₃⁻")
+                    QuantityText(value: viewModel.acidsSet.bicarbonato.value)
                         .frame(maxWidth: .infinity)
                         .background(Color(red: 0, green: 0, blue: 0, opacity: 0.05))
                 }
@@ -79,7 +71,7 @@ struct CalculadoraView: View {
     
     @ViewBuilder func nutrientsTable() -> some View {
         if viewModel.showNutrientsViews {
-            nonEditableElementTable(title: "Necesario", arrValues: $viewModel.necessaryModel)
+            nonEditableElementTable(elementsSet: viewModel.recommendedSet)
             CalculatorAcidoView(title: "Acido sulfurico", values: viewModel.sulfurico)
             CalculatorAcidoView(title: "Acido Nitrico", values: viewModel.nitrico)
             CalculatorAcidoView(title: "Acido Fosforico", values: viewModel.fosforico)
@@ -90,7 +82,11 @@ struct CalculadoraView: View {
 }
                     
 struct Calculadora_Previews: PreviewProvider {
+    static let demoData = DemoData()
+
+    
+    
     static var previews: some View {
-        CalculadoraView(viewModel: CalculadoraViewModel())
+        CalculadoraView(viewModel: Self.demoData.viewModel)
     }
 }

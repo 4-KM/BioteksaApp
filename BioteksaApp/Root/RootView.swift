@@ -11,7 +11,7 @@ struct RootView: View {
     @ObservedObject var viewModel: RootViewModel
     
     var body: some View {
-        Group {
+        VStack {
             switch viewModel.activeView {
             case .splash:
                 Image("bioteksaLogo")

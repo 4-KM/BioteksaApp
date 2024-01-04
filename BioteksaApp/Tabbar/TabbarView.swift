@@ -12,48 +12,48 @@ import BioteksaAPI
 struct TabBarView: View {
     @ObservedObject var viewModel: TabbarViewModel
     
+    init(viewModel: TabbarViewModel) {
+        self.viewModel = viewModel
+        UITabBar.appearance().unselectedItemTintColor = UIColor.green
+    }
+    
     var body: some View {
-        VStack(spacing: 0) {
-            HStack {
-                Spacer()
-                Button(action: {
-                    Task {
-                        await viewModel.logout()
-                    }
-                }, label: {
-                    Image(systemName: "rectangle.portrait.and.arrow.right.fill")
-                        .foregroundColor(.white)
-                })
-            }
-            .padding()
-            .background(Color.blue)
-            TabView {
+        TabView(selection: $viewModel.selectedTab) {
+            Group {
                 ForEach(Array(viewModel.tabs.enumerated()), id: \.offset) { _, tab in
-                    switch tab {
-                    case .acidos(let viewModel):
-                        AcidosView(viewModel: viewModel)
-                            .tabItem {
-                                Label(tab.title, systemImage: tab.image)
-                            }
-                    case .nutrientes(let viewModel):
-                        NutrientesView(viewModel: viewModel)
-                            .tabItem {
-                                Label(tab.title, systemImage: tab.image)
-                            }
-                    case .convertion(let viewModel):
-                        ConvertionView(viewModel: viewModel)
-                            .tabItem {
-                                Label(tab.title, systemImage: tab.image)
-                            }
-                    case .calculadora(let viewModel):
-                        CalculadoraView(viewModel: viewModel)
-                            .tabItem {
-                                Label(tab.title, systemImage: tab.image)
-                            }
-                    }
+                    TabbarContainer(tab: tab)
                 }
-                
+                Text("Salir")
+                    .tabItem {
+                        Label("Salir", systemImage: "rectangle.portrait.and.arrow.right.fill")
+                    }
+                    .onTapGesture {
+                        viewModel.showLogoutAlert = true
+                    }
+                    .tag(4)
             }
+            .toolbarBackground(.visible, for: .tabBar)
+            .toolbarBackground(Color.white, for: .tabBar)
+        }
+        //.tint(Color.white)
+        .toolbarTitleDisplayMode(.inline)
+        .onChange(of: viewModel.attemptChangeToTab) { oldValue, newValue in
+            if viewModel.shouldChangeTab(to: newValue) {
+                viewModel.selectedTab = newValue
+            } else {
+                viewModel.selectedTab = oldValue
+            }
+        }
+        .onChange(of: viewModel.selectedTab) { oldValue, newValue in
+            viewModel.attemptChangeToTab = newValue
+        }
+        .confirmationDialog("Cerrar sesion", isPresented: $viewModel.showLogoutAlert) {
+            Button("Cerrar sesion", role: .destructive) {
+                Task {
+                    await viewModel.logout()
+                }
+            }
+            Button("Cancelar", role: .cancel) { }
         }
     }
 }
@@ -64,8 +64,6 @@ struct TabBarView: View {
             0
         })
     } operation: {
-        TabBarView(viewModel: TabbarViewModel(onLogout: {
-            
-        }))
+        TabBarView(viewModel: TabbarViewModel(onLogout: { }))
     }
 }

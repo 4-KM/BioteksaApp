@@ -17,7 +17,8 @@ struct NutrientElement: Identifiable{
         }
     }
 }
-struct Bioteksa: Identifiable{
+
+struct Bioteksa: Identifiable {
     let id = UUID()
     var key: String
     var value : [NutrientElement]

@@ -30,7 +30,7 @@ struct AcidosView: View {
                   }
 			  }
         }
-        .navigationTitle("Calculadora")
+        .navigationTitle("Acidos")
     }
 }
 

@@ -14,7 +14,14 @@ struct AcidoModel {
     var pesoEspecifico: AcidoInfo
     var densidad: AcidoInfo
     var riqueza: AcidoInfo
-    var meqNeutrailar: AcidoInfo = AcidoInfo(bioteksa: 0, otros: 0)
+    var meqNeutrailar: AcidoInfo = AcidoInfo(bioteksa: 0, otros: 0) {
+        didSet {
+            let bioteksa = meqNeutrailar.bioteksa * pesoEspecifico.bioteksa * (1 / densidad.bioteksa) * (100 / riqueza.bioteksa) * 0.001
+            let otros = meqNeutrailar.otros * pesoEspecifico.otros * (1 / densidad.otros) * (100 / riqueza.otros) * 0.001
+
+            HMNOL = AcidoInfo(bioteksa: bioteksa, otros: otros)
+        }
+    }
     var HMNOL: AcidoInfo = AcidoInfo(bioteksa: 0, otros: 0)
     
     init(
@@ -31,6 +38,10 @@ struct AcidoModel {
         pesoEspecifico = AcidoInfo(bioteksa: productComparison.peso_especifico.bioteksa, otros: productComparison.peso_especifico.greenHow)
         densidad = AcidoInfo(bioteksa: productComparison.densidad.bioteksa, otros: productComparison.densidad.greenHow)
         riqueza = AcidoInfo(bioteksa: productComparison.riqueza.bioteksa, otros: productComparison.riqueza.greenHow)
+    }
+    
+    mutating func updateMeq(meqNeutralizar: Double) {
+        meqNeutrailar = AcidoInfo(bioteksa: meqNeutralizar, otros: meqNeutralizar)
     }
     
 }

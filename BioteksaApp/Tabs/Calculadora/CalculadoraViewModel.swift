@@ -11,10 +11,6 @@ import Foundation
 import SwiftUI
 
 extension AcidoModel {
-    mutating func neutralize(hco: Double) {
-        
-    }
-    
     func comparison(index: Int) -> AcidoInfo {
         switch index {
         case 1:
@@ -34,6 +30,156 @@ extension AcidoModel {
         }
     }
 }
+
+struct ElementValue {
+    let element: Element
+    var value: Double = 0
+}
+
+struct ElementSet {
+    enum Set: String {
+        case water = "Agua"
+        case required = "Meq requeridos por el cultivo"
+        case needed = "Necesario"
+        case tmpAcids = "Acids"
+    }
+    
+    let set: Set
+    var nitrogeno = ElementValue(element: .nitrogeno)
+    var fosforo = ElementValue(element: .fosforo)
+    var potasio = ElementValue(element: .potasio)
+    var calcio = ElementValue(element: .calcio)
+    var magnesio = ElementValue(element: .magnesio)
+    var asufre = ElementValue(element: .asufre)
+    var bicarbonato = ElementValue(element: .bicarbonato)
+    var carbonato = ElementValue(element: .carbonato)
+    
+    subscript(element: Element) -> ElementValue {
+        get {
+            switch element {
+            case .nitrogeno:
+                return nitrogeno
+            case .fosforo:
+                return fosforo
+            case .potasio:
+                return potasio
+            case .calcio:
+                return calcio
+            case .magnesio:
+                return magnesio
+            case .asufre:
+                return asufre
+            case .bicarbonato:
+                return bicarbonato
+            case .carbonato:
+                return carbonato
+            }
+        }
+        
+        set {
+            switch element {
+            case .nitrogeno:
+                nitrogeno.value = newValue.value
+            case .fosforo:
+                fosforo.value = newValue.value
+            case .potasio:
+                potasio.value = newValue.value
+            case .calcio:
+                calcio.value = newValue.value
+            case .magnesio:
+                magnesio.value = newValue.value
+            case .asufre:
+                asufre.value = newValue.value
+            case .bicarbonato:
+                bicarbonato.value = newValue.value
+            case .carbonato:
+                carbonato.value = newValue.value
+            }
+        }
+    }
+    
+    static func acidosTemp(water: ElementSet, required: ElementSet) -> (ElementSet, Double) {
+        var set = ElementSet(set: .tmpAcids)
+        let burn = water.bicarbonato.value + (water.carbonato.value * 2)
+        set.bicarbonato.value = burn - 0.5
+        let neededBicarbonato = burn - set.bicarbonato.value
+
+        set.asufre.value = water.bicarbonato.value - neededBicarbonato
+        
+        return (set, neededBicarbonato)
+    }
+}
+
+struct ProductValue {
+    let product: Product
+    var value: Double = 0
+}
+
+struct ProductSet {
+    var hbk = ProductValue(product: .hbk)
+    var utraN = ProductValue(product: .utraN)
+    var ultraP = ProductValue(product: .ultraP)
+    var utraK = ProductValue(product: .utraK)
+    var ultraCA = ProductValue(product: .ultraCA)
+    var ultraMG = ProductValue(product: .ultraMG)
+    var ultraS = ProductValue(product: .ultraS)
+    var ultraFe = ProductValue(product: .ultraFe)
+    var hyperZN = ProductValue(product: .hyperZN)
+    var hyperMn = ProductValue(product: .hyperMn)
+
+    subscript(product: Product) -> ProductValue {
+        get {
+            switch product {
+            case .hbk:
+                return hbk
+            case .utraN:
+                return utraN
+            case .ultraP:
+                return ultraP
+            case .utraK:
+                return utraK
+            case .ultraCA:
+                return ultraCA
+            case .ultraMG:
+                return ultraMG
+            case .ultraS:
+                return ultraS
+            case .ultraFe:
+                return ultraFe
+            case .hyperZN:
+                return hyperZN
+            case .hyperMn:
+                return hyperMn
+            }
+        }
+        
+        set {
+            switch product {
+            case .hbk:
+                hbk = newValue
+            case .utraN:
+                utraN = newValue
+            case .ultraP:
+                ultraP = newValue
+            case .utraK:
+                utraK = newValue
+            case .ultraCA:
+                ultraCA = newValue
+            case .ultraMG:
+                ultraMG = newValue
+            case .ultraS:
+                ultraS = newValue
+            case .ultraFe:
+                ultraFe = newValue
+            case .hyperZN:
+                hyperZN = newValue
+            case .hyperMn:
+                hyperMn = newValue
+            }
+        }
+    }
+}
+
 class CalculadoraViewModel: ViewModel {
     enum AcidoType: String, CaseIterable, Identifiable {
         case sulfurico = "Sulfurico"
@@ -52,65 +198,15 @@ class CalculadoraViewModel: ViewModel {
     @Published var selectedAcid: Int = 1
     @Published var acidoType: AcidoType = .sulfurico
     
-    struct MiliequivalentesRequeridos{
-        var textField: MilequivalentesInfo
-    }
-    struct MilequivalentesInfo {
-        var NO3: String
-        var H2PO4: String
-        var K: String
-        var CA: String
-        var MG: String
-        var SO4: String
-    }
-    struct Neutralizar{}
-    
-    struct NecesarioCalculator: Hashable {
-        var molecula: String
-        var valueMole: Double = 1
-        var isCorrect: Bool = true
-    }
-    
-    @Published var aguaModel =  [
-        
-        NecesarioCalculator(molecula: "NO3", isCorrect: true),
-        NecesarioCalculator(molecula: "H2PO4", isCorrect: false),
-        NecesarioCalculator(molecula: "K+", isCorrect: true),
-        NecesarioCalculator(molecula: "CA+2", isCorrect: true),
-        NecesarioCalculator(molecula: "MG+2", isCorrect: true),
-        NecesarioCalculator(molecula: "SO4-2", isCorrect: true),
-        NecesarioCalculator(molecula: "HCO3", isCorrect: true),
-        NecesarioCalculator(molecula: "CO3", isCorrect: true)
-        
-    ]
-    
-    @Published var miliEq =  [
-        
-        NecesarioCalculator(molecula: "NO3",isCorrect: true),
-        NecesarioCalculator(molecula: "H2PO4",isCorrect: true),
-        NecesarioCalculator(molecula: "K+",isCorrect: true),
-        NecesarioCalculator(molecula: "CA+2",isCorrect: true),
-        NecesarioCalculator(molecula: "MG+2",isCorrect: true),
-        NecesarioCalculator(molecula: "SO4-2",isCorrect: true),
+    @Published var waterSet: ElementSet = ElementSet(set: .water)
+    @Published var requiredSet: ElementSet = ElementSet(set: .required)
+    @Published var recommendedSet: ElementSet = ElementSet(set: .needed)
+    var acidsSet: ElementSet = ElementSet(set: .tmpAcids)
+   
+    @Published var productSet: ProductSet = ProductSet()
 
-        
-    ]
-    @Published var necessaryModel: [NecesarioCalculator] = [
-        
-        NecesarioCalculator(molecula: "NO3", isCorrect: true),
-        NecesarioCalculator(molecula: "H2PO4", isCorrect: true),
-        NecesarioCalculator(molecula: "K+", isCorrect: true),
-        NecesarioCalculator(molecula: "CA+2", isCorrect: true),
-        NecesarioCalculator(molecula: "MG+2", isCorrect: true),
-        NecesarioCalculator(molecula: "SO4-2", isCorrect: true)
-        
-    ]
-    
-    @Published var isReadyToEvaluate = false
-    @Published var showBtnSolucionMadre = false
-    @Published var  showNutrientsViews = false
+    @Published var showNutrientsViews = false
     @Published var showSolucionMadre = false
-    @Published var HCO3ToNeutralize = 0.0
 
     override func load() async {
         sulfurico = AcidoModel(productComparison: dataManager.sulfurico)
@@ -119,105 +215,26 @@ class CalculadoraViewModel: ViewModel {
         activeView = .content
     }
     
-    func operationHML(pesoEspe: String, densidad: String, riqueza: String) -> Double {
-        let result = HCO3ToNeutralize * (Double(pesoEspe) ?? 0.0)
-        let result1  = result  * 1 / (Double(densidad) ?? 0.0)
-        let result2 = result1 * 100 / (Double(riqueza) ?? 0.0) * 0.001
+    func calculate()  {
+        var neededBicarbonato = 0.0
+        (acidsSet, neededBicarbonato) = ElementSet.acidosTemp(water: waterSet, required: requiredSet)
+        Element.allCases.forEach {
+            recommendedSet[$0].value = max(0, requiredSet[$0].value - acidsSet[$0].value - waterSet[$0].value)
+        }
+        recommendedSet[.bicarbonato].value = neededBicarbonato
         
-        return result2
+        let meqNeutralizar = acidsSet.bicarbonato.value
+        
+        sulfurico.updateMeq(meqNeutralizar: meqNeutralizar)
+        nitrico.updateMeq(meqNeutralizar: meqNeutralizar)
+        fosforico.updateMeq(meqNeutralizar: meqNeutralizar)
+        showNutrientsViews = true
+        
+        
+        
     }
     
-    func calculator()  {
-        var index = 0
-        var hasError: Bool = false
-        guard isReadyToEvaluate else { return }
-        showBtnSolucionMadre = true
-        aguaModel.forEach { molecula in
-            if molecula.valueMole == 0  {
-               // print("agregar valor a \(molecula.molecula)")
-                aguaModel[index].isCorrect = false
-                hasError = true
-            } else {
-                aguaModel[index].isCorrect = true
-            }
-            index += 1
-          //  print("Termino el proceso 1")
-            
-        }
-        index = 0
-        miliEq.forEach { molecula in
-            if molecula.valueMole == 0  {
-              //  print("agregar valor a \(molecula.molecula)")
-                miliEq[index].isCorrect = false
-                hasError = true
-            } else {
-                miliEq[index].isCorrect = true
-            }
-            index += 1
-           // print("Termino el proceso 2")
-            
-        }
-        let valueHCO3 = aguaModel[6].valueMole
-        let valueCo3 = aguaModel[7].valueMole
-        var result = ((valueHCO3  ) + (valueCo3 * 2)) - 0.500
+    func calculateSolucionMadre() {
         
-        if result < 0.500 {
-            result =  0.0
-        }
-        print("RESULTADO", result)
-        HCO3ToNeutralize = result
-        doOperationRequeriedToAcidos()
-        
-        if !hasError {
-            showNutrientsViews = true
-            showBtnSolucionMadre = true
-        }
-        getOperationNecessary()
-    }
-    
-    func getOperationNecessary() {
-        var index = 0
-        var result = 0.0
-        necessaryModel = miliEq.map({ necessaries in
-            var necessaries = necessaries
-            if index == 5 {
-                HCO3ToNeutralize = HCO3ToNeutralize.rounded(toRounded: 3)
-                result =  necessaries.valueMole - aguaModel[index].valueMole - HCO3ToNeutralize
-            } else {
-                result = necessaries.valueMole - aguaModel[index].valueMole
-            }
-            result = result.rounded(toRounded: 3)
-            necessaries.valueMole = result
-            index += 1
-            return necessaries
-        })
-    }
-    
-    func doOperationRequeriedToAcidos()  {
-//        get medNeutrailar to Acidos
-        sulfurico.neutralize(hco: HCO3ToNeutralize)
-        nitrico.neutralize(hco: HCO3ToNeutralize)
-        fosforico.neutralize(hco: HCO3ToNeutralize)
-        /*
-//        get HMNOL too acidos
-        sulfurico.bioteksa.HMNOL = String(format: "%.3f", operationHML(pesoEspe: sulfurico.bioteksa.pesoEspesifico, densidad: sulfurico.bioteksa.densidad, riqueza: sulfurico.bioteksa.densidad))
-        sulfurico.otros.HMNOL = String(format: "%.3f", operationHML(pesoEspe: sulfurico.otros.pesoEspesifico, densidad: sulfurico.otros.densidad, riqueza: sulfurico.otros.densidad))
-
-        nitrico.bioteksa.HMNOL = String(format: "%.3f", operationHML(pesoEspe: nitrico.bioteksa.pesoEspesifico, densidad: nitrico.bioteksa.densidad, riqueza: nitrico.bioteksa.densidad))
-        nitrico.otros.HMNOL = String(format: "%.3f", operationHML(pesoEspe: nitrico.otros.pesoEspesifico, densidad: nitrico.otros.densidad, riqueza: nitrico.otros.densidad))
-        
-        fosforico.bioteksa.HMNOL = String(format: "%.3f", operationHML(pesoEspe: fosforico.bioteksa.pesoEspesifico, densidad: fosforico.bioteksa.densidad, riqueza: fosforico.bioteksa.densidad))
-        fosforico.otros.HMNOL = String(format: "%.3f", operationHML(pesoEspe: fosforico.otros.pesoEspesifico, densidad: fosforico.otros.densidad, riqueza: fosforico.otros.densidad))
-        
-//     get HMNOL too acidos X 100
-        sulfurico.bioteksa.HMNOL100 = String(format: "%.3f", operationHML(pesoEspe: sulfurico.bioteksa.pesoEspesifico, densidad: sulfurico.bioteksa.densidad, riqueza: sulfurico.bioteksa.densidad) * 100)
-        sulfurico.otros.HMNOL100 = String(format: "%.3f", operationHML(pesoEspe: sulfurico.otros.pesoEspesifico, densidad: sulfurico.otros.densidad, riqueza: sulfurico.otros.densidad) * 100)
-
-        nitrico.bioteksa.HMNOL100 = String(format: "%.3f", operationHML(pesoEspe: nitrico.bioteksa.pesoEspesifico, densidad: nitrico.bioteksa.densidad, riqueza: nitrico.bioteksa.densidad) * 100 )
-        nitrico.otros.HMNOL100 = String(format: "%.3f", operationHML(pesoEspe: nitrico.otros.pesoEspesifico, densidad: nitrico.otros.densidad, riqueza: nitrico.otros.densidad) * 100 )
-        
-        fosforico.bioteksa.HMNOL100 = String(format: "%.3f", operationHML(pesoEspe: fosforico.bioteksa.pesoEspesifico, densidad: fosforico.bioteksa.densidad, riqueza: fosforico.bioteksa.densidad) * 100 )
-        fosforico.otros.HMNOL100 = String(format: "%.3f", operationHML(pesoEspe: fosforico.otros.pesoEspesifico, densidad: fosforico.otros.densidad, riqueza: fosforico.otros.densidad) * 100)
-         */
     }
 }

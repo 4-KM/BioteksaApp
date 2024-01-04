@@ -20,20 +20,24 @@ struct VolumenDeRiegoView: View {
                     Spacer()
                     ElementEditableValue(title: "superficie en m3", value: $viewModel.m3Multiply)
                 }
-                BioteksaButton(title: "Calcular") {
-                    await viewModel.calculatorM3()
-                }
             }
             TableContainer(title: "Producto", secondaryTitle: "LT/Producto", backgroundColor: .blue) {
-                ForEach($viewModel.arrayCalculo,  id: \.self) {  $option in
-                    NonEditableValueRow(text: option.nombre.rawValue, value: option.valueProduct)
+                ForEach(Product.allCases) {
+                    NonEditableValueRow(text: $0.name, value: viewModel.products[$0].value)
                 }
             }
         }
-        .onAppear{
-            Task{
-                    await viewModel.calculatorM3()
-                } 
+        .onChange(of: viewModel.m3Multiply) { oldValue, newValue in
+            viewModel.multiplyForInput()
+        }
+    }
+    
+    @ViewBuilder func nonEditableElementTable(elementsSet: ElementSet) -> some View {
+        TableContainer(title: "\(elementsSet.set.rawValue)", backgroundColor: .blue) {
+            ForEach(Element.allCases) {
+                NonEditableValueRow(text: $0.chemicalFormula, value: elementsSet[$0].value)
+                Divider()
+            }
         }
     }
 }
@@ -41,7 +45,7 @@ struct VolumenDeRiegoView: View {
 struct NonEditableValueRow: View {
     var text: String
     var value: Double
-    var decimals: Int = 2
+    var decimals: Int = 3
     
     var body: some View {
         HStack {

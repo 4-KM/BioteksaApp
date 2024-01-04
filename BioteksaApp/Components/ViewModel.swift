@@ -15,6 +15,8 @@ enum ActiveView {
     case error
     case content
 }
+
+@MainActor
 class ViewModel: ObservableObject {
 	@Dependency(\.configurationRepository) var configurationRepository
 
