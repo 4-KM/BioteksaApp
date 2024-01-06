@@ -82,7 +82,7 @@ struct Cornered: ViewModifier {
 			.foregroundColor(.blue)
 			.overlay {
 				RoundedRectangle(cornerRadius: 10)
-					.stroke(Color.blue, lineWidth: 2)
+					.stroke(Color.anatomy.bgTitleBlue, lineWidth: 2)
 			}
 	}
 }
@@ -93,16 +93,8 @@ struct BioteksaGradientBackground: ViewModifier {
 			LinearGradient(
 				gradient: Gradient(
 					colors: [
-						Color(
-							red: 0.287,
-							green: 0.561,
-							blue: 0.816
-						),
-						Color(
-							red: 0.068,
-							green: 0.277,
-							blue: 0.473
-						)
+						Color.anatomy.grandientBlue1,
+						Color.anatomy.grandientBlue2
 					]
 				),
 				startPoint: .top,

@@ -9,9 +9,19 @@
 import SwiftUI
 
 extension Color {
-    
-    
     struct anatomy {
+		 static var fgRed: Color {
+			 .red
+		 }
+		 
+		 static var bgGrayTransparent: Color {
+			 Color(red: 0, green: 0, blue: 0, opacity: 0.05)
+		 }
+		 
+		 static var fgGray: Color {
+			 Color(CGColor(gray: 0.5, alpha: 1))
+		 }
+		 
         static var white: Color {
             Color(hex: BioteksaColor.white.rawValue)
         }
