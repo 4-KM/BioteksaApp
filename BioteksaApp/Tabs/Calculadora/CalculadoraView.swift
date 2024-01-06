@@ -32,7 +32,7 @@ struct CalculadoraView: View {
     }
     
     @ViewBuilder func elementTable(elementsSet: Binding<ElementSet>) -> some View {
-        TableContainer(title: "\(elementsSet.wrappedValue.set.rawValue)", backgroundColor: .red) {
+        TableContainer(title: "\(elementsSet.wrappedValue.set.rawValue)", backgroundColor: .blue) {
             ForEach(Element.allCases) {
                 ElementEditableValue(title: $0.chemicalFormula, value: elementsSet[$0].value)
                 Divider()

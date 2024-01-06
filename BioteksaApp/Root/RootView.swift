@@ -14,7 +14,10 @@ struct RootView: View {
         VStack {
             switch viewModel.activeView {
             case .splash:
-                Image("bioteksaLogo")
+                Image("logotipo")
+							.background {
+								Image("bg_home-800")
+							}
             case .login:
                 LoginView(
                     viewModel: LoginViewModel {

@@ -153,7 +153,6 @@ struct TabbarContainer: View {
         }
         .tabItem {
             Label(tab.title, systemImage: tab.image)
-                .tint(.red)
         }
         .tag(tab.tag)
     }
