@@ -32,7 +32,7 @@ struct CalculadoraView: View {
     }
     
     @ViewBuilder func elementTable(elementsSet: Binding<ElementSet>) -> some View {
-        TableContainer(title: "\(elementsSet.wrappedValue.set.rawValue)", backgroundColor: .blue) {
+        TableContainer(title: "\(elementsSet.wrappedValue.set.rawValue)", backgroundColor:Color.anatomy.bgTitleBlue) {
             ForEach(Element.allCases) {
                 ElementEditableValue(title: $0.chemicalFormula, value: elementsSet[$0].value)
                 Divider()
@@ -41,7 +41,7 @@ struct CalculadoraView: View {
     }
     
     @ViewBuilder func nonEditableElementTable(elementsSet: ElementSet) -> some View {
-        TableContainer(title: "\(elementsSet.set.rawValue)", backgroundColor: .blue) {
+        TableContainer(title: "\(elementsSet.set.rawValue)", backgroundColor:Color.anatomy.bgTitleBlue) {
             ForEach(Element.allCases) {
                 NonEditableValueRow(text: $0.chemicalFormula, value: elementsSet[$0].value)
                 Divider()
@@ -51,7 +51,7 @@ struct CalculadoraView: View {
     
     @ViewBuilder func hcoTable() -> some View {
         VStack() {
-            TableContainer(title: "HCO₃⁻ a neutralizar", backgroundColor: .blue) {
+            TableContainer(title: "HCO₃⁻ a neutralizar", backgroundColor:Color.anatomy.bgTitleBlue) {
                 Picker("Options", selection: $viewModel.acidoType) {
                     ForEach(CalculadoraViewModel.AcidoType.allCases) { option in
                         Text(option.rawValue).tag(option)
@@ -63,7 +63,7 @@ struct CalculadoraView: View {
                     Text(Element.bicarbonato.chemicalFormula)
                     QuantityText(value: viewModel.acidsSet.bicarbonato.value)
                         .frame(maxWidth: .infinity)
-                        .background(Color(red: 0, green: 0, blue: 0, opacity: 0.05))
+                        .background(Color.anatomy.bgGrayTransparent)
                 }
             }
         }

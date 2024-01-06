@@ -12,7 +12,7 @@ struct AcidosContainer: View {
     @Binding var model: AcidoModel
 
     var body: some View {
-        TableContainer(title: acidTitle, backgroundColor:  Color(red: 0.757, green: 0.916, blue: 0.025)) {
+        TableContainer(title: acidTitle, backgroundColor:  Color.anatomy.bgTitleGreen) {
             ComparisonHeader()
             HStack{
                 titlesColumn()
@@ -28,7 +28,7 @@ struct AcidosContainer: View {
                 }
             }
             .frame(maxWidth: .infinity)
-            .background(Color(red: 0.997, green: 0.970, blue: 0.848))
+				.background(Color.anatomy.bgUnderlineGrey)
         }
     }
     

@@ -25,31 +25,31 @@ struct TableContainer<Content: View>: View {
                 .padding()
                 .frame(height: 50)
                 .background(backgroundColor)
-                .foregroundColor(Color.white)
+					 .foregroundColor(.anatomy.white)
                 .font(.title2)
             } else {
                 Text(title)
                     .frame(height: 50)
                     .frame(maxWidth: .infinity)
                     .background(backgroundColor)
-                    .foregroundColor(Color.white)
+                    .foregroundColor(.anatomy.white)
 						  .font(.title2)
             }
             
             content()
         }
-        .background(Color.white)
+        .background(Color.anatomy.white)
         .clipShape(RoundedRectangle(cornerSize: CGSize(width: 10, height: 10)))
     }
 }
 
 #Preview {
     HStack {
-        TableContainer(title: "Title", secondaryTitle: nil, backgroundColor: .blue) {
+        TableContainer(title: "Title", secondaryTitle: nil, backgroundColor:Color.anatomy.bgTitleBlue) {
             Text("test")
                 .frame(maxWidth: .infinity)
                 .frame(height: 50)
-                .background(Color.blue)
+                .background(Color.anatomy.bgTitleBlue)
             Divider()
             Text("test")
             Text("test")

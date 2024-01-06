@@ -17,10 +17,10 @@ struct AcidoCalculator: Hashable {
 }
 
 let acidosCalculator = [
-    AcidoCalculator(name: "Meq a Neutralizar", rowColor: .clear, textColor: .blue, propertyIndex: 1),
-    AcidoCalculator(name: "Peso Especifico", rowColor: Color(red: 0.997, green: 0.970, blue: 0.848), textColor: .black, propertyIndex: 2),
-    AcidoCalculator(name: "Densidad", rowColor: Color(red: 0.997, green: 0.970, blue: 0.848), textColor: .black, propertyIndex: 3),
-    AcidoCalculator(name: "Riqueza", rowColor: Color(red: 0.997, green: 0.970, blue: 0.848), textColor: .black, propertyIndex: 4),
-    AcidoCalculator(name: "HNO3ml/L", rowColor: .clear, textColor: .red, propertyIndex: 5),
-    AcidoCalculator(name: "HNO3ml/100M3", rowColor: .clear, textColor: .red, propertyIndex: 6)
+    AcidoCalculator(name: "Meq a Neutralizar", rowColor: .clear, textColor:Color.anatomy.bgTitleBlue, propertyIndex: 1),
+    AcidoCalculator(name: "Peso Especifico", rowColor: Color.anatomy.bgUnderlineBeige, textColor: Color.anatomy.black, propertyIndex: 2),
+	 AcidoCalculator(name: "Densidad", rowColor: Color.anatomy.bgUnderlineBeige, textColor: Color.anatomy.black, propertyIndex: 3),
+    AcidoCalculator(name: "Riqueza", rowColor: Color.anatomy.bgUnderlineBeige, textColor: Color.anatomy.black, propertyIndex: 4),
+    AcidoCalculator(name: "HNO3ml/L", rowColor: .clear, textColor: .anatomy.fgRed, propertyIndex: 5),
+	 AcidoCalculator(name: "HNO3ml/100M3", rowColor: .clear, textColor: .anatomy.fgRed, propertyIndex: 6)
 ]

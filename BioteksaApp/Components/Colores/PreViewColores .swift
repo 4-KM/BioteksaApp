@@ -13,7 +13,7 @@ struct PreViewColores_: View {
             Text("verde titulos #C0EA07")
                 .frame(width: 350, height: 150, alignment: .center)
                 .foregroundColor(.black)
-                .background(Color(red: 0.757, green: 0.916, blue: 0.025))
+                .background(Color.anatomy.bgTitleGreen)
                 .cornerRadius(10)
             
             Text("azul degradado #114679 y  #498FD0 ")
@@ -31,7 +31,7 @@ struct PreViewColores_: View {
             Text("azul de titulos #03498E ")
                 .frame(width: 350, height: 150, alignment: .center)
                 .foregroundColor(.black)
-                .background(Color(red: 0.021, green: 0.286, blue: 0.557))
+                .background(Color.anatomy.bgTitleBlue)
                 .cornerRadius(10)
             
             Text("carnita de subrayar #FDF7D9 ")
