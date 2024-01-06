@@ -12,8 +12,8 @@ struct AcidosContainer: View {
     @Binding var model: AcidoModel
 
     var body: some View {
-        TableContainer(title: acidTitle, backgroundColor:  Color.anatomy.bgTitleGreen) {
-            header()
+        TableContainer(title: acidTitle, backgroundColor:  Color(red: 0.757, green: 0.916, blue: 0.025)) {
+            ComparisonHeader()
             HStack{
                 titlesColumn()
                 VStack{
@@ -28,23 +28,8 @@ struct AcidosContainer: View {
                 }
             }
             .frame(maxWidth: .infinity)
-            .background(Color.anatomy.bgUnderlineBeige)
+            .background(Color(red: 0.997, green: 0.970, blue: 0.848))
         }
-    }
-    
-    @ViewBuilder func header() -> some View {
-        HStack{
-            Text("")
-                .frame(maxWidth: .infinity)
-            Text("Bioteksa")
-                .frame(maxWidth: .infinity)
-                .foregroundColor(Color.anatomy.bgTitleBlue)
-            Text("Otros")
-                .frame(maxWidth: .infinity)
-                .foregroundColor(Color.anatomy.bgUnderlineGrey)
-        }
-        .frame(height: 40)
-        .background(Color.anatomy.white)
     }
     
     @ViewBuilder func titlesColumn() -> some View {

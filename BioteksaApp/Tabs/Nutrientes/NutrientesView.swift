@@ -13,7 +13,7 @@ struct NutrientesView: View {
     @ObservedObject var viewModel: NutrientesViewModel
 
     var body: some View {
-        Page {
+        Page(viewModel: viewModel) {
             ForEach($viewModel.response) { $bioteksa in
                 NutrientesBasicView(bioteksa: $bioteksa)
             }
@@ -29,5 +29,3 @@ struct NutrientesTabBar_Previews: PreviewProvider {
         NutrientesView(viewModel: NutrientesViewModel())
     }
 }
-
-

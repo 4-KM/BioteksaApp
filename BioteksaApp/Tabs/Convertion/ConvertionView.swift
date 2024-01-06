@@ -11,8 +11,8 @@ struct ConvertionView: View {
     @ObservedObject var viewModel: ConvertionViewModel
 
     var body: some View {
-        Page {
-            TableContainer(title: "Tabla De Conversión", backgroundColor:  Color.anatomy.bgTitleBlue) {
+        Page(viewModel: viewModel) {
+            TableContainer(title: "Tabla De Conversión", backgroundColor:  Color(red: 0.021, green: 0.286, blue: 0.557)) {
                 ConversionSubHeaders()
                 HStack {
                     BioteksaAcidosText(title: viewModel.convertion[0].name)
@@ -55,7 +55,7 @@ struct ConvertionView: View {
 struct ConversionSubHeaders: View {
     var body: some View {
         HStack {
-            Text("Element")
+            Text("Elemento")
                 .frame(maxWidth: .infinity)
             Text("Formula Soluble")
                 .frame(maxWidth: .infinity)
@@ -63,8 +63,8 @@ struct ConversionSubHeaders: View {
                 .frame(maxWidth: .infinity)
         }
         .frame(height: 100)
-        .foregroundColor(.white)
-        .background(Color.anatomy.bgTitleBlue)
+        .foregroundColor (.white)
+        .background (Color (red: 0.021, green: 0.286, blue: 0.557))
     }
 }
 

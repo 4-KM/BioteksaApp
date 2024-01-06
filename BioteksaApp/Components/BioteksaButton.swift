@@ -17,15 +17,14 @@ struct BioteksaButton: View {
                 await action()
             }
         }, label: {
-            HStack {
-                Text(title)
-            }
-            .padding(10)
+			  Text(title)
+				.font(.headline)
+            .padding(16)
             .fixedSize(horizontal: false, vertical: true)
             .frame(maxWidth: .infinity)
-            .foregroundColor(.black)
-            .background(.gray)
-            .cornerRadius(10)
+            .foregroundColor(.white)
+				.gradientBackground()
+				.cornerRadius(10)
         })
     }
 }
@@ -37,5 +36,4 @@ struct BioteksaButton: View {
         }
         .padding()
     }
-    
 }

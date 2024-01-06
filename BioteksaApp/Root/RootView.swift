@@ -11,10 +11,13 @@ struct RootView: View {
     @ObservedObject var viewModel: RootViewModel
     
     var body: some View {
-        Group {
+        VStack {
             switch viewModel.activeView {
             case .splash:
-                Image("bioteksaLogo")
+                Image("logotipo")
+							.background {
+								Image("bg_home-800")
+							}
             case .login:
                 LoginView(
                     viewModel: LoginViewModel {
@@ -36,7 +39,6 @@ struct RootView: View {
         .task {
             Task {
                 await viewModel.getSessionState()
-
             }
         }
     }
@@ -45,6 +47,3 @@ struct RootView: View {
 #Preview{
     RootView(viewModel: RootViewModel())
 }
-
-
-

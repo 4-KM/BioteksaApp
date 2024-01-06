@@ -9,44 +9,46 @@ import Foundation
 import Dependencies
 import BioteksaAPI
 
-
-class VolumenDeriegoViewmodel: ObservableObject {
+class VolumenDeriegoViewmodel: ViewModel {
     @Dependency(\.apiManager) var apiManager
-    @Published var calculatorDic : [String:Double] = ["test":2.2]
-    @Published var arrayCalculo: [VolumenDeRiegoModel] = productosVolumenRiengo
+    
+    @Published var calculatorDic : [String:Double] = [:]
     @Published var m3Multiply: Double = 100.0
-    var product:[CalculadoraViewModel.NecesarioCalculator]?
+    @Published var products = ProductSet()
+
+    var calculatedSet: ElementSet
+    var solucionMadre: [String: Double] = [:]
     
-    
-    init(products: [CalculadoraViewModel.NecesarioCalculator]? ) {
-        guard let product = products else { return }
-        self.product = product
-        var index = 1
-        self.product?.forEach { item in
-            calculatorDic["\(index)"] = Double(item.valueMole)
-            index += 1
-        }
-        
+    init(calculatedSet: ElementSet) {
+        self.calculatedSet = calculatedSet
     }
     
-    func calculatorM3() async  {
+    override func load() async {
+        isLoading = true
+        defer { isLoading = false }
+        activeView = .content
         do {
-            let calculator = try await apiManager.fetch(Calculate(required: calculatorDic))
-            DispatchQueue.main.async {
-                self.multiplyForInput(response: calculator)
-
+            Element.allCases.forEach {
+                calculatorDic[$0.id] = calculatedSet[$0].value
             }
-
+            solucionMadre = try await apiManager.fetch(Calculate(required: calculatorDic)).recommended
+            print(solucionMadre)
+            self.multiplyForInput()
         } catch {
             print("Error calculator" , error)
         }
     }
     
-    func multiplyForInput(response: Calculate.CalculateResponse)  {
-        var index = 1
-        arrayCalculo.forEach { VolumenDeRiegoModel in
-            arrayCalculo[index - 1].valueProduct = String(((response.recommended["\(index)"] ?? 0.0) * m3Multiply).rounded(toRounded: 3) )
-            index += 1
-        }
+    func multiplyForInput()  {
+        products.hbk.value = solucionMadre["1", default: 0.0] * m3Multiply
+        products.utraN.value = solucionMadre["2", default: 0.0] * m3Multiply
+        products.ultraP.value = solucionMadre["3", default: 0.0] * m3Multiply
+        products.utraK.value = solucionMadre["4", default: 0.0] * m3Multiply
+        products.ultraCA.value = solucionMadre["5", default: 0.0] * m3Multiply
+        products.ultraMG.value = solucionMadre["6", default: 0.0] * m3Multiply
+        products.hyperMn.value = solucionMadre["7", default: 0.0] * m3Multiply
+        products.hyperZN.value = solucionMadre["8", default: 0.0] * m3Multiply
+        products.ultraFe.value = solucionMadre["9", default: 0.0] * m3Multiply
+        products.ultraS.value = solucionMadre["10", default: 0.0] * m3Multiply
     }
 }

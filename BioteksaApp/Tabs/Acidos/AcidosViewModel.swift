@@ -9,34 +9,31 @@ import Dependencies
 import Foundation
 import SwiftUI
 
-class AcidosViewModel: ObservableObject {
-    @Dependency(\.apiManager) var apiManager
-
-    @Published var sulfurico: AcidoModel!
-    @Published var nitrico: AcidoModel!
-    @Published var fosforico: AcidoModel!
+class AcidosViewModel: ViewModel {
+    typealias AcidosTuple = (sulfurico: AcidoModel, nitrico: AcidoModel, fosforico: AcidoModel)
     
-    init() {
-        @Dependency(\.dataManager) var dataManager
-        sulfurico = AcidoModel(productComparison: dataManager.sulfurico)
-        nitrico = AcidoModel(productComparison: dataManager.nitrico)
-        fosforico = AcidoModel(productComparison: dataManager.fosforico)
+	@Dependency(\.dataManager) var dataManager
+
+    @Published var acidosTuple: AcidosTuple!
+    
+	override func load() async {
+        acidosTuple = (
+            AcidoModel(productComparison: dataManager.sulfurico),
+            AcidoModel(productComparison: dataManager.nitrico),
+            AcidoModel(productComparison: dataManager.fosforico)
+        )
+        activeView = .content
     }
     
     func update() async {
-        let sulfurico = ProductComparison(acido: sulfurico)
-        let nitrico = ProductComparison(acido: nitrico)
-        let fosforico = ProductComparison(acido: fosforico)
-        
+        let sulfurico = ProductComparison(acido: acidosTuple.sulfurico)
+        let nitrico = ProductComparison(acido: acidosTuple.nitrico)
+        let fosforico = ProductComparison(acido: acidosTuple.fosforico)
         let config = SetConfigurationParams(
             nitrico: nitrico,
             sulfurico: sulfurico,
             fosforico: fosforico
         )
-        do {
-            try await apiManager.fetch(SetConfiguration(configuration: config))
-        } catch {
-            
-        }
+        await sendConfig(config: config)
     }
 }

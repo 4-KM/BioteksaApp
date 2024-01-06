@@ -7,11 +7,12 @@
 
 import Foundation
 
-struct ConvertionNutrient: Hashable {
+
+struct ConvertionNutrient: Hashable{
     let id: Int
     let nutrient_id: Int
-    var bioteksa : Double
-    var soluble: Double
+    var bioteksa : String
+    var soluble: String
     var name: String {
         get {
             return ElementsNames(rawValue: nutrient_id)?.name ?? ""
@@ -35,6 +36,8 @@ enum ElementosNames: Int{
         case .CALCIO: return "CALCIO"
         case .MAGNECIO: return "MAGNECIO"
         case .AZUFRE: return "AZUFRE"
+        default: return "other"
         }
     }
 }
+ 

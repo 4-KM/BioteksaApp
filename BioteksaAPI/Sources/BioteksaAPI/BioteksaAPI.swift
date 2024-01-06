@@ -16,13 +16,12 @@ public enum BioteksaServer {
     static let mock = "https://phplaravel-1083716-3910861.cloudwaysapps.com/api"
 }
 
+public enum TokenStorageKey: String, StorageKey {
+    case token
+    case rol
+}
+
 private class BioteksaAuthProvider: AuthenticationProvider {
-    
-    enum TokenStorageKey: String, StorageKey {
-        case token
-        case rol
-    }
-    
     @Dependency(\.userDefaults) var userDefaults
     
     var token: String? {
@@ -42,6 +41,16 @@ private class BioteksaAuthProvider: AuthenticationProvider {
         set {
             userDefaults.set(newValue, forKey: TokenStorageKey.rol)
         }
+    }
+}
+
+public class MockAuthProvider: AuthenticationProvider {
+    public var token: String? = nil
+    public var rol: Int? = nil
+    
+    public init(token: String? = nil, rol: Int? = nil) {
+        self.token = token
+        self.rol = rol
     }
 }
 
