@@ -24,7 +24,6 @@
 		2B8A83FA2AB9129400F6A2C5 /* NutrientesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A83F92AB9129400F6A2C5 /* NutrientesView.swift */; };
 		2B8A83FE2AB912BC00F6A2C5 /* CalculadoraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A83FD2AB912BC00F6A2C5 /* CalculadoraView.swift */; };
 		2B956D422AD59AB1009ADA3E /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B956D412AD59AB1009ADA3E /* Package.swift */; };
-		2B956D442ADBB32C009ADA3E /* GeometryRider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B956D432ADBB32C009ADA3E /* GeometryRider.swift */; };
 		2B9E562A2AC19CAB0042C90F /* NutrientesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9E56292AC19CAB0042C90F /* NutrientesModel.swift */; };
 		2B9E562C2AC19CBA0042C90F /* NutrientesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9E562B2AC19CBA0042C90F /* NutrientesViewModel.swift */; };
 		2BB9BAA22AF9AEB100EA212C /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 2BB9BAA12AF9AEB100EA212C /* Networking */; };
@@ -33,13 +32,12 @@
 		2BED05822AB9545900C3A75D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BED05812AB9545900C3A75D /* LoginViewModel.swift */; };
 		2BED05902AB9C6CD00C3A75D /* AcidoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BED058F2AB9C6CD00C3A75D /* AcidoModel.swift */; };
 		2BED05922AB9C6E600C3A75D /* AcidosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BED05912AB9C6E600C3A75D /* AcidosViewModel.swift */; };
-		2BF31D6D2ABD0C37004FC52C /* textFieldScreams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF31D6C2ABD0C37004FC52C /* textFieldScreams.swift */; };
-		2BF31D702ABE2958004FC52C /* Bioteksa&Otros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF31D6F2ABE2958004FC52C /* Bioteksa&Otros.swift */; };
 		2BF31D752ABE6590004FC52C /* VolumenDeRiegoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF31D742ABE6590004FC52C /* VolumenDeRiegoView.swift */; };
 		2BF31D792ABE7270004FC52C /* VolumenDeriegoViewmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF31D782ABE7270004FC52C /* VolumenDeriegoViewmodel.swift */; };
 		2BF31D7B2ABEC0DD004FC52C /* PreViewColores .swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF31D7A2ABEC0DD004FC52C /* PreViewColores .swift */; };
 		2BF31D812ABEE5AA004FC52C /* CalculadoraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF31D802ABEE5AA004FC52C /* CalculadoraModel.swift */; };
 		54B9D7532B4651F3006D35E9 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B9D7522B4651F3006D35E9 /* Products.swift */; };
+		54B9D7552B47064B006D35E9 /* ComparisonHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B9D7542B47064B006D35E9 /* ComparisonHeader.swift */; };
 		54EC41352B38C3D2008B5A71 /* ConvertionNutrient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EC412F2B38C3D2008B5A71 /* ConvertionNutrient.swift */; };
 		54EC41362B38C3D2008B5A71 /* ConvertionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EC41302B38C3D2008B5A71 /* ConvertionViewModel.swift */; };
 		54EC41382B38C3D2008B5A71 /* ConvertionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EC41332B38C3D2008B5A71 /* ConvertionView.swift */; };
@@ -93,20 +91,18 @@
 		2B8A83F92AB9129400F6A2C5 /* NutrientesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientesView.swift; sourceTree = "<group>"; };
 		2B8A83FD2AB912BC00F6A2C5 /* CalculadoraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculadoraView.swift; sourceTree = "<group>"; };
 		2B956D412AD59AB1009ADA3E /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		2B956D432ADBB32C009ADA3E /* GeometryRider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryRider.swift; sourceTree = "<group>"; };
 		2B9E56292AC19CAB0042C90F /* NutrientesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientesModel.swift; sourceTree = "<group>"; };
 		2B9E562B2AC19CBA0042C90F /* NutrientesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientesViewModel.swift; sourceTree = "<group>"; };
 		2BD2E5E72AFC23070073D2C9 /* CalculadoraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculadoraViewModel.swift; sourceTree = "<group>"; };
 		2BED05812AB9545900C3A75D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		2BED058F2AB9C6CD00C3A75D /* AcidoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcidoModel.swift; sourceTree = "<group>"; };
 		2BED05912AB9C6E600C3A75D /* AcidosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcidosViewModel.swift; sourceTree = "<group>"; };
-		2BF31D6C2ABD0C37004FC52C /* textFieldScreams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textFieldScreams.swift; sourceTree = "<group>"; };
-		2BF31D6F2ABE2958004FC52C /* Bioteksa&Otros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bioteksa&Otros.swift"; sourceTree = "<group>"; };
 		2BF31D742ABE6590004FC52C /* VolumenDeRiegoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumenDeRiegoView.swift; sourceTree = "<group>"; };
 		2BF31D782ABE7270004FC52C /* VolumenDeriegoViewmodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumenDeriegoViewmodel.swift; sourceTree = "<group>"; };
 		2BF31D7A2ABEC0DD004FC52C /* PreViewColores .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreViewColores .swift"; sourceTree = "<group>"; };
 		2BF31D802ABEE5AA004FC52C /* CalculadoraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculadoraModel.swift; sourceTree = "<group>"; };
 		54B9D7522B4651F3006D35E9 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
+		54B9D7542B47064B006D35E9 /* ComparisonHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonHeader.swift; sourceTree = "<group>"; };
 		54EC412F2B38C3D2008B5A71 /* ConvertionNutrient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertionNutrient.swift; sourceTree = "<group>"; };
 		54EC41302B38C3D2008B5A71 /* ConvertionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertionViewModel.swift; sourceTree = "<group>"; };
 		54EC41332B38C3D2008B5A71 /* ConvertionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertionView.swift; sourceTree = "<group>"; };
@@ -185,7 +181,6 @@
 				2BF31D6E2ABE2938004FC52C /* Components */,
 				2B8A83C92AB9111D00F6A2C5 /* BioteksaApp.swift */,
 				29F33FA82B3759BF00DD3688 /* Root */,
-				2BF31D6B2ABD0BED004FC52C /* TextFieldAllscreams */,
 				2BED05832AB9563700C3A75D /* Login  */,
 				2BED05842AB9565600C3A75D /* Tabbar */,
 				2BED05852AB9566E00C3A75D /* Tabs */,
@@ -237,7 +232,6 @@
 			children = (
 				2B8A83F52AB9123A00F6A2C5 /* LoginView.swift */,
 				2BED05812AB9545900C3A75D /* LoginViewModel.swift */,
-				2BED05882AB957E800C3A75D /* Action */,
 			);
 			path = "Login ";
 			sourceTree = "<group>";
@@ -260,14 +254,6 @@
 				2BED058E2AB9608100C3A75D /* Calculadora */,
 			);
 			path = Tabs;
-			sourceTree = "<group>";
-		};
-		2BED05882AB957E800C3A75D /* Action */ = {
-			isa = PBXGroup;
-			children = (
-				2B956D432ADBB32C009ADA3E /* GeometryRider.swift */,
-			);
-			path = Action;
 			sourceTree = "<group>";
 		};
 		2BED058B2AB95F9300C3A75D /* Acidos */ = {
@@ -305,14 +291,6 @@
 			path = Calculadora;
 			sourceTree = "<group>";
 		};
-		2BF31D6B2ABD0BED004FC52C /* TextFieldAllscreams */ = {
-			isa = PBXGroup;
-			children = (
-				2BF31D6C2ABD0C37004FC52C /* textFieldScreams.swift */,
-			);
-			path = TextFieldAllscreams;
-			sourceTree = "<group>";
-		};
 		2BF31D6E2ABE2938004FC52C /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,8 +299,8 @@
 				54EC413B2B38D271008B5A71 /* BioteksaButton.swift */,
 				54EC413D2B38D517008B5A71 /* Page.swift */,
 				F0F301D02B1C066E00A579DF /* BioteksaTextField.swift */,
-				2BF31D6F2ABE2958004FC52C /* Bioteksa&Otros.swift */,
 				2908F3C92B3E7E9600EFBD44 /* ViewModel.swift */,
+				54B9D7542B47064B006D35E9 /* ComparisonHeader.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -519,10 +497,8 @@
 				2B956D422AD59AB1009ADA3E /* Package.swift in Sources */,
 				2B8A83FA2AB9129400F6A2C5 /* NutrientesView.swift in Sources */,
 				2908F3CA2B3E7E9600EFBD44 /* ViewModel.swift in Sources */,
-				2B956D442ADBB32C009ADA3E /* GeometryRider.swift in Sources */,
 				2B9E562C2AC19CBA0042C90F /* NutrientesViewModel.swift in Sources */,
 				2BF31D792ABE7270004FC52C /* VolumenDeriegoViewmodel.swift in Sources */,
-				2BF31D6D2ABD0C37004FC52C /* textFieldScreams.swift in Sources */,
 				D5E02EC42B29085B00FE40E8 /* CalculatorAcidoView.swift in Sources */,
 				2908F3C82B3E6AE400EFBD44 /* ConfigurationRepository.swift in Sources */,
 				D5E02EC62B2915FF00FE40E8 /* CalculatorTableView.swift in Sources */,
@@ -536,8 +512,8 @@
 				29F33FA52B3758E900DD3688 /* RootView.swift in Sources */,
 				2B8A83F82AB9127600F6A2C5 /* AcidosView.swift in Sources */,
 				54EC41352B38C3D2008B5A71 /* ConvertionNutrient.swift in Sources */,
+				54B9D7552B47064B006D35E9 /* ComparisonHeader.swift in Sources */,
 				54B9D7532B4651F3006D35E9 /* Products.swift in Sources */,
-				2BF31D702ABE2958004FC52C /* Bioteksa&Otros.swift in Sources */,
 				2B8A83FE2AB912BC00F6A2C5 /* CalculadoraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

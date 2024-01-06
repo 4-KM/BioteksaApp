@@ -31,18 +31,12 @@ class ConvertionViewModel: ViewModel {
         }
         activeView = .content
     }
+    
     func update() async {
         let nutrients = convertion.reduce(into: [String: SetConfigurationParams.ConvertionNutrient]()) { (partialResult, element) in
             partialResult["\(element.nutrient_id)"] = SetConfigurationParams.ConvertionNutrient(soluble: element.soluble, bioteksa: element.bioteksa)
         }
         let config = SetConfigurationParams(convertion: nutrients)
 		 await sendConfig(config: config)
-    }
-}
-
-extension Double {
-    func rounded(toRounded: Int) -> Double {
-        let cocient = Self(Int( pow(10.0, Double(toRounded))))
-        return (self * cocient).rounded() / cocient
     }
 }

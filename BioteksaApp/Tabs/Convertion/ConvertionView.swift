@@ -55,7 +55,7 @@ struct ConvertionView: View {
 struct ConversionSubHeaders: View {
     var body: some View {
         HStack {
-            Text("Element")
+            Text("Elemento")
                 .frame(maxWidth: .infinity)
             Text("Formula Soluble")
                 .frame(maxWidth: .infinity)

@@ -29,5 +29,3 @@ struct NutrientesTabBar_Previews: PreviewProvider {
         NutrientesView(viewModel: NutrientesViewModel())
     }
 }
-
-

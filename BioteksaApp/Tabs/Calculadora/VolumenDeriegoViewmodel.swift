@@ -16,11 +16,11 @@ class VolumenDeriegoViewmodel: ViewModel {
     @Published var m3Multiply: Double = 100.0
     @Published var products = ProductSet()
 
-    var recommendedSet: ElementSet
+    var calculatedSet: ElementSet
     var solucionMadre: [String: Double] = [:]
     
-    init(recommendedSet: ElementSet) {
-        self.recommendedSet = recommendedSet
+    init(calculatedSet: ElementSet) {
+        self.calculatedSet = calculatedSet
     }
     
     override func load() async {
@@ -29,7 +29,7 @@ class VolumenDeriegoViewmodel: ViewModel {
         activeView = .content
         do {
             Element.allCases.forEach {
-                calculatorDic[$0.id] = recommendedSet[$0].value
+                calculatorDic[$0.id] = calculatedSet[$0].value
             }
             solucionMadre = try await apiManager.fetch(Calculate(required: calculatorDic)).recommended
             print(solucionMadre)

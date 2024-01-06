@@ -20,7 +20,6 @@ struct AcidosView: View {
                   case .error:
                       Text("Ocurrio un error")
                   case .content:
-                      
                       AcidosContainer(acidTitle: "Acido Sulfurico", model: $viewModel.acidosTuple.sulfurico)
                       AcidosContainer(acidTitle: "Acido Nitrico", model: $viewModel.acidosTuple.nitrico)
                       AcidosContainer(acidTitle: "Acido Fosforico", model: $viewModel.acidosTuple.fosforico)
@@ -39,12 +38,3 @@ struct AcidosTabBar_Previews: PreviewProvider {
         AcidosView(viewModel: AcidosViewModel())
     }
 }
-
-struct InfoView: View {
-	var text: String
-	
-	var body: some View {
-		Text(text)
-	}
-}
-

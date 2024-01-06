@@ -85,7 +85,6 @@ struct TestEditablePair: View {
                 
             }
         }
-        
     }
 }
 
@@ -112,7 +111,6 @@ struct EditableValue: Hashable {
     }
 }
 
-
 // Demo
 class ListVM: ObservableObject {
     
@@ -131,12 +129,10 @@ struct TextList: View {
         } label: {
             Text("Hola")
         }
-
     }
 }
 
 #Preview {
-    
     TableContainer(title: "Test", backgroundColor: .blue) {
         TextList()
     }

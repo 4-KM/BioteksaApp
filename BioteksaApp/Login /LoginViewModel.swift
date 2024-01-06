@@ -38,5 +38,3 @@ class LoginViewModel: ObservableObject {
 		}
 	}
 }
-
-

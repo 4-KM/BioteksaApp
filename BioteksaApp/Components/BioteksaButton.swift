@@ -37,5 +37,4 @@ struct BioteksaButton: View {
         }
         .padding()
     }
-    
 }

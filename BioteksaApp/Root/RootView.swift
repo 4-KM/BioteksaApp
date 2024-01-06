@@ -36,7 +36,6 @@ struct RootView: View {
         .task {
             Task {
                 await viewModel.getSessionState()
-
             }
         }
     }
@@ -45,6 +44,3 @@ struct RootView: View {
 #Preview{
     RootView(viewModel: RootViewModel())
 }
-
-
-

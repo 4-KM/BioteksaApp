@@ -9,8 +9,6 @@ import SwiftUI
 
 struct VolumenDeRiegoView: View {
     @State var volumenM3: Double = 100.00
-  //  @State var arrayCalculo: [VolumenDeRiegoModel] = productosVolumenRiengo
-   // var productoView: [CalculadoraViewModel.NecesarioCalculator] = []
     @ObservedObject var viewModel: VolumenDeriegoViewmodel
     
     var body: some View {

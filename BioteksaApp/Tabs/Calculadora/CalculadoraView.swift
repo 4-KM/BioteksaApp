@@ -27,12 +27,12 @@ struct CalculadoraView: View {
             }
         }
         .sheet(isPresented: $viewModel.showSolucionMadre, content: {
-            VolumenDeRiegoView(viewModel: VolumenDeriegoViewmodel(recommendedSet: viewModel.recommendedSet))
+            VolumenDeRiegoView(viewModel: VolumenDeriegoViewmodel(calculatedSet: viewModel.calculatedSet))
         })
     }
     
     @ViewBuilder func elementTable(elementsSet: Binding<ElementSet>) -> some View {
-        TableContainer(title: "\(elementsSet.wrappedValue.set.rawValue)", backgroundColor: .blue) {
+        TableContainer(title: "\(elementsSet.wrappedValue.set.rawValue)", backgroundColor: .red) {
             ForEach(Element.allCases) {
                 ElementEditableValue(title: $0.chemicalFormula, value: elementsSet[$0].value)
                 Divider()
@@ -60,7 +60,7 @@ struct CalculadoraView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 HStack {
-                    Text("HCO₃⁻")
+                    Text(Element.bicarbonato.chemicalFormula)
                     QuantityText(value: viewModel.acidsSet.bicarbonato.value)
                         .frame(maxWidth: .infinity)
                         .background(Color(red: 0, green: 0, blue: 0, opacity: 0.05))
@@ -71,7 +71,7 @@ struct CalculadoraView: View {
     
     @ViewBuilder func nutrientsTable() -> some View {
         if viewModel.showNutrientsViews {
-            nonEditableElementTable(elementsSet: viewModel.recommendedSet)
+            nonEditableElementTable(elementsSet: viewModel.calculatedSet)
             CalculatorAcidoView(title: "Acido sulfurico", values: viewModel.sulfurico)
             CalculatorAcidoView(title: "Acido Nitrico", values: viewModel.nitrico)
             CalculatorAcidoView(title: "Acido Fosforico", values: viewModel.fosforico)
@@ -83,8 +83,6 @@ struct CalculadoraView: View {
                     
 struct Calculadora_Previews: PreviewProvider {
     static let demoData = DemoData()
-
-    
     
     static var previews: some View {
         CalculadoraView(viewModel: Self.demoData.viewModel)

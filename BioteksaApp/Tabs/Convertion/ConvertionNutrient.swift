@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct ConvertionNutrient: Hashable {
     let id: Int
     let nutrient_id: Int
@@ -39,4 +38,3 @@ enum ElementosNames: Int{
         }
     }
 }
- 

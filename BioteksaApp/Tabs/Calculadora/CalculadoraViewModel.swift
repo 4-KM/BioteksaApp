@@ -200,7 +200,7 @@ class CalculadoraViewModel: ViewModel {
     
     @Published var waterSet: ElementSet = ElementSet(set: .water)
     @Published var requiredSet: ElementSet = ElementSet(set: .required)
-    @Published var recommendedSet: ElementSet = ElementSet(set: .needed)
+    @Published var calculatedSet: ElementSet = ElementSet(set: .needed)
     var acidsSet: ElementSet = ElementSet(set: .tmpAcids)
    
     @Published var productSet: ProductSet = ProductSet()
@@ -219,9 +219,9 @@ class CalculadoraViewModel: ViewModel {
         var neededBicarbonato = 0.0
         (acidsSet, neededBicarbonato) = ElementSet.acidosTemp(water: waterSet, required: requiredSet)
         Element.allCases.forEach {
-            recommendedSet[$0].value = max(0, requiredSet[$0].value - acidsSet[$0].value - waterSet[$0].value)
+            calculatedSet[$0].value = max(0, requiredSet[$0].value - acidsSet[$0].value - waterSet[$0].value)
         }
-        recommendedSet[.bicarbonato].value = neededBicarbonato
+        calculatedSet[.bicarbonato].value = neededBicarbonato
         
         let meqNeutralizar = acidsSet.bicarbonato.value
         

@@ -12,11 +12,11 @@ import SwiftUI
 
 class NutrientesViewModel: ViewModel {
     @Dependency(\.apiManager) var apiManager
+    @Dependency(\.dataManager) var dataManager
 
     @Published var response : [Bioteksa] = []
     
 	override func load() async {
-        @Dependency(\.dataManager) var dataManager
         response = dataManager.bioteksa.map { (key: String, value: [Nutrient]) in
             Bioteksa(key: key, value: value.map({ nutrient in
                 NutrientElement(nutrient_id: nutrient.nutrient_id, quantity: nutrient.quantity)

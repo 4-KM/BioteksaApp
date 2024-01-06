@@ -35,7 +35,6 @@ struct TabBarView: View {
             .toolbarBackground(.visible, for: .tabBar)
             .toolbarBackground(Color.white, for: .tabBar)
         }
-        //.tint(Color.white)
         .toolbarTitleDisplayMode(.inline)
         .onChange(of: viewModel.attemptChangeToTab) { oldValue, newValue in
             if viewModel.shouldChangeTab(to: newValue) {

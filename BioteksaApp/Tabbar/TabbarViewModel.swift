@@ -44,6 +44,8 @@ struct DemoData {
 
 @MainActor
 class TabbarViewModel: ObservableObject {
+    @Dependency(\.apiManager) var apiManager
+
     @Published var showLogoutAlert = false
     @Published var attemptChangeToTab: Int = 0
     @Published var selectedTab = 0
@@ -59,8 +61,8 @@ class TabbarViewModel: ObservableObject {
                 .acidos(AcidosViewModel()),
                 .nutrientes(NutrientesViewModel()),
                 .convertion(ConvertionViewModel()),
-                .calculadora(DemoData().viewModel)
-                //.calculadora(CalculadoraViewModel())
+                //.calculadora(DemoData().viewModel)
+                .calculadora(CalculadoraViewModel())
             ]
         } else {
             tabs = [
@@ -78,8 +80,6 @@ class TabbarViewModel: ObservableObject {
     }
     
     func logout() async {
-        @Dependency(\.apiManager) var apiManager
-
         do {
             try await apiManager.logout()
             onLogout()

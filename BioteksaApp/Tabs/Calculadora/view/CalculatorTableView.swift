@@ -40,15 +40,3 @@ struct TitlesView: View {
             .padding(.leading)
     }
 }
-
-/*
-#Preview {
-    
-    HStack {
-        CalculatorTableView( viewModel: CalculadoraViewModel(), valuesAcidoInfo: .constant(CalculadoraViewModel.Acido.init(bioteksa: .init(pesoEspesifico: "1", densidad: "2", riqueza: "3", medNeutrailar: "4", HMNOL: "5", HMNOL100: "6" ), otros: .init(pesoEspesifico: "12", densidad: "12", riqueza: "13", medNeutrailar: "14", HMNOL: "15", HMNOL100: "16" )) ) )
-    }
-
-    
-    
-}
-*/
