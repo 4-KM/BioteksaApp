@@ -13,7 +13,11 @@ class VolumenDeriegoViewmodel: ViewModel {
     @Dependency(\.apiManager) var apiManager
     
     @Published var calculatorDic : [String:Double] = [:]
-    @Published var m3Multiply: Double = 100.0
+	@Published var m3Multiply: Double = 100.0 {
+		didSet {
+			multiplyForInput()
+		}
+	}
     @Published var products = ProductSet()
 
     var calculatedSet: ElementSet

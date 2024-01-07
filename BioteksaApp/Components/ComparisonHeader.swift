@@ -14,12 +14,12 @@ struct ComparisonHeader: View {
                 .frame(maxWidth: .infinity)
             Text("Bioteksa")
                 .frame(maxWidth: .infinity)
-                .foregroundColor(Color.anatomy.bgTitleBlue)
+                .foregroundColor(Color.anatomy.fgBrand)
             Text("Otros")
                 .frame(maxWidth: .infinity)
-					 .foregroundColor(.anatomy.fgGray)
+					 .foregroundColor(.anatomy.fgTextGray)
         }
         .padding()
-        .background(.white)
+				.background(Color.anatomy.bgPrimary)
     }
 }

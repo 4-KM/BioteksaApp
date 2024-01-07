@@ -34,13 +34,13 @@ struct Page<Content: View>: View {
                      }
                      .padding()
                  }
-					  .background(Color.anatomy.bgPurple)
-                 
+					  .background(Color.anatomy.bgPage)
                  if viewModel.isLoading {
                      ProgressView()
                  }
              }
 		 }
+		 .keyboardObserver()
 		 .alert("Error", isPresented: $viewModel.showError, actions: {
 			 
 		 }) {

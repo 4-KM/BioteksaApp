@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+/*
 struct PreViewColores_: View {
     var body: some View {
         ScrollView {
@@ -54,3 +54,4 @@ struct PreViewColores_: View {
 #Preview {
     PreViewColores_()
 }
+ */
