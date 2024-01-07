@@ -32,10 +32,11 @@ struct LoginView: View {
 							text: $viewModel.username,
 							prompt: Text("Usuario").foregroundColor(.blue)
 						)
+						.textFieldStyle(RoundedBorderTextFieldStyle())
 						.keyboardType(.emailAddress)
 						.autocapitalization(.none)
 						.disableAutocorrection(true)
-						.cornered()
+						//.cornered()
 						HStack {
 							if viewModel.showPassword {
 								TextField(
@@ -82,33 +83,12 @@ struct Cornered: ViewModifier {
 			.foregroundColor(.blue)
 			.overlay {
 				RoundedRectangle(cornerRadius: 10)
-					.stroke(Color.anatomy.bgTitleBlue, lineWidth: 2)
+					.stroke(Color.anatomy.borderPrimary, lineWidth: 2)
 			}
 	}
 }
 
-struct BioteksaGradientBackground: ViewModifier {
-	func body(content: Content) -> some View {
-		content.background {
-			LinearGradient(
-				gradient: Gradient(
-					colors: [
-						Color.anatomy.grandientBlue1,
-						Color.anatomy.grandientBlue2
-					]
-				),
-				startPoint: .top,
-				endPoint: .bottom
-			)
-			.clipped()
-		}
-	}
-}
-
 extension View {
-	func gradientBackground() -> some View {
-		self.modifier(BioteksaGradientBackground())
-	}
 	func cornered() -> some View {
 		self.modifier(Cornered())
 	}

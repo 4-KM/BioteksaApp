@@ -15,7 +15,7 @@ struct BioteksaTextField: View {
         VStack(alignment: .center, spacing: 0) {
             TextField(title, text: $text)
                 .padding(8)
-                .background(Color.anatomy.bgGrayTransparent)
+                .background(Color.anatomy.bgTextFieldGray)
             Divider()
                 .background(Color.gray)
         }
@@ -37,7 +37,7 @@ struct BioteksaNumberTextField: View {
         VStack(alignment: .center, spacing: 0) {
             TextField(title, value: $value, formatter: formatter)
                 .padding(8)
-                .background(Color.anatomy.bgGrayTransparent)
+                .background(Color.anatomy.bgTextFieldGray)
                 .keyboardType(.decimalPad)
             Divider()
                 .background(Color.gray)
@@ -133,7 +133,7 @@ struct TextList: View {
 }
 
 #Preview {
-    TableContainer(title: "Test", backgroundColor:Color.anatomy.bgTitleBlue) {
+    TableContainer(title: "Test", backgroundColor: Color.anatomy.bgTableHeader) {
         TextList()
     }
 }

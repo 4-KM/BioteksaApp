@@ -62,7 +62,7 @@ public protocol BioteksaAPIManager: APIManager {
 
 public class LiveBioteksaAPI: BioteksaAPIManager {
     public var authProvider: AuthenticationProvider? = BioteksaAuthProvider()
-    public var domain: String = BioteksaServer.test
+    public var domain: String = BioteksaServer.prod
     
 	public var isLogged: Bool {
 		authProvider?.token != nil
