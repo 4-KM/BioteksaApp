@@ -22,7 +22,7 @@ struct BioteksaButton: View {
             .padding(16)
             .fixedSize(horizontal: false, vertical: true)
             .frame(maxWidth: .infinity)
-            .foregroundColor(.white)
+						.foregroundColor(.anatomy.fgContrast)
 				.gradientBackground()
 				.cornerRadius(10)
         })

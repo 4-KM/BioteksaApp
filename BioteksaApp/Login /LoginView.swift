@@ -30,7 +30,7 @@ struct LoginView: View {
 						TextField(
 							"Name",
 							text: $viewModel.username,
-							prompt: Text("Usuario").foregroundColor(.blue)
+							prompt: Text("Usuario").foregroundColor(.anatomy.fgBrand)
 						)
 						.keyboardType(.emailAddress)
 						.autocapitalization(.none)
@@ -41,18 +41,18 @@ struct LoginView: View {
 								TextField(
 									"Password",
 									text: $viewModel.password,
-									prompt: Text("Password").foregroundColor(.blue))
+									prompt: Text("Password").foregroundColor(.anatomy.fgBrand))
 							} else {
 								SecureField(
 									"Password",
 									text: $viewModel.password,
-									prompt: Text("Password").foregroundColor(.blue))
+									prompt: Text("Password").foregroundColor(.anatomy.fgBrand))
 							}
 							Button {
 								viewModel.showPassword.toggle()
 							} label: {
 								Image(systemName: viewModel.showPassword ? "eye.slash" : "eye")
-									.foregroundColor(.white)
+									.foregroundColor(.anatomy.bgPrimary)
 							}
 						}
 						.cornered()
@@ -78,8 +78,8 @@ struct Cornered: ViewModifier {
 	func body(content: Content) -> some View {
 		content
 			.padding()
-			.tint(.blue)
-			.foregroundColor(.blue)
+			.tint(.anatomy.fgBrand)
+			.foregroundColor(.anatomy.fgBrand)
 			.overlay {
 				RoundedRectangle(cornerRadius: 10)
 					.stroke(Color.anatomy.borderPrimary, lineWidth: 2)

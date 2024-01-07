@@ -63,8 +63,8 @@ struct ConversionSubHeaders: View {
                 .frame(maxWidth: .infinity)
         }
         .frame(height: 100)
-        .foregroundColor (.white)
-        .background (Color (red: 0.021, green: 0.286, blue: 0.557))
+				.foregroundColor(.anatomy.fgContrast)
+				.background(Color.anatomy.bgBrand)
     }
 }
 

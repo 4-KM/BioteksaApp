@@ -13,21 +13,33 @@ import Foundation
 class RootViewModel: ObservableObject {
 	enum ActiveView {
         case splash
-		case login
-		case loggedIn
+		case login(viewModel: LoginViewModel)
+		case loggedIn(viewModel: TabbarViewModel)
 	}
 	
 	@Dependency(\.apiManager) var apiManager
 	@Dependency(\.configurationRepository) var configurationRepository
     
 	@Published var activeView: ActiveView = .splash
-	
+
 	func getSessionState() async {
 		if apiManager.isLogged {
 			_ = try? await configurationRepository.getConfiguration()
-			activeView = .loggedIn
+			activeView = .loggedIn(
+				viewModel: TabbarViewModel { [weak self] in
+					Task {
+						await self?.getSessionState()
+					}
+				}
+			)
 		} else {
-			activeView = .login
+			activeView = .login(
+				viewModel: LoginViewModel { [weak self] in
+					Task {
+						await self?.getSessionState()
+					}
+				}
+			)
 		}
 	}
 }
