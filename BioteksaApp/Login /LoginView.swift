@@ -32,11 +32,10 @@ struct LoginView: View {
 							text: $viewModel.username,
 							prompt: Text("Usuario").foregroundColor(.blue)
 						)
-						.textFieldStyle(RoundedBorderTextFieldStyle())
 						.keyboardType(.emailAddress)
 						.autocapitalization(.none)
 						.disableAutocorrection(true)
-						//.cornered()
+						.cornered()
 						HStack {
 							if viewModel.showPassword {
 								TextField(
