@@ -20,6 +20,7 @@ protocol ColorStyle {
 	var bgTableRowHighligted: Color { get }
 
 	var fgPrimary: Color { get }
+	var fgContrast: Color { get }
 	var fgBrand: Color { get }
 	var fgTableHeader: Color { get }
 	var fgTableContent: Color { get }
@@ -45,6 +46,7 @@ struct AnatomyLightColorStyle: ColorStyle {
 	let bgTableRowHighligted = Color(hex: 0xFDF7D9)
 	
 	let fgPrimary = Color(hex: 0xffffff)
+	let fgContrast = Color(hex: 0xffffff)
 	let fgBrand = Color(hex: 0x03498E)
 	let fgTableHeader = Color(hex: 0xffffff)
 	let fgTableContent = Color(hex: 0xffffff)
@@ -70,6 +72,7 @@ struct AnatomyDarkColorStyle: ColorStyle {
 	let bgTableRowHighligted = Color(hex: 0x6D6749)
 	
 	let fgPrimary = Color(hex: 0x000000)
+	let fgContrast = Color(hex: 0xffffff)
 	let fgBrand = Color(hex: 0x03498E)
 	let fgTableHeader = Color(hex: 0xffffff)
 	let fgTableContent = Color(hex: 0xffffff)

@@ -18,23 +18,11 @@ struct RootView: View {
 							.background {
 								Image("bg_home-800")
 							}
-					case .login:
-						LoginView(
-							viewModel: LoginViewModel {
-								Task {
-									await viewModel.getSessionState()
-								}
-							}
-						)
-					case .loggedIn:
+					case .login(let viewModel):
+						LoginView(viewModel: viewModel)
+					case .loggedIn(let viewModel):
 						if colorScheme == .light || true {
-							TabBarView(
-								viewModel: TabbarViewModel {
-									Task {
-										await viewModel.getSessionState()
-									}
-								}
-							)
+							TabBarView(viewModel: viewModel)
 						}
 				}
 			}
