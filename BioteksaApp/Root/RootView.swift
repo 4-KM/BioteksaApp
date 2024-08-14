@@ -14,10 +14,7 @@ struct RootView: View {
 			VStack {
 				switch viewModel.activeView {
 					case .splash:
-						Image("logotipo")
-							.background {
-								Image("bg_home-800")
-							}
+						Image("composed")
 					case .login(let viewModel):
 						LoginView(viewModel: viewModel)
 					case .loggedIn(let viewModel):
