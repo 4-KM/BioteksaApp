@@ -13,7 +13,7 @@ struct CalculatorAcidoView: View {
     
     var body: some View {
         TableContainer(title: LocalizedStringKey(title), backgroundColor: .anatomy.bgTableHeader) {
-            ComparisonHeader()
+            ComparisonHeader(aColumn: "")
             CalculatorTableView(valuesAcidoInfo: values)
         }
     }

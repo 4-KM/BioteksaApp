@@ -13,7 +13,7 @@ struct AcidosContainer: View {
 
     var body: some View {
         TableContainer(title: acidTitle, backgroundColor:  .anatomy.bgTableHeaderGreen) {
-            ComparisonHeader()
+            ComparisonHeader(aColumn: "")
             HStack{
                 titlesColumn()
                 VStack{

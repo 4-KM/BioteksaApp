@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct ComparisonHeader: View {
+	var aColumn: String = "Bioteksa"
+	var bColumn: String = "Otros"
     var body: some View {
         HStack{
             Text("")
                 .frame(maxWidth: .infinity)
-            Text("Bioteksa")
+            Text(aColumn)
                 .frame(maxWidth: .infinity)
                 .foregroundColor(Color.anatomy.fgBrand)
-            Text("Otros")
+            Text(bColumn)
                 .frame(maxWidth: .infinity)
 					 .foregroundColor(.anatomy.fgTextGray)
         }
