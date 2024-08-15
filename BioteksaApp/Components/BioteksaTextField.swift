@@ -22,10 +22,12 @@ struct BioteksaTextField: View {
     }
 }
 
+/*
 struct BioteksaNumberTextField: View {
     var title: LocalizedStringKey
     @Binding var value: Double
-
+	@FocusState var isEditing: Bool
+	@State var emptyValue = ""
     private let formatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -35,14 +37,70 @@ struct BioteksaNumberTextField: View {
     
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
-            TextField(title, value: $value, formatter: formatter)
-                .padding(8)
-                .background(Color.anatomy.bgTextFieldGray)
-                .keyboardType(.decimalPad)
+					TextField(
+						title,
+						value: $value,
+						formatter: formatter,
+						prompt: Text("0.0")
+					)
+					.padding(8)
+					.background(Color.anatomy.bgTextFieldGray)
+					.keyboardType(.decimalPad)
+					.onTapGesture {
+						if value == 0 {
+							value = nil
+						}
+					}
             Divider()
                 .background(Color.gray)
         }
+				
     }
+}
+ */
+
+struct BioteksaNumberTextField: View {
+	var title: LocalizedStringKey
+	@Binding var value: Double
+	@State private var displayText: String = ""
+	
+	private let formatter: NumberFormatter = {
+		let formatter = NumberFormatter()
+		formatter.numberStyle = .decimal
+		formatter.maximumFractionDigits = 3
+		return formatter
+	}()
+	
+	var body: some View {
+		VStack(alignment: .center, spacing: 0) {
+			TextField(
+				title,
+				text: Binding<String>(
+					get: {
+						if value == 0 {
+							return ""
+						} else {
+							return formatter.string(for: value) ?? ""
+						}
+					},
+					set: { newValue in
+						if let newValue = formatter.number(from: newValue)?.doubleValue {
+							value = newValue
+						} else {
+							value = 0
+						}
+					}
+				),
+				prompt: Text("0.0")
+			)
+			.padding(8)
+			.background(Color.anatomy.bgTextFieldGray)
+			.keyboardType(.decimalPad)
+			
+			Divider()
+				.background(Color.gray)
+		}
+	}
 }
 
 struct QuantityText: View {

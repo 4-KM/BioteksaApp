@@ -23,15 +23,8 @@ struct VolumenDeRiegoView: View {
                 ForEach(Product.allCases) {
                     NonEditableValueRow(text: $0.name, value: viewModel.products[$0].value)
                 }
-            }
-        }
-    }
-    
-    @ViewBuilder func nonEditableElementTable(elementsSet: ElementSet) -> some View {
-        TableContainer(title: "\(elementsSet.set.rawValue)") {
-            ForEach(Element.allCases) {
-                NonEditableValueRow(text: $0.chemicalFormula, value: elementsSet[$0].value)
-                Divider()
+							NonEditableValueRow(text: viewModel.acidTitle, value: viewModel.acidLiters)
+
             }
         }
     }

@@ -13,8 +13,8 @@ struct CalculadoraView: View {
    
     var body: some View {
         Page(viewModel: viewModel) {
+						elementTable(elementsSet: $viewModel.requiredSet)
             elementTable(elementsSet: $viewModel.waterSet)
-            elementTable(elementsSet: $viewModel.requiredSet)
             hcoTable()
             BioteksaButton(title: "Calcular") {
                 viewModel.calculate()
@@ -26,8 +26,15 @@ struct CalculadoraView: View {
                 }
             }
         }
-        .sheet(isPresented: $viewModel.showSolucionMadre, content: {
-            VolumenDeRiegoView(viewModel: VolumenDeriegoViewmodel(calculatedSet: viewModel.calculatedSet))
+				.sheet(isPresented: $viewModel.showSolucionMadre,
+							 content: {
+					VolumenDeRiegoView(
+						viewModel: VolumenDeriegoViewmodel(
+							calculatedSet: viewModel.calculatedSet,
+							acidTitle: viewModel.acidoType.rawValue,
+							acidLiters: viewModel.selectedAcid?.HMNOL.bioteksa ?? 0
+						)
+					)
         })
     }
     

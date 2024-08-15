@@ -187,6 +187,17 @@ class CalculadoraViewModel: ViewModel {
         case fosforico = "Fosforico"
         
         var id: String { self.rawValue }
+			
+			var element: Element {
+				switch self {
+					case .sulfurico:
+							.asufre
+					case .nitrico:
+							.nitrogeno
+					case .fosforico:
+							.fosforo
+				}
+			}
     }
     
     @Dependency(\.dataManager) var dataManager
@@ -195,8 +206,12 @@ class CalculadoraViewModel: ViewModel {
     @Published var nitrico: AcidoModel!
     @Published var fosforico: AcidoModel!
     
-    @Published var selectedAcid: Int = 1
-    @Published var acidoType: AcidoType = .sulfurico
+	@Published var selectedAcid: AcidoModel?
+	@Published var acidoType: AcidoType = .sulfurico {
+		didSet {
+			calculate()
+		}
+	}
     
     @Published var waterSet: ElementSet = ElementSet(set: .water)
     @Published var requiredSet: ElementSet = ElementSet(set: .required)
@@ -216,6 +231,7 @@ class CalculadoraViewModel: ViewModel {
     }
     
     func calculate()  {
+			UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         var neededBicarbonato = 0.0
         (acidsSet, neededBicarbonato) = ElementSet.acidosTemp(water: waterSet, required: requiredSet)
         Element.allCases.forEach {
@@ -228,10 +244,17 @@ class CalculadoraViewModel: ViewModel {
         sulfurico.updateMeq(meqNeutralizar: meqNeutralizar)
         nitrico.updateMeq(meqNeutralizar: meqNeutralizar)
         fosforico.updateMeq(meqNeutralizar: meqNeutralizar)
+			switch acidoType {
+				case .nitrico:
+					selectedAcid = nitrico
+				case .fosforico:
+					selectedAcid = fosforico
+				case .sulfurico:
+					selectedAcid = sulfurico
+			}
+				let neutralized = calculatedSet[acidoType.element].value - meqNeutralizar
+				calculatedSet[acidoType.element].value = max(0, neutralized)
         showNutrientsViews = true
-        
-        
-        
     }
     
     func calculateSolucionMadre() {
