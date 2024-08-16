@@ -77,11 +77,14 @@ struct CalculadoraView: View {
     }
     
     @ViewBuilder func nutrientsTable() -> some View {
-        if viewModel.showNutrientsViews {
+        if viewModel.showNutrientsViews, let selectedAcid = viewModel.selectedAcid {
             nonEditableElementTable(elementsSet: viewModel.calculatedSet)
-            CalculatorAcidoView(title: "Acido sulfurico", values: viewModel.sulfurico)
-            CalculatorAcidoView(title: "Acido Nitrico", values: viewModel.nitrico)
-            CalculatorAcidoView(title: "Acido Fosforico", values: viewModel.fosforico)
+						
+					CalculatorAcidoView(
+						title: "Acido \(viewModel.acidoType.rawValue)",
+						values: selectedAcid
+					)
+            
         } else {
             EmptyView()
         }
