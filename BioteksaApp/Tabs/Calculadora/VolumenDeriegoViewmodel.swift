@@ -33,7 +33,8 @@ class VolumenDeriegoViewmodel: ViewModel {
 		) {
 				self.calculatedSet = calculatedSet
 				self.acidTitle = acidTitle
-				self.acidLiters = acidLiters * 100
+				self.acidLiters = acidLiters
+			calculatedAcid = acidLiters * 100
 		}
     
     override func load() async {

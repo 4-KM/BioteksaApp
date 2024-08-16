@@ -23,7 +23,7 @@ struct VolumenDeRiegoView: View {
                 ForEach(Product.allCases) {
                     NonEditableValueRow(text: $0.name, value: viewModel.products[$0].value)
                 }
-							NonEditableValueRow(text: viewModel.acidTitle, value: viewModel.acidLiters)
+							NonEditableValueRow(text: viewModel.acidTitle, value: viewModel.calculatedAcid)
 
             }
         }
