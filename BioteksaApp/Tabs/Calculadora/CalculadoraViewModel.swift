@@ -256,8 +256,4 @@ class CalculadoraViewModel: ViewModel {
 				calculatedSet[acidoType.element].value = max(0, neutralized)
         showNutrientsViews = true
     }
-    
-    func calculateSolucionMadre() {
-        
-    }
 }
