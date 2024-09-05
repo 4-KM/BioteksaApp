@@ -104,7 +104,7 @@ struct ElementSet {
         set.bicarbonato.value = burn - 0.5
         let neededBicarbonato = burn - set.bicarbonato.value
 
-        set.asufre.value = water.bicarbonato.value - neededBicarbonato
+        //set.asufre.value = water.bicarbonato.value - neededBicarbonato
         
         return (set, neededBicarbonato)
     }
@@ -182,9 +182,9 @@ struct ProductSet {
 
 class CalculadoraViewModel: ViewModel {
     enum AcidoType: String, CaseIterable, Identifiable {
-        case sulfurico = "Sulfurico"
-        case nitrico = "Nitrico"
-        case fosforico = "Fosforico"
+        case sulfurico = "Sulfúrico"
+        case nitrico = "Nítrico"
+        case fosforico = "Fosfórico"
         
         var id: String { self.rawValue }
 			
@@ -235,7 +235,9 @@ class CalculadoraViewModel: ViewModel {
         var neededBicarbonato = 0.0
         (acidsSet, neededBicarbonato) = ElementSet.acidosTemp(water: waterSet, required: requiredSet)
         Element.allCases.forEach {
-            calculatedSet[$0].value = max(0, requiredSet[$0].value - acidsSet[$0].value - waterSet[$0].value)
+            //calculatedSet[$0].value = requiredSet[$0].value - acidsSet[$0].value - waterSet[$0].value
+					calculatedSet[$0].value = max(0, requiredSet[$0].value - acidsSet[$0].value - waterSet[$0].value)
+
         }
         calculatedSet[.bicarbonato].value = neededBicarbonato
         
@@ -252,8 +254,9 @@ class CalculadoraViewModel: ViewModel {
 				case .sulfurico:
 					selectedAcid = sulfurico
 			}
-				let neutralized = calculatedSet[acidoType.element].value - meqNeutralizar
-				calculatedSet[acidoType.element].value = max(0, neutralized)
+			let neutralized = calculatedSet[acidoType.element].value - meqNeutralizar
+			calculatedSet[acidoType.element].value = neutralized
         showNutrientsViews = true
+
     }
 }

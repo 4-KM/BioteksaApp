@@ -24,7 +24,7 @@ let acidosCalculator = [
 		propertyIndex: 1
 	),
 	AcidoCalculator(
-		name: "Peso specifico",
+		name: "Peso específico",
 		rowColor: .anatomy.bgTableRowHighligted,
 		textColor: .anatomy.fgTextBlack,
 		propertyIndex: 2
@@ -42,13 +42,13 @@ let acidosCalculator = [
 		propertyIndex: 4
 	),
 	AcidoCalculator(
-		name: "HNO3ml/L",
+		name: "ml/L",
 		rowColor: .clear,
 		textColor: .anatomy.fgTextRed,
 		propertyIndex: 5
 	),
 	AcidoCalculator(
-		name: "HNO3ml/100M3",
+		name: "L/100m³",
 		rowColor: .clear,
 		textColor: .anatomy.fgTextRed,
 		propertyIndex: 6

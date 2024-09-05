@@ -98,11 +98,11 @@ enum Tab {
     var title: String {
         switch self {
         case .acidos:
-            return "Acidos"
+            return "Ácidos"
         case .nutrientes:
             return "Nutrientes"
         case .convertion:
-            return "Convertion"
+            return "Conversión"
         case .calculadora:
             return "Calculadora"
         }

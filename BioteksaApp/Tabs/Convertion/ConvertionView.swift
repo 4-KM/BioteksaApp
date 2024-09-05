@@ -12,7 +12,7 @@ struct ConvertionView: View {
 
     var body: some View {
         Page(viewModel: viewModel) {
-            TableContainer(title: "Tabla De Conversión") {
+            TableContainer(title: "Tabla de Conversión") {
                 ConversionSubHeaders()
                 HStack {
                     BioteksaAcidosText(title: viewModel.convertion[0].name)
@@ -55,11 +55,12 @@ struct ConvertionView: View {
 struct ConversionSubHeaders: View {
     var body: some View {
         HStack {
+					
             Text("Elemento")
                 .frame(maxWidth: .infinity)
-            Text("Formula Soluble")
+            Text("Fórmula Soluble")
                 .frame(maxWidth: .infinity)
-            Text("Formula Bioteksa")
+            Text("Fórmula Bioteksa")
                 .frame(maxWidth: .infinity)
         }
         .frame(height: 100)

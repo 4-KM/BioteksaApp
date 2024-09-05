@@ -33,7 +33,7 @@ struct AcidosContainer: View {
     }
     
     @ViewBuilder func titlesColumn() -> some View {
-        let titlesAcidos = ["Peso Especifico", "Densidad", "Riqueza"]
+        let titlesAcidos = ["Peso Específico", "Densidad", "Riqueza"]
         VStack{
             ForEach(titlesAcidos,  id: \.self) { option in 
                 BioteksaAcidosText(title: option)
@@ -60,7 +60,7 @@ struct PreviewView: View {
     )
     
     var body: some View {
-        AcidosContainer(acidTitle: "Nitrico", model: $model)
+        AcidosContainer(acidTitle: "Nítrico", model: $model)
     }
 }
 
