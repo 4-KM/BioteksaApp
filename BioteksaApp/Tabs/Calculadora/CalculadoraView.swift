@@ -21,7 +21,7 @@ struct CalculadoraView: View {
             }
             nutrientsTable()
             if viewModel.showNutrientsViews {
-                BioteksaButton(title: "Solucion Madre") {
+                BioteksaButton(title: "Solución Madre") {
                     viewModel.showSolucionMadre = true
                 }
             }
@@ -81,7 +81,7 @@ struct CalculadoraView: View {
             nonEditableElementTable(elementsSet: viewModel.calculatedSet)
 						
 					CalculatorAcidoView(
-						title: "Acido \(viewModel.acidoType.rawValue)",
+						title: "Ácido \(viewModel.acidoType.rawValue)",
 						values: selectedAcid
 					)
             

@@ -56,7 +56,7 @@ class TabbarViewModel: ObservableObject {
         @Dependency(\.apiManager) var apiManager
 
         self.onLogout = onLogout
-        if apiManager.authProvider?.rol == 0 {
+        if apiManager.authProvider?.rol == 0 || apiManager.authProvider?.rol == 1 {
             tabs = [
                 .acidos(AcidosViewModel()),
                 .nutrientes(NutrientesViewModel()),

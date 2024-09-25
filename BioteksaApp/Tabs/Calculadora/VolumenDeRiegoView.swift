@@ -13,7 +13,7 @@ struct VolumenDeRiegoView: View {
     
     var body: some View {
         Page(viewModel: viewModel) {
-            TableContainer(title: "Solucion madre") {
+            TableContainer(title: "Solución madre") {
                 HStack {
                     Spacer()
                     ElementEditableValue(title: "superficie en m3", value: $viewModel.m3Multiply)
