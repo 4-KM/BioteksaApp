@@ -39,14 +39,14 @@ struct LoginView: View {
 						HStack {
 							if viewModel.showPassword {
 								TextField(
-									"Password",
+									"Contraseña",
 									text: $viewModel.password,
-									prompt: Text("Password").foregroundColor(.anatomy.fgBrand))
+									prompt: Text("Contraseña").foregroundColor(.anatomy.fgBrand))
 							} else {
 								SecureField(
-									"Password",
+									"Contraseña",
 									text: $viewModel.password,
-									prompt: Text("Password").foregroundColor(.anatomy.fgBrand))
+									prompt: Text("Contraseña").foregroundColor(.anatomy.fgBrand))
 							}
 							Button {
 								viewModel.showPassword.toggle()

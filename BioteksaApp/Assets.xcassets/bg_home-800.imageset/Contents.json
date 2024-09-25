@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "bg_home-800.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "bg_home-800.jpg",
       "idiom" : "universal",
       "scale" : "2x"
     },

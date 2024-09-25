@@ -13,7 +13,7 @@ struct VolumenDeRiegoView: View {
     
     var body: some View {
         Page(viewModel: viewModel) {
-            TableContainer(title: "Solucion madre") {
+            TableContainer(title: "Solución madre") {
                 HStack {
                     Spacer()
                     ElementEditableValue(title: "superficie en m3", value: $viewModel.m3Multiply)
@@ -23,15 +23,8 @@ struct VolumenDeRiegoView: View {
                 ForEach(Product.allCases) {
                     NonEditableValueRow(text: $0.name, value: viewModel.products[$0].value)
                 }
-            }
-        }
-    }
-    
-    @ViewBuilder func nonEditableElementTable(elementsSet: ElementSet) -> some View {
-        TableContainer(title: "\(elementsSet.set.rawValue)") {
-            ForEach(Element.allCases) {
-                NonEditableValueRow(text: $0.chemicalFormula, value: elementsSet[$0].value)
-                Divider()
+							NonEditableValueRow(text: "Ácido " + viewModel.acidTitle, value: viewModel.calculatedAcid)
+
             }
         }
     }

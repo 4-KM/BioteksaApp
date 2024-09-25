@@ -104,7 +104,7 @@ struct ElementSet {
         set.bicarbonato.value = burn - 0.5
         let neededBicarbonato = burn - set.bicarbonato.value
 
-        set.asufre.value = water.bicarbonato.value - neededBicarbonato
+        //set.asufre.value = water.bicarbonato.value - neededBicarbonato
         
         return (set, neededBicarbonato)
     }
@@ -182,11 +182,22 @@ struct ProductSet {
 
 class CalculadoraViewModel: ViewModel {
     enum AcidoType: String, CaseIterable, Identifiable {
-        case sulfurico = "Sulfurico"
-        case nitrico = "Nitrico"
-        case fosforico = "Fosforico"
+        case sulfurico = "Sulfúrico"
+        case nitrico = "Nítrico"
+        case fosforico = "Fosfórico"
         
         var id: String { self.rawValue }
+			
+			var element: Element {
+				switch self {
+					case .sulfurico:
+							.asufre
+					case .nitrico:
+							.nitrogeno
+					case .fosforico:
+							.fosforo
+				}
+			}
     }
     
     @Dependency(\.dataManager) var dataManager
@@ -195,8 +206,12 @@ class CalculadoraViewModel: ViewModel {
     @Published var nitrico: AcidoModel!
     @Published var fosforico: AcidoModel!
     
-    @Published var selectedAcid: Int = 1
-    @Published var acidoType: AcidoType = .sulfurico
+	@Published var selectedAcid: AcidoModel?
+	@Published var acidoType: AcidoType = .sulfurico {
+		didSet {
+			calculate()
+		}
+	}
     
     @Published var waterSet: ElementSet = ElementSet(set: .water)
     @Published var requiredSet: ElementSet = ElementSet(set: .required)
@@ -216,10 +231,13 @@ class CalculadoraViewModel: ViewModel {
     }
     
     func calculate()  {
+			UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         var neededBicarbonato = 0.0
         (acidsSet, neededBicarbonato) = ElementSet.acidosTemp(water: waterSet, required: requiredSet)
         Element.allCases.forEach {
-            calculatedSet[$0].value = max(0, requiredSet[$0].value - acidsSet[$0].value - waterSet[$0].value)
+            //calculatedSet[$0].value = requiredSet[$0].value - acidsSet[$0].value - waterSet[$0].value
+					calculatedSet[$0].value = max(0, requiredSet[$0].value - acidsSet[$0].value - waterSet[$0].value)
+
         }
         calculatedSet[.bicarbonato].value = neededBicarbonato
         
@@ -228,13 +246,17 @@ class CalculadoraViewModel: ViewModel {
         sulfurico.updateMeq(meqNeutralizar: meqNeutralizar)
         nitrico.updateMeq(meqNeutralizar: meqNeutralizar)
         fosforico.updateMeq(meqNeutralizar: meqNeutralizar)
+			switch acidoType {
+				case .nitrico:
+					selectedAcid = nitrico
+				case .fosforico:
+					selectedAcid = fosforico
+				case .sulfurico:
+					selectedAcid = sulfurico
+			}
+			let neutralized = calculatedSet[acidoType.element].value - meqNeutralizar
+			calculatedSet[acidoType.element].value = neutralized
         showNutrientsViews = true
-        
-        
-        
-    }
-    
-    func calculateSolucionMadre() {
-        
+
     }
 }

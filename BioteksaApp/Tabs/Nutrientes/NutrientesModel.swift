@@ -36,7 +36,7 @@ enum BioteksaNames: String{
     case ULTRA_K = "4"
     case ULTRA_CA = "5"
     case ULTRA_MG = "6"
-    case HYPER_MN = "7"
+    case ULTRA_S = "7"
     
     var name : String {
         switch self {
@@ -46,7 +46,7 @@ enum BioteksaNames: String{
         case .ULTRA_K: return "ULTRA K"
         case .ULTRA_CA: return "ULTRA CA"
         case .ULTRA_MG: return "ULTRA MG"
-        case .HYPER_MN: return "ULTRA MN"
+        case .ULTRA_S: return "ULTRA S"
         }
     }
 }

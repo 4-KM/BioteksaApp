@@ -14,10 +14,10 @@ enum Product: CaseIterable, Identifiable {
     case utraK
     case ultraCA
     case ultraMG
+		case ultraS
     case hyperMn
     case hyperZN
     case ultraFe
-    case ultraS
     
     var id: String { self.name}
     
@@ -112,7 +112,7 @@ extension Element {
         case .calcio:
             return "Ca²⁺"
         case .magnesio:
-            return "Mg⁺"
+            return "Mg²⁺"
         case .asufre:
             return "SO₄²⁻"
         case .bicarbonato:

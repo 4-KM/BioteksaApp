@@ -13,21 +13,28 @@ struct CalculadoraView: View {
    
     var body: some View {
         Page(viewModel: viewModel) {
+						elementTable(elementsSet: $viewModel.requiredSet)
             elementTable(elementsSet: $viewModel.waterSet)
-            elementTable(elementsSet: $viewModel.requiredSet)
             hcoTable()
             BioteksaButton(title: "Calcular") {
                 viewModel.calculate()
             }
             nutrientsTable()
             if viewModel.showNutrientsViews {
-                BioteksaButton(title: "Solucion Madre") {
+                BioteksaButton(title: "Solución Madre") {
                     viewModel.showSolucionMadre = true
                 }
             }
         }
-        .sheet(isPresented: $viewModel.showSolucionMadre, content: {
-            VolumenDeRiegoView(viewModel: VolumenDeriegoViewmodel(calculatedSet: viewModel.calculatedSet))
+				.sheet(isPresented: $viewModel.showSolucionMadre,
+							 content: {
+					VolumenDeRiegoView(
+						viewModel: VolumenDeriegoViewmodel(
+							calculatedSet: viewModel.calculatedSet,
+							acidTitle: viewModel.acidoType.rawValue,
+							acidLiters: viewModel.selectedAcid?.HMNOL.bioteksa ?? 0
+						)
+					)
         })
     }
     
@@ -70,11 +77,14 @@ struct CalculadoraView: View {
     }
     
     @ViewBuilder func nutrientsTable() -> some View {
-        if viewModel.showNutrientsViews {
+        if viewModel.showNutrientsViews, let selectedAcid = viewModel.selectedAcid {
             nonEditableElementTable(elementsSet: viewModel.calculatedSet)
-            CalculatorAcidoView(title: "Acido sulfurico", values: viewModel.sulfurico)
-            CalculatorAcidoView(title: "Acido Nitrico", values: viewModel.nitrico)
-            CalculatorAcidoView(title: "Acido Fosforico", values: viewModel.fosforico)
+						
+					CalculatorAcidoView(
+						title: "Ácido \(viewModel.acidoType.rawValue)",
+						values: selectedAcid
+					)
+            
         } else {
             EmptyView()
         }

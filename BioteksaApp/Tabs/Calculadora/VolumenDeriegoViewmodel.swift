@@ -19,13 +19,23 @@ class VolumenDeriegoViewmodel: ViewModel {
 		}
 	}
     @Published var products = ProductSet()
+	@Published var calculatedAcid = 0.0
+	var acidTitle = ""
 
+		var acidLiters: Double
     var calculatedSet: ElementSet
     var solucionMadre: [String: Double] = [:]
     
-    init(calculatedSet: ElementSet) {
-        self.calculatedSet = calculatedSet
-    }
+		init(
+			calculatedSet: ElementSet,
+			acidTitle: String,
+			acidLiters: Double
+		) {
+				self.calculatedSet = calculatedSet
+				self.acidTitle = acidTitle
+				self.acidLiters = acidLiters
+			calculatedAcid = acidLiters * 100
+		}
     
     override func load() async {
         isLoading = true
@@ -54,5 +64,7 @@ class VolumenDeriegoViewmodel: ViewModel {
         products.hyperZN.value = solucionMadre["8", default: 0.0] * m3Multiply
         products.ultraFe.value = solucionMadre["9", default: 0.0] * m3Multiply
         products.ultraS.value = solucionMadre["10", default: 0.0] * m3Multiply
+			calculatedAcid = acidLiters * m3Multiply
+			
     }
 }

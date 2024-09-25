@@ -20,16 +20,16 @@ struct AcidosView: View {
                   case .error:
                       Text("Ocurrio un error")
                   case .content:
-                      AcidosContainer(acidTitle: "Acido Sulfurico", model: $viewModel.acidosTuple.sulfurico)
-                      AcidosContainer(acidTitle: "Acido Nitrico", model: $viewModel.acidosTuple.nitrico)
-                      AcidosContainer(acidTitle: "Acido Fosforico", model: $viewModel.acidosTuple.fosforico)
+                      AcidosContainer(acidTitle: "Ácido Sulfúrico", model: $viewModel.acidosTuple.sulfurico)
+                      AcidosContainer(acidTitle: "Ácido Nítrico", model: $viewModel.acidosTuple.nitrico)
+                      AcidosContainer(acidTitle: "Ácido Fosfórico", model: $viewModel.acidosTuple.fosforico)
                       BioteksaButton(title: "Actualizar") {
                           await viewModel.update()
                       }
                   }
 			  }
         }
-        .navigationTitle("Acidos")
+        .navigationTitle("Ácidos")
     }
 }
 

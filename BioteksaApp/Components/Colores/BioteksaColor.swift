@@ -69,7 +69,7 @@ struct AnatomyDarkColorStyle: ColorStyle {
 	let bgTableHeaderGreen = Color(hex: 0x709A00)
 	let bgTextFieldGray = Color(hex: 0x222222)
 	let bgTableRow = Color(hex: 0xffffff)
-	let bgTableRowHighligted = Color(hex: 0x6D6749)
+	let bgTableRowHighligted = Color(hex: 0x1D1700)
 	
 	let fgPrimary = Color(hex: 0x000000)
 	let fgContrast = Color(hex: 0xffffff)

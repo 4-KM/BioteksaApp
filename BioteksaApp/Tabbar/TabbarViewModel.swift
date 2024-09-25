@@ -56,7 +56,7 @@ class TabbarViewModel: ObservableObject {
         @Dependency(\.apiManager) var apiManager
 
         self.onLogout = onLogout
-        if apiManager.authProvider?.rol == 0 {
+        if apiManager.authProvider?.rol == 0 || apiManager.authProvider?.rol == 1 {
             tabs = [
                 .acidos(AcidosViewModel()),
                 .nutrientes(NutrientesViewModel()),
@@ -98,11 +98,11 @@ enum Tab {
     var title: String {
         switch self {
         case .acidos:
-            return "Acidos"
+            return "Ácidos"
         case .nutrientes:
             return "Nutrientes"
         case .convertion:
-            return "Convertion"
+            return "Conversión"
         case .calculadora:
             return "Calculadora"
         }
